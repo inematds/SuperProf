@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 1.3: Prompt Engineering | SuperProfessores</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        secondary: '#8B5CF6',
+                        'trilha-a': '#9b59b6',
+                        'trilha-b': '#10B981',
+                        fundamentos: '#3B82F6',
+                        success: '#10B981',
+                        warning: '#F59E0B',
+                        danger: '#EF4444',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/90 dark:bg-neutral-800/90 backdrop-blur-sm shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="../index.html" class="text-xl font-bold text-primary hover:text-blue-700 transition-colors">
+                    SuperProfessores
+                </a>
+                <div class="flex items-center gap-4">
+                    <a href="../index.html" class="text-sm hover:text-primary transition-colors">Início</a>
+                    <a href="../niveis/nivel-1.html" class="text-sm hover:text-primary transition-colors">Nível 1</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="bg-white dark:bg-neutral-800 border-b border-neutral-200 dark:border-neutral-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <nav class="flex text-sm" aria-label="Breadcrumb">
+                <a href="../index.html" class="text-neutral-600 dark:text-neutral-400 hover:text-primary transition-colors">Início</a>
+                <span class="mx-2 text-neutral-400">/</span>
+                <a href="../niveis/nivel-1.html" class="text-neutral-600 dark:text-neutral-400 hover:text-primary transition-colors">Nível 1</a>
+                <span class="mx-2 text-neutral-400">/</span>
+                <span class="text-neutral-600 dark:text-neutral-400">Módulo 1.3</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="bg-gradient-to-r from-fundamentos to-blue-600 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+            <span class="inline-block px-4 py-2 bg-white/20 rounded-full text-sm font-semibold mb-4">16 horas</span>
+            <h1 class="text-4xl lg:text-5xl font-bold mb-4">Módulo 1.3: Prompt Engineering</h1>
+            <p class="text-xl text-blue-100 max-w-3xl">
+                A habilidade universal da era da IA - Domine técnicas avançadas de comunicação com LLMs
+            </p>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <!-- Visão Geral -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6">📖 Visão Geral</h2>
+            <div class="prose prose-lg dark:prose-invert max-w-none">
+                <p class="text-lg text-neutral-700 dark:text-neutral-300 mb-4">
+                    Prompt Engineering é a habilidade mais valiosa da era da IA. Este módulo ensina técnicas comprovadas para aumentar em 40-80% a qualidade das respostas de LLMs. Você dominará: Anatomia de Prompts, Chain-of-Thought, Few-Shot Learning, Engenharia de Persona e Estratégias Multi-LLM.
+                </p>
+                <p class="text-lg text-neutral-700 dark:text-neutral-300">
+                    <strong>Ao final deste módulo, você será capaz de:</strong>
+                </p>
+                <ul class="list-disc pl-6 space-y-2 text-neutral-700 dark:text-neutral-300">
+                    <li>Construir prompts estruturados com 5 componentes essenciais</li>
+                    <li>Aplicar Chain-of-Thought para problemas complexos (aumenta precisão em 40-80%)</li>
+                    <li>Usar Few-Shot Learning para personalizar outputs</li>
+                    <li>Criar personas especializadas para diferentes contextos pedagógicos</li>
+                    <li>Combinar múltiplos LLMs para resultados superiores</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Conteúdo Detalhado -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-8">📚 Conteúdo Detalhado</h2>
+
+            <!-- Tópico 1: Anatomia de um Prompt Eficaz -->
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-fundamentos">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">🔬</span>
+                    <span>Anatomia de um Prompt Eficaz</span>
+                </h3>
+
+                <div class="prose dark:prose-invert max-w-none">
+                    <h4 class="text-xl font-semibold mb-3 text-fundamentos">Os 5 Componentes Essenciais:</h4>
+                    <p class="mb-6">
+                        Um prompt eficaz NÃO é apenas uma pergunta. É uma estrutura com 5 componentes que guiam o LLM para a resposta desejada com precisão.
+                    </p>
+
+                    <div class="space-y-6">
+                        <div class="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg">
+                            <h5 class="font-bold text-lg mb-2">1. Papel (Role)</h5>
+                            <p class="mb-2">Defina quem a IA deve ser</p>
+                            <div class="bg-white dark:bg-neutral-700 p-4 rounded font-mono text-sm">
+                                ❌ Mau: "Me ajude com química"<br>
+                                ✅ Bom: "Você é um professor de química do ensino médio com 15 anos de experiência"
+                            </div>
+                        </div>
+
+                        <div class="bg-purple-50 dark:bg-purple-900/20 p-6 rounded-lg">
+                            <h5 class="font-bold text-lg mb-2">2. Contexto (Context)</h5>
+                            <p class="mb-2">Forneça informações de fundo</p>
+                            <div class="bg-white dark:bg-neutral-700 p-4 rounded font-mono text-sm">
+                                "Contexto: Turma de 30 alunos, 2º ano EM, dificuldade em balanceamento de equações"
+                            </div>
+                        </div>
+
+                        <div class="bg-green-50 dark:bg-green-900/20 p-6 rounded-lg">
+                            <h5 class="font-bold text-lg mb-2">3. Tarefa (Task)</h5>
+                            <p class="mb-2">Especifique o que quer</p>
+                            <div class="bg-white dark:bg-neutral-700 p-4 rounded font-mono text-sm">
+                                "Tarefa: Crie 10 exercícios progressivos (fácil→difícil) sobre balanceamento de equações"
+                            </div>
+                        </div>
+
+                        <div class="bg-orange-50 dark:bg-orange-900/20 p-6 rounded-lg">
+                            <h5 class="font-bold text-lg mb-2">4. Formato (Format)</h5>
+                            <p class="mb-2">Defina a estrutura da resposta</p>
+                            <div class="bg-white dark:bg-neutral-700 p-4 rounded font-mono text-sm">
+                                "Formato: Para cada exercício, forneça:<br>
+                                - Equação desbalanceada<br>
+                                - Nível de dificuldade (1-10)<br>
+                                - Dica pedagógica"
+                            </div>
+                        </div>
+
+                        <div class="bg-red-50 dark:bg-red-900/20 p-6 rounded-lg">
+                            <h5 class="font-bold text-lg mb-2">5. Tom (Tone)</h5>
+                            <p class="mb-2">Especifique o estilo de comunicação</p>
+                            <div class="bg-white dark:bg-neutral-700 p-4 rounded font-mono text-sm">
+                                "Tom: Linguagem acessível para adolescentes, evite jargão técnico excessivo"
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4 class="text-xl font-semibold mb-3 mt-8 text-fundamentos">Exemplo Completo:</h4>
+                    <div class="bg-neutral-100 dark:bg-neutral-700 p-6 rounded-lg">
+                        <div class="font-mono text-sm space-y-3">
+                            <p><strong>Papel:</strong> Você é um professor de química do ensino médio com 15 anos de experiência.</p>
+                            <p><strong>Contexto:</strong> Turma de 30 alunos, 2º ano EM, dificuldade em balanceamento de equações químicas.</p>
+                            <p><strong>Tarefa:</strong> Crie 10 exercícios progressivos (fácil→difícil) sobre balanceamento de equações.</p>
+                            <p><strong>Formato:</strong> Para cada exercício, forneça: equação desbalanceada, nível (1-10), dica pedagógica.</p>
+                            <p><strong>Tom:</strong> Linguagem acessível para adolescentes, evite jargão técnico excessivo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tópico 2: Chain-of-Thought (CoT) -->
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-fundamentos">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">🧩</span>
+                    <span>Chain-of-Thought (CoT) - Raciocínio Passo a Passo</span>
+                </h3>
+
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-6">
+                        Chain-of-Thought é a técnica mais poderosa de Prompt Engineering. Pesquisa do Google (2022) mostrou aumento de 40-80% na precisão ao pedir que o LLM "pense passo a passo".
+                    </p>
+
+                    <h4 class="text-xl font-semibold mb-3 text-fundamentos">Como Funciona:</h4>
+                    <p class="mb-4">
+                        Em vez de pedir resposta direta, você instrui o LLM a "mostrar seu raciocínio". Isso força o modelo a decompor problemas complexos em etapas lógicas.
+                    </p>
+
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div class="bg-red-50 dark:bg-red-900/20 p-6 rounded-lg">
+                            <p class="font-bold mb-3">❌ Sem CoT (Resposta Direta):</p>
+                            <div class="bg-white dark:bg-neutral-700 p-4 rounded font-mono text-sm">
+                                <p class="mb-2"><strong>Prompt:</strong> "Quanto é 23 × 47?"</p>
+                                <p><strong>Resposta:</strong> "1081" (sem explicação)</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-green-50 dark:bg-green-900/20 p-6 rounded-lg">
+                            <p class="font-bold mb-3">✅ Com CoT (Passo a Passo):</p>
+                            <div class="bg-white dark:bg-neutral-700 p-4 rounded font-mono text-sm">
+                                <p class="mb-2"><strong>Prompt:</strong> "Quanto é 23 × 47? Mostre seu raciocínio passo a passo."</p>
+                                <p class="text-xs"><strong>Resposta:</strong><br>
+                                1. 23 × 40 = 920<br>
+                                2. 23 × 7 = 161<br>
+                                3. 920 + 161 = 1081</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4 class="text-xl font-semibold mb-3 mt-8 text-fundamentos">Aplicação Pedagógica - Correção de Redação:</h4>
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg mb-6">
+                        <p class="font-bold mb-3">Prompt com CoT:</p>
+                        <div class="bg-white dark:bg-neutral-700 p-4 rounded font-mono text-sm mb-4">
+                            Você é um corretor de redações ENEM.<br><br>
+
+                            Tarefa: Avalie esta redação seguindo as 5 competências do ENEM.<br><br>
+
+                            Instruções:<br>
+                            1. Leia a redação completamente<br>
+                            2. Para CADA competência (C1 a C5):<br>
+                            &nbsp;&nbsp; a) Identifique 2 pontos fortes<br>
+                            &nbsp;&nbsp; b) Identifique 2 pontos fracos<br>
+                            &nbsp;&nbsp; c) Atribua nota (0-200)<br>
+                            &nbsp;&nbsp; d) Justifique a nota<br>
+                            3. Calcule nota final (soma das 5 competências)<br>
+                            4. Forneça 3 sugestões concretas de melhoria<br><br>
+
+                            Mostre seu raciocínio passo a passo.
+                        </div>
+                        <p class="text-sm italic">Resultado: Feedback estruturado e transparente, com raciocínio explícito para cada nota</p>
+                    </div>
+
+                    <h4 class="text-xl font-semibold mb-3 mt-8 text-fundamentos">Quando Usar CoT:</h4>
+                    <div class="bg-success/10 border-l-4 border-success p-6 rounded-lg">
+                        <ul class="space-y-2">
+                            <li>✅ Problemas matemáticos/lógicos (aumenta precisão em 40-80%)</li>
+                            <li>✅ Análise de textos complexos (redações, TCCs)</li>
+                            <li>✅ Planejamento pedagógico (planos de aula, sequências didáticas)</li>
+                            <li>✅ Debugging de código (programação)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tópico 3: Few-Shot Learning -->
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-fundamentos">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">📝</span>
+                    <span>Few-Shot Learning - Aprender com Exemplos</span>
+                </h3>
+
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-6">
+                        Few-Shot Learning ensina o LLM pelo exemplo, não por instruções. Você mostra 2-5 exemplos do output desejado, e o modelo replica o padrão. É mais eficaz que explicar com palavras.
+                    </p>
+
+                    <h4 class="text-xl font-semibold mb-3 text-fundamentos">Princípio:</h4>
+                    <p class="mb-4 italic">"Mostre, não explique. LLMs aprendem melhor vendo exemplos concretos do que lendo instruções abstratas."</p>
+
+                    <h4 class="text-xl font-semibold mb-3 mt-6 text-fundamentos">Exemplo Prático - Criar Questões de Quiz:</h4>
+
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-6 rounded-lg mb-6">
+                        <p class="font-bold mb-3">Sem Few-Shot (Zero-Shot):</p>
+                        <div class="bg-white dark:bg-neutral-700 p-4 rounded font-mono text-sm mb-4">
+                            Crie questões de múltipla escolha sobre fotossíntese.
+                        </div>
+                        <p class="text-sm">❌ Problema: Resultado inconsistente (formato varia, dificuldade aleatória)</p>
+                    </div>
+
+                    <div class="bg-green-50 dark:bg-green-900/20 p-6 rounded-lg mb-6">
+                        <p class="font-bold mb-3">Com Few-Shot (3 exemplos):</p>
+                        <div class="bg-white dark:bg-neutral-700 p-4 rounded font-mono text-sm space-y-3">
+                            <p>Crie questões de múltipla escolha sobre fotossíntese seguindo este formato:</p>
+
+                            <p><strong>Exemplo 1:</strong><br>
+                            Nível: Fácil<br>
+                            Questão: Qual gás é liberado durante a fotossíntese?<br>
+                            A) Nitrogênio | B) Oxigênio ✓ | C) CO2 | D) Hidrogênio<br>
+                            Justificativa: Conceito básico, memorização</p>
+
+                            <p><strong>Exemplo 2:</strong><br>
+                            Nível: Médio<br>
+                            Questão: O que acontece se bloquearmos a luz em uma planta?<br>
+                            A) Cresce mais | B) Para fotossíntese ✓ | C) Morre imediatamente | D) Produz mais O2<br>
+                            Justificativa: Exige compreensão de relação causal</p>
+
+                            <p><strong>Exemplo 3:</strong><br>
+                            Nível: Difícil<br>
+                            Questão: Por que plantas C4 são mais eficientes em climas quentes?<br>
+                            A) Usam menos água | B) Concentram CO2 ✓ | C) Crescem mais rápido | D) Absorvem mais luz<br>
+                            Justificativa: Análise de adaptação evolutiva</p>
+
+                            <p class="mt-4">Agora crie mais 7 questões seguindo exatamente esse padrão.</p>
+                        </div>
+                        <p class="text-sm mt-3">✅ Resultado: Output consistente, com formato e dificuldade controlados</p>
+                    </div>
+
+                    <h4 class="text-xl font-semibold mb-3 mt-8 text-fundamentos">Quantos Exemplos Usar?</h4>
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg">
+                        <ul class="space-y-3">
+                            <li><strong>1 exemplo (One-Shot):</strong> Suficiente para formatos simples (ex: converter texto em lista)</li>
+                            <li><strong>2-3 exemplos:</strong> Ideal para padrões moderados (questões, resumos, traduções)</li>
+                            <li><strong>4-5 exemplos:</strong> Necessário para outputs complexos (análises multidimensionais)</li>
+                            <li><strong>6+ exemplos:</strong> Raramente melhora resultados (e consome tokens)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tópico 4: Engenharia de Persona -->
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-fundamentos">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">🎭</span>
+                    <span>Engenharia de Persona - Especialistas Customizados</span>
+                </h3>
+
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-6">
+                        Engenharia de Persona transforma LLMs genéricos em especialistas. Ao definir identidade, experiência e estilo, você cria assistentes personalizados para diferentes contextos pedagógicos.
+                    </p>
+
+                    <h4 class="text-xl font-semibold mb-3 text-fundamentos">Componentes de uma Persona Eficaz:</h4>
+
+                    <div class="space-y-6">
+                        <div class="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg">
+                            <h5 class="font-bold mb-2">1. Identidade Profissional</h5>
+                            <p class="text-sm mb-2">Quem é o especialista?</p>
+                            <div class="bg-white dark:bg-neutral-700 p-4 rounded font-mono text-xs">
+                                "Você é a Dra. Maria Silva, pedagoga com PhD em Tecnologias Educacionais pela USP, 20 anos de experiência em formação docente."
+                            </div>
+                        </div>
+
+                        <div class="bg-green-50 dark:bg-green-900/20 p-6 rounded-lg">
+                            <h5 class="font-bold mb-2">2. Expertise Específica</h5>
+                            <p class="text-sm mb-2">O que ele domina?</p>
+                            <div class="bg-white dark:bg-neutral-700 p-4 rounded font-mono text-xs">
+                                "Especialista em: ensino híbrido, gamificação, avaliação formativa e integração de IA em currículos."
+                            </div>
+                        </div>
+
+                        <div class="bg-purple-50 dark:bg-purple-900/20 p-6 rounded-lg">
+                            <h5 class="font-bold mb-2">3. Estilo de Comunicação</h5>
+                            <p class="text-sm mb-2">Como ele se expressa?</p>
+                            <div class="bg-white dark:bg-neutral-700 p-4 rounded font-mono text-xs">
+                                "Tom: empático, pragmático, usa metáforas do cotidiano. Sempre fornece exemplos concretos."
+                            </div>
+                        </div>
+
+                        <div class="bg-orange-50 dark:bg-orange-900/20 p-6 rounded-lg">
+                            <h5 class="font-bold mb-2">4. Valores e Princípios</h5>
+                            <p class="text-sm mb-2">No que ele acredita?</p>
+                            <div class="bg-white dark:bg-neutral-700 p-4 rounded font-mono text-xs">
+                                "Princípios: educação inclusiva, aprendizagem ativa, avaliação como aprendizagem (não punição)."
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4 class="text-xl font-semibold mb-3 mt-8 text-fundamentos">Exemplo Completo - Tutor Socrático:</h4>
+                    <div class="bg-neutral-100 dark:bg-neutral-700 p-6 rounded-lg mb-6">
+                        <div class="font-mono text-sm space-y-3">
+                            <p><strong>Identidade:</strong> Você é Sócrates, filósofo ateniense (470-399 a.C.), criador do método socrático.</p>
+                            <p><strong>Expertise:</strong> Mestre em fazer perguntas que levam alunos a descobrirem respostas por si mesmos.</p>
+                            <p><strong>Estilo:</strong> Curioso, paciente, nunca dá respostas diretas. Usa analogias do cotidiano grego.</p>
+                            <p><strong>Princípios:</strong> "Só sei que nada sei". Aprendizagem = descoberta, não transmissão.</p>
+                            <p class="mt-4"><strong>Comportamento:</strong><br>
+                            - Quando aluno faz pergunta, responda com 2-3 perguntas investigativas<br>
+                            - Se aluno erra, não corrija. Pergunte: "Por que você pensa isso?"<br>
+                            - Celebre raciocínio, não resposta correta</p>
+                        </div>
+                    </div>
+
+                    <h4 class="text-xl font-semibold mb-3 mt-8 text-fundamentos">Biblioteca de Personas para Educadores:</h4>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-white dark:bg-neutral-700 p-4 rounded-lg border-2 border-blue-300">
+                            <p class="font-bold mb-2">📚 Curator de Conteúdo</p>
+                            <p class="text-sm">Seleciona e organiza recursos didáticos por nível/tema</p>
+                        </div>
+                        <div class="bg-white dark:bg-neutral-700 p-4 rounded-lg border-2 border-green-300">
+                            <p class="font-bold mb-2">✅ Avaliador Formativo</p>
+                            <p class="text-sm">Dá feedback construtivo sem notas punitivas</p>
+                        </div>
+                        <div class="bg-white dark:bg-neutral-700 p-4 rounded-lg border-2 border-purple-300">
+                            <p class="font-bold mb-2">🎮 Designer de Gamificação</p>
+                            <p class="text-sm">Transforma conteúdos em jogos educativos</p>
+                        </div>
+                        <div class="bg-white dark:bg-neutral-700 p-4 rounded-lg border-2 border-orange-300">
+                            <p class="font-bold mb-2">🧩 Adaptador Inclusivo</p>
+                            <p class="text-sm">Ajusta materiais para diferentes necessidades (TDAH, dislexia, etc)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tópico 5: Estratégias Multi-LLM -->
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-fundamentos">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">🔀</span>
+                    <span>Estratégias Multi-LLM - Combine Forças</span>
+                </h3>
+
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-6">
+                        Cada LLM tem pontos fortes únicos. Estratégias Multi-LLM combinam ferramentas para resultados superiores a qualquer LLM isolado. Princípio: "Use a ferramenta certa para cada etapa do trabalho."
+                    </p>
+
+                    <h4 class="text-xl font-semibold mb-3 text-fundamentos">Estratégia 1: Pipeline Sequencial</h4>
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg mb-6">
+                        <p class="font-bold mb-3">Caso: Criar Material Didático Completo</p>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex gap-3">
+                                <span class="font-bold text-blue-600">1. ChatGPT:</span>
+                                <span>Brainstorming inicial (gera 20 ideias de tópicos)</span>
+                            </div>
+                            <div class="flex gap-3">
+                                <span class="font-bold text-purple-600">2. Claude:</span>
+                                <span>Analisa as 20 ideias e seleciona as 5 melhores (raciocínio profundo)</span>
+                            </div>
+                            <div class="flex gap-3">
+                                <span class="font-bold text-green-600">3. Gemini:</span>
+                                <span>Pesquisa vídeos do YouTube para cada tópico (acesso em tempo real)</span>
+                            </div>
+                            <div class="flex gap-3">
+                                <span class="font-bold text-orange-600">4. NotebookLM:</span>
+                                <span>Gera podcast de revisão (material auditivo)</span>
+                            </div>
+                        </div>
+                        <p class="text-xs italic mt-4">Tempo total: 20 min | Resultado: Material multimídia completo</p>
+                    </div>
+
+                    <h4 class="text-xl font-semibold mb-3 mt-8 text-fundamentos">Estratégia 2: Validação Cruzada</h4>
+                    <div class="bg-purple-50 dark:bg-purple-900/20 p-6 rounded-lg mb-6">
+                        <p class="font-bold mb-3">Caso: Verificar Informação Factual</p>
+                        <div class="space-y-3 text-sm">
+                            <p><strong>Problema:</strong> LLMs podem alucinar (inventar dados)</p>
+                            <p><strong>Solução:</strong> Pergunte para 3 LLMs diferentes e compare respostas</p>
+                            <div class="bg-white dark:bg-neutral-700 p-4 rounded mt-3">
+                                <p class="mb-2">Pergunta: "Qual a data exata do Tratado de Tordesilhas?"</p>
+                                <ul class="space-y-1">
+                                    <li>• ChatGPT: "7 de junho de 1494"</li>
+                                    <li>• Claude: "7 de junho de 1494"</li>
+                                    <li>• Gemini: "7 de junho de 1494"</li>
+                                </ul>
+                                <p class="mt-2 text-xs italic">Consenso = Alta confiança</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4 class="text-xl font-semibold mb-3 mt-8 text-fundamentos">Estratégia 3: Especialização por Tarefa</h4>
+                    <div class="bg-green-50 dark:bg-green-900/20 p-6 rounded-lg">
+                        <p class="font-bold mb-3">Matriz de Uso Ideal:</p>
+                        <table class="w-full text-sm mt-3">
+                            <thead>
+                                <tr class="border-b-2 border-green-600">
+                                    <th class="text-left pb-2">Tarefa</th>
+                                    <th class="text-left pb-2">LLM Ideal</th>
+                                    <th class="text-left pb-2">Por quê?</th>
+                                </tr>
+                            </thead>
+                            <tbody class="space-y-2">
+                                <tr class="border-b border-green-200">
+                                    <td class="py-2">Geração rápida</td>
+                                    <td class="py-2">ChatGPT</td>
+                                    <td class="py-2">Velocidade</td>
+                                </tr>
+                                <tr class="border-b border-green-200">
+                                    <td class="py-2">Análise profunda</td>
+                                    <td class="py-2">Claude</td>
+                                    <td class="py-2">Raciocínio</td>
+                                </tr>
+                                <tr class="border-b border-green-200">
+                                    <td class="py-2">Pesquisa web</td>
+                                    <td class="py-2">Gemini</td>
+                                    <td class="py-2">Tempo real</td>
+                                </tr>
+                                <tr>
+                                    <td class="py-2">Materiais áudio</td>
+                                    <td class="py-2">NotebookLM</td>
+                                    <td class="py-2">Podcasts</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Recursos -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6">📦 Recursos do Módulo</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <span>📹</span>
+                        <span>Videoaulas (4h)</span>
+                    </h3>
+                    <ul class="text-sm space-y-2 text-neutral-600 dark:text-neutral-400">
+                        <li>• Anatomia de Prompts (45 min)</li>
+                        <li>• Chain-of-Thought masterclass (60 min)</li>
+                        <li>• Few-Shot Learning prático (50 min)</li>
+                        <li>• Engenharia de Persona (45 min)</li>
+                        <li>• Estratégias Multi-LLM (40 min)</li>
+                    </ul>
+                </div>
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <span>📄</span>
+                        <span>Biblioteca de Prompts (6h)</span>
+                    </h3>
+                    <ul class="text-sm space-y-2 text-neutral-600 dark:text-neutral-400">
+                        <li>• 50+ prompts profissionais prontos</li>
+                        <li>• 10 personas educacionais</li>
+                        <li>• Templates personalizáveis</li>
+                        <li>• Guia de boas práticas</li>
+                    </ul>
+                </div>
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <span>💬</span>
+                        <span>Práticas (5h)</span>
+                    </h3>
+                    <ul class="text-sm space-y-2 text-neutral-600 dark:text-neutral-400">
+                        <li>• 10 exercícios de prompting</li>
+                        <li>• Criar 3 personas customizadas</li>
+                        <li>• Projeto: Pipeline Multi-LLM</li>
+                        <li>• Peer review de prompts</li>
+                    </ul>
+                </div>
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <span>✅</span>
+                        <span>Avaliação (1h)</span>
+                    </h3>
+                    <ul class="text-sm space-y-2 text-neutral-600 dark:text-neutral-400">
+                        <li>• Quiz de técnicas (25 questões)</li>
+                        <li>• Desafio de prompting</li>
+                        <li>• Portfólio de 5 prompts</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navegação -->
+        <section class="flex justify-between items-center pt-8 border-t border-neutral-200 dark:border-neutral-700">
+            <a href="modulo-1-2.html" class="px-6 py-3 bg-neutral-200 dark:bg-neutral-700 rounded-lg font-semibold hover:bg-neutral-300 dark:hover:bg-neutral-600 transition-colors">
+                ← Módulo Anterior: 1.2
+            </a>
+            <a href="../niveis/nivel-1.html" class="px-6 py-3 bg-fundamentos text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                Voltar ao Nível 1
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-neutral-900 dark:bg-black text-neutral-300 py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2025 SuperProfessores. Licença MIT.</p>
+        </div>
+    </footer>
+
+    <script src="../js/app.js"></script>
+</body>
+</html>

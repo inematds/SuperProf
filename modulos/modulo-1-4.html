@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 1.4: Pensamento Crítico com IA | SuperProfessores</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: { extend: { colors: { primary: '#3B82F6', fundamentos: '#3B82F6', success: '#10B981', warning: '#F59E0B', danger: '#EF4444' }}}
+        }
+    </script>
+</head>
+<body class="bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100">
+
+    <nav class="sticky top-0 z-50 bg-white/90 dark:bg-neutral-800/90 backdrop-blur-sm shadow-md">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="../index.html" class="text-xl font-bold text-primary">SuperProfessores</a>
+                <div class="flex items-center gap-4">
+                    <a href="../index.html" class="text-sm hover:text-primary transition-colors">Início</a>
+                    <a href="../niveis/nivel-1.html" class="text-sm hover:text-primary transition-colors">Nível 1</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="bg-white dark:bg-neutral-800 border-b border-neutral-200 dark:border-neutral-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
+            <nav class="flex text-sm">
+                <a href="../index.html" class="text-neutral-600 dark:text-neutral-400 hover:text-primary">Início</a>
+                <span class="mx-2 text-neutral-400">/</span>
+                <a href="../niveis/nivel-1.html" class="text-neutral-600 dark:text-neutral-400 hover:text-primary">Nível 1</a>
+                <span class="mx-2 text-neutral-400">/</span>
+                <span class="text-neutral-600 dark:text-neutral-400">Módulo 1.4</span>
+            </nav>
+        </div>
+    </div>
+
+    <section class="bg-gradient-to-r from-fundamentos to-blue-600 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+            <span class="inline-block px-4 py-2 bg-white/20 rounded-full text-sm font-semibold mb-4">12 horas</span>
+            <h1 class="text-4xl lg:text-5xl font-bold mb-4">Módulo 1.4: Pensamento Crítico com IA</h1>
+            <p class="text-xl text-blue-100 max-w-3xl">
+                Desenvolva ceticismo saudável - Identificar alucinações, vieses e avaliar qualidade de outputs
+            </p>
+        </div>
+    </section>
+
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6">📖 Visão Geral</h2>
+            <div class="prose prose-lg dark:prose-invert max-w-none">
+                <p class="text-lg text-neutral-700 dark:text-neutral-300 mb-4">
+                    LLMs não são infalíveis. Este módulo desenvolve pensamento crítico para usar IA com responsabilidade. Você aprenderá a: detectar alucinações (invenções), identificar vieses estruturais, avaliar qualidade com Framework CRAFT e usar detectores de IA.
+                </p>
+                <ul class="list-disc pl-6 space-y-2 text-neutral-700 dark:text-neutral-300">
+                    <li>Identificar e corrigir alucinações em outputs de LLMs</li>
+                    <li>Reconhecer 5 tipos de vieses em IA (cultural, temporal, linguístico, etc)</li>
+                    <li>Aplicar Framework CRAFT para avaliar confiabilidade de respostas</li>
+                    <li>Usar detectores de IA e interpretar resultados criticamente</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-8">📚 Conteúdo Detalhado</h2>
+
+            <!-- Alucinações -->
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-danger">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">🎯</span>
+                    <span>Alucinações - O Que São e Como Detectar</span>
+                </h3>
+
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-6">
+                        <strong>Alucinação</strong> = Quando LLM inventa dados, referências ou fatos com confiança absoluta. É o risco #1 de IA na educação (alunos podem aprender informações falsas).
+                    </p>
+
+                    <h4 class="text-xl font-semibold mb-3 text-danger">Tipos de Alucinação:</h4>
+                    <div class="space-y-4">
+                        <div class="bg-red-50 dark:bg-red-900/20 p-6 rounded-lg">
+                            <p class="font-bold mb-2">1. Alucinação Factual</p>
+                            <p class="text-sm mb-3">Invenção de dados ou eventos</p>
+                            <div class="bg-white dark:bg-neutral-700 p-4 rounded text-sm">
+                                <p><strong>Pergunta:</strong> "Qual livro Machado de Assis publicou em 1920?"</p>
+                                <p><strong>Alucinação:</strong> "Em 1920 publicou 'A Última Crônica'" ❌</p>
+                                <p><strong>Realidade:</strong> Machado morreu em 1908 ✅</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-orange-50 dark:bg-orange-900/20 p-6 rounded-lg">
+                            <p class="font-bold mb-2">2. Alucinação de Referência</p>
+                            <p class="text-sm mb-3">Citação de fontes inexistentes</p>
+                            <div class="bg-white dark:bg-neutral-700 p-4 rounded text-sm">
+                                <p><strong>Output:</strong> "Segundo estudo de Silva et al. (2024) na revista Nature..."</p>
+                                <p><strong>Problema:</strong> Artigo não existe ❌</p>
+                            </div>
+                        </div>
+
+                        <div class="bg-yellow-50 dark:bg-yellow-900/20 p-6 rounded-lg">
+                            <p class="font-bold mb-2">3. Alucinação de Conceito</p>
+                            <p class="text-sm mb-3">Confusão entre conceitos similares</p>
+                            <div class="bg-white dark:bg-neutral-700 p-4 rounded text-sm">
+                                <p><strong>Pergunta:</strong> "Explique fotofosforilação"</p>
+                                <p><strong>Alucinação:</strong> [Mistura fotossíntese + fosforilação incorretamente]</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4 class="text-xl font-semibold mb-3 mt-8 text-danger">5 Técnicas para Detectar Alucinações:</h4>
+                    <div class="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg">
+                        <ol class="list-decimal pl-6 space-y-3">
+                            <li><strong>Validação cruzada:</strong> Pergunte para 2-3 LLMs diferentes. Respostas divergentes = sinal de alerta</li>
+                            <li><strong>Peça fontes:</strong> Sempre solicite referências. Se LLM hesita ou inventa, é alucinação</li>
+                            <li><strong>Verifique datas:</strong> Cheque se eventos/publicações são cronologicamente possíveis</li>
+                            <li><strong>Busca manual:</strong> Para informações críticas, confirme com Google Scholar/Wikipedia</li>
+                            <li><strong>Ceticismo com especificidade:</strong> Quanto mais específico (nomes, datas, números), maior risco</li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vieses -->
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-warning">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">⚖️</span>
+                    <span>Vieses de LLMs - Limitações Estruturais</span>
+                </h3>
+
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-6">
+                        <strong>Viés</strong> = Tendência sistemática do LLM favorecendo certos grupos/perspectivas. Não é "erro", mas reflexo dos dados de treinamento (majoritariamente inglês, ocidental, masculino).
+                    </p>
+
+                    <h4 class="text-xl font-semibold mb-3 text-warning">5 Tipos de Viés em LLMs:</h4>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg">
+                            <p class="font-bold mb-2">1️⃣ Viés Cultural</p>
+                            <p class="text-sm">Favorece cultura anglo-saxã. Ex: "successful CEO" → descreve homem branco</p>
+                        </div>
+                        <div class="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg">
+                            <p class="font-bold mb-2">2️⃣ Viés Temporal</p>
+                            <p class="text-sm">Dados até 2023. Não sabe eventos recentes (eleições 2024, descobertas científicas)</p>
+                        </div>
+                        <div class="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg">
+                            <p class="font-bold mb-2">3️⃣ Viés Linguístico</p>
+                            <p class="text-sm">Melhor em inglês. Português tem mais erros/alucinações</p>
+                        </div>
+                        <div class="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg">
+                            <p class="font-bold mb-2">4️⃣ Viés de Gênero</p>
+                            <p class="text-sm">"Enfermeiro" → assume mulher | "Engenheiro" → assume homem</p>
+                        </div>
+                        <div class="bg-amber-50 dark:bg-amber-900/20 p-4 rounded-lg">
+                            <p class="font-bold mb-2">5️⃣ Viés de Consenso</p>
+                            <p class="text-sm">Favorece visões majoritárias. Silencia perspectivas minoritárias</p>
+                        </div>
+                    </div>
+
+                    <h4 class="text-xl font-semibold mb-3 mt-8 text-warning">Como Mitigar Vieses:</h4>
+                    <div class="bg-green-50 dark:bg-green-900/20 p-6 rounded-lg">
+                        <ul class="space-y-3">
+                            <li>✅ <strong>Prompt explícito:</strong> "Considere perspectivas de diferentes culturas/gêneros"</li>
+                            <li>✅ <strong>Diversifique fontes:</strong> Use múltiplos LLMs + busca humana</li>
+                            <li>✅ <strong>Educação crítica:</strong> Ensine alunos a identificar vieses</li>
+                            <li>✅ <strong>Validação local:</strong> Adapte outputs para contexto brasileiro</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Framework CRAFT -->
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-success">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">🔍</span>
+                    <span>Framework CRAFT - Avaliar Qualidade</span>
+                </h3>
+
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-6">
+                        <strong>CRAFT</strong> = Framework de 5 critérios para avaliar confiabilidade de outputs de IA antes de usar em aula.
+                    </p>
+
+                    <div class="space-y-4">
+                        <div class="bg-blue-50 dark:bg-blue-900/20 p-6 rounded-lg">
+                            <h5 class="font-bold text-lg mb-2">C - Completeness (Completude)</h5>
+                            <p class="text-sm mb-2">A resposta cobre todos os aspectos necessários?</p>
+                            <p class="text-xs italic">✅ Bom: Responde pergunta + contexto + exemplos | ❌ Ruim: Resposta superficial</p>
+                        </div>
+
+                        <div class="bg-purple-50 dark:bg-purple-900/20 p-6 rounded-lg">
+                            <h5 class="font-bold text-lg mb-2">R - Relevance (Relevância)</h5>
+                            <p class="text-sm mb-2">O conteúdo é pertinente ao objetivo pedagógico?</p>
+                            <p class="text-xs italic">✅ Bom: Foco no que foi pedido | ❌ Ruim: Divaga em tópicos tangenciais</p>
+                        </div>
+
+                        <div class="bg-green-50 dark:bg-green-900/20 p-6 rounded-lg">
+                            <h5 class="font-bold text-lg mb-2">A - Accuracy (Precisão)</h5>
+                            <p class="text-sm mb-2">Informações são factuais e verificáveis?</p>
+                            <p class="text-xs italic">✅ Bom: Fatos corretos + fontes | ❌ Ruim: Alucinações ou erros conceituais</p>
+                        </div>
+
+                        <div class="bg-orange-50 dark:bg-orange-900/20 p-6 rounded-lg">
+                            <h5 class="font-bold text-lg mb-2">F - Fairness (Imparcialidade)</h5>
+                            <p class="text-sm mb-2">Evita vieses e representa múltiplas perspectivas?</p>
+                            <p class="text-xs italic">✅ Bom: Visões diversas | ❌ Ruim: Favorece um grupo/perspectiva</p>
+                        </div>
+
+                        <div class="bg-red-50 dark:bg-red-900/20 p-6 rounded-lg">
+                            <h5 class="font-bold text-lg mb-2">T - Tone (Tom)</h5>
+                            <p class="text-sm mb-2">Linguagem é apropriada para público-alvo?</p>
+                            <p class="text-xs italic">✅ Bom: Adequado ao nível/idade | ❌ Ruim: Muito técnico ou infantilizado</p>
+                        </div>
+                    </div>
+
+                    <div class="bg-neutral-100 dark:bg-neutral-700 p-6 rounded-lg mt-6">
+                        <p class="font-bold mb-3">Sistema de Pontuação:</p>
+                        <ul class="text-sm space-y-2">
+                            <li>• Atribua 0-2 pontos para cada critério (0=ruim, 1=aceitável, 2=excelente)</li>
+                            <li>• Pontuação total: 0-10 pontos</li>
+                            <li>• <strong>8-10:</strong> Pronto para usar ✅</li>
+                            <li>• <strong>5-7:</strong> Requer edição 🟡</li>
+                            <li>• <strong>0-4:</strong> Refazer ou descartar ❌</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detectores de IA -->
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-fundamentos">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">🤖</span>
+                    <span>Detectores de IA - Ferramentas e Eficácia</span>
+                </h3>
+
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-6">
+                        Detectores de IA tentam identificar se texto foi escrito por humano ou LLM. Mas têm limitações graves: <strong>25-40% de falsos positivos</strong> (marcam humanos como IA).
+                    </p>
+
+                    <h4 class="text-xl font-semibold mb-3 text-fundamentos">Ferramentas Principais (Nov 2025):</h4>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg">
+                            <p class="font-bold mb-2">GPTZero (Gratuito)</p>
+                            <p class="text-sm">Precisão: ~70% | Melhor para textos longos (500+ palavras)</p>
+                        </div>
+                        <div class="bg-purple-50 dark:bg-purple-900/20 p-4 rounded-lg">
+                            <p class="font-bold mb-2">Turnitin AI Detector (Pago)</p>
+                            <p class="text-sm">Precisão: ~75% | Integrado a LMS institucionais</p>
+                        </div>
+                        <div class="bg-green-50 dark:bg-green-900/20 p-4 rounded-lg">
+                            <p class="font-bold mb-2">Originality.AI (Pago)</p>
+                            <p class="text-sm">Precisão: ~80% | Melhor para inglês, ruim em português</p>
+                        </div>
+                        <div class="bg-orange-50 dark:bg-orange-900/20 p-4 rounded-lg">
+                            <p class="font-bold mb-2">ZeroGPT (Gratuito)</p>
+                            <p class="text-sm">Precisão: ~65% | Muitos falsos positivos</p>
+                        </div>
+                    </div>
+
+                    <h4 class="text-xl font-semibold mb-3 mt-8 text-fundamentos">Problemas dos Detectores:</h4>
+                    <div class="bg-red-50 dark:bg-red-900/20 p-6 rounded-lg mb-6">
+                        <ul class="space-y-3">
+                            <li>❌ <strong>Falsos positivos:</strong> 25-40% de textos humanos são marcados como IA</li>
+                            <li>❌ <strong>Viés contra não-nativos:</strong> Alunos ESL (inglês como 2ª língua) são mais detectados</li>
+                            <li>❌ <strong>Fácil de enganar:</strong> Parafrasear ou traduzir texto burla detector</li>
+                            <li>❌ <strong>Piora com edição:</strong> Texto gerado por IA + editado por humano = indetectável</li>
+                        </ul>
+                    </div>
+
+                    <h4 class="text-xl font-semibold mb-3 mt-8 text-fundamentos">Recomendação Pedagógica:</h4>
+                    <div class="bg-green-50 dark:bg-green-900/20 p-6 rounded-lg">
+                        <p class="font-bold mb-3">NÃO use detectores como prova punitiva</p>
+                        <ul class="space-y-2 text-sm">
+                            <li>✅ <strong>USO CORRETO:</strong> Detector acusa → Conversar com aluno (não punir automaticamente)</li>
+                            <li>✅ <strong>Foco em processo:</strong> Avaliar rascunhos, diário de bordo, apresentação oral</li>
+                            <li>✅ <strong>Redesenhar avaliações:</strong> Menos textos escritos, mais atividades presenciais</li>
+                            <li>❌ <strong>EVITAR:</strong> Zero automático baseado em detector (pode ser injusto)</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6">📦 Recursos do Módulo</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <span>📹</span>
+                        <span>Videoaulas (3h)</span>
+                    </h3>
+                    <ul class="text-sm space-y-2 text-neutral-600 dark:text-neutral-400">
+                        <li>• Alucinações explicadas (45 min)</li>
+                        <li>• Vieses de LLMs (50 min)</li>
+                        <li>• Framework CRAFT tutorial (40 min)</li>
+                        <li>• Detectores de IA - Análise crítica (45 min)</li>
+                    </ul>
+                </div>
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <span>📄</span>
+                        <span>Leituras (4h)</span>
+                    </h3>
+                    <ul class="text-sm space-y-2 text-neutral-600 dark:text-neutral-400">
+                        <li>• Pesquisa sobre alucinações (60 min)</li>
+                        <li>• Vieses em IA - Paper UNESCO (60 min)</li>
+                        <li>• Guia CRAFT completo (45 min)</li>
+                        <li>• Detectores: Eficácia e ética (55 min)</li>
+                    </ul>
+                </div>
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <span>💬</span>
+                        <span>Práticas (4h)</span>
+                    </h3>
+                    <ul class="text-sm space-y-2 text-neutral-600 dark:text-neutral-400">
+                        <li>• Caça a alucinações (60 min)</li>
+                        <li>• Identificar vieses em outputs (45 min)</li>
+                        <li>• Aplicar CRAFT em 10 textos (90 min)</li>
+                        <li>• Testar 4 detectores (45 min)</li>
+                    </ul>
+                </div>
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <span>✅</span>
+                        <span>Avaliação (1h)</span>
+                    </h3>
+                    <ul class="text-sm space-y-2 text-neutral-600 dark:text-neutral-400">
+                        <li>• Quiz de pensamento crítico (30 questões)</li>
+                        <li>• Análise de caso: Texto com alucinações</li>
+                        <li>• Proposta de política de IA na escola</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="flex justify-between items-center pt-8 border-t border-neutral-200 dark:border-neutral-700">
+            <a href="modulo-1-3.html" class="px-6 py-3 bg-neutral-200 dark:bg-neutral-700 rounded-lg font-semibold hover:bg-neutral-300 dark:hover:bg-neutral-600 transition-colors">
+                ← Módulo Anterior: 1.3
+            </a>
+            <a href="../niveis/nivel-1.html" class="px-6 py-3 bg-fundamentos text-white rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+                Voltar ao Nível 1
+            </a>
+        </section>
+
+    </main>
+
+    <footer class="bg-neutral-900 dark:bg-black text-neutral-300 py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2025 SuperProfessores. Licença MIT.</p>
+        </div>
+    </footer>
+
+    <script src="../js/app.js"></script>
+</body>
+</html>
