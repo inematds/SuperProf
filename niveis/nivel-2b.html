@@ -247,6 +247,12 @@
                             <p class="text-sm mb-1.5 text-neutral-700 dark:text-neutral-300">
                                 <strong class="text-[#10B981]">O que é:</strong> Base dos LLMs modernos (GPT, Claude, Gemini). Componentes: Tokenização → Embedding → Positional Encoding → Self-Attention (multi-head) → Feed-forward. Processa texto inteiro em paralelo ao invés de sequencial.
                             </p>
+                            <p class="text-sm mb-1.5 text-neutral-700 dark:text-neutral-300">
+                                <strong class="text-[#10B981]">Por que aprender:</strong> Entender a arquitetura por trás dos LLMs permite otimizar prompts, prever limitações e explicar comportamentos aos alunos. Fundamental para educadores que querem usar IA de forma informada e crítica.
+                            </p>
+                            <p class="text-sm text-neutral-700 dark:text-neutral-300">
+                                <strong class="text-[#10B981]">Conceitos chave:</strong> Transformer, Encoder-Decoder, Tokenização, Embeddings, Positional encoding, Self-attention, Multi-head attention, Feed-forward, Camadas, Parâmetros
+                            </p>
                         </div>
                     </li>
 
@@ -258,6 +264,12 @@
                         <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border-l-4 border-[#10B981]">
                             <p class="text-sm mb-1.5 text-neutral-700 dark:text-neutral-300">
                                 <strong class="text-[#10B981]">O que é:</strong> Mecanismo onde cada palavra "olha" para todas as outras calculando importância. Exemplo: "banco" (sentar) vs "banco" (financeiro) tem atenções diferentes para "dinheiro". 8-96 attention heads em paralelo.
+                            </p>
+                            <p class="text-sm mb-1.5 text-neutral-700 dark:text-neutral-300">
+                                <strong class="text-[#10B981]">Por que aprender:</strong> Compreender atenção explica por que LLMs captam contexto melhor que modelos anteriores. Permite criar prompts que aproveitam esse mecanismo e entender erros de interpretação.
+                            </p>
+                            <p class="text-sm text-neutral-700 dark:text-neutral-300">
+                                <strong class="text-[#10B981]">Conceitos chave:</strong> Self-attention, Attention heads, Query-Key-Value, Attention scores, Context window, Long-range dependencies, Positional awareness, Masking
                             </p>
                         </div>
                     </li>
@@ -271,6 +283,12 @@
                             <p class="text-sm mb-1.5 text-neutral-700 dark:text-neutral-300">
                                 <strong class="text-[#10B981]">O que é:</strong> Quebrar texto em subunidades menores que palavras. "Superprofessores" = 4 tokens. Importante: limite de tokens ≠ limite de palavras. Palavras longas custam mais tokens.
                             </p>
+                            <p class="text-sm mb-1.5 text-neutral-700 dark:text-neutral-300">
+                                <strong class="text-[#10B981]">Por que aprender:</strong> Saber que limite é de tokens (não palavras) evita prompts cortados. Explicar tokenização aos alunos desenvolve consciência sobre custos de API e limites de contexto.
+                            </p>
+                            <p class="text-sm text-neutral-700 dark:text-neutral-300">
+                                <strong class="text-[#10B981]">Conceitos chave:</strong> BPE, WordPiece, SentencePiece, Tokens, Vocabulário, Subword units, Tokenizer, Context length, Custo por token
+                            </p>
                         </div>
                     </li>
 
@@ -283,6 +301,12 @@
                             <p class="text-sm mb-1.5 text-neutral-700 dark:text-neutral-300">
                                 <strong class="text-[#10B981]">O que é:</strong> Representar palavras como vetores numéricos de alta dimensão (GPT-4: 12.288 dimensões). Palavras similares têm vetores próximos. Analogias funcionam: rei - homem + mulher ≈ rainha.
                             </p>
+                            <p class="text-sm mb-1.5 text-neutral-700 dark:text-neutral-300">
+                                <strong class="text-[#10B981]">Por que aprender:</strong> Embeddings transformam significado em matemática, permitindo busca semântica e comparação de conceitos. Base para RAG, sistemas de recomendação e curadoria de conteúdo.
+                            </p>
+                            <p class="text-sm text-neutral-700 dark:text-neutral-300">
+                                <strong class="text-[#10B981]">Conceitos chave:</strong> Vetores densos, Espaço semântico, Cosine similarity, Dimensionalidade, Word2Vec, GloVe, Analogias vetoriais, Busca vetorial
+                            </p>
                         </div>
                     </li>
 
@@ -294,6 +318,12 @@
                         <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border-l-4 border-[#10B981]">
                             <p class="text-sm mb-1.5 text-neutral-700 dark:text-neutral-300">
                                 <strong class="text-[#10B981]">O que é:</strong> GPT-4: melhor raciocínio e código. Claude: contexto 200k, menos alucinação. Gemini: 1M tokens, multimodal. LLaMA: open-source, customizável. Escolher baseado em use case.
+                            </p>
+                            <p class="text-sm mb-1.5 text-neutral-700 dark:text-neutral-300">
+                                <strong class="text-[#10B981]">Por que aprender:</strong> Escolher o modelo certo economiza tempo e dinheiro. GPT para versatilidade, Claude para análise longa, Gemini para integração Google, LLaMA para privacidade. Cada caso de uso tem modelo ótimo.
+                            </p>
+                            <p class="text-sm text-neutral-700 dark:text-neutral-300">
+                                <strong class="text-[#10B981]">Conceitos chave:</strong> GPT-4, Claude 3, Gemini, LLaMA, Mistral, Context window, Multimodal, Open-source, Custo, Velocidade, Qualidade
                             </p>
                         </div>
                     </li>
@@ -341,6 +371,12 @@
                             <p class="text-sm mb-1.5 text-neutral-700 dark:text-neutral-300">
                                 <strong class="text-[#10B981]">O que é:</strong> RAG (Retrieval-Augmented Generation): busca docs relevantes + injeta no prompt. Fine-Tuning: retreina modelo. Use RAG para conhecimento verificável (90% casos educacionais), Fine-Tuning para estilo/formato.
                             </p>
+                            <p class="text-sm mb-1.5 text-neutral-700 dark:text-neutral-300">
+                                <strong class="text-[#10B981]">Por que aprender:</strong> RAG combina conhecimento externo com LLMs sem retreinar. Ideal para manter cursos atualizados (adicionar PDFs novos) e usar dados privados (regulamentos institucionais) sem vazar para APIs públicas.
+                            </p>
+                            <p class="text-sm text-neutral-700 dark:text-neutral-300">
+                                <strong class="text-[#10B981]">Conceitos chave:</strong> RAG, Retrieval, Augmented generation, Fine-tuning, Knowledge base, Chunking, Retrieval, Injection, Customização
+                            </p>
                         </div>
                     </li>
 
@@ -352,6 +388,12 @@
                         <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border-l-4 border-[#10B981]">
                             <p class="text-sm mb-1.5 text-neutral-700 dark:text-neutral-300">
                                 <strong class="text-[#10B981]">O que é:</strong> 1) Quebrar docs em chunks, gerar embeddings, armazenar. 2) Usuário pergunta. 3) Buscar chunks similares. 4) Montar prompt com chunks. 5) LLM gera resposta usando contexto.
+                            </p>
+                            <p class="text-sm mb-1.5 text-neutral-700 dark:text-neutral-300">
+                                <strong class="text-[#10B981]">Por que aprender:</strong> RAG é sistema de 3 etapas que permite IA responder sobre conteúdo específico (apostilas, livros didáticos) com citações de fonte. Reduz alucinação em 80% ao ancorar respostas em docs reais.
+                            </p>
+                            <p class="text-sm text-neutral-700 dark:text-neutral-300">
+                                <strong class="text-[#10B981]">Conceitos chave:</strong> Pipeline RAG, Indexação, Chunking, Embeddings, Vector search, Retrieval, Context injection, Resposta fundamentada
                             </p>
                         </div>
                     </li>
@@ -365,6 +407,12 @@
                             <p class="text-sm mb-1.5 text-neutral-700 dark:text-neutral-300">
                                 <strong class="text-[#10B981]">O que é:</strong> Armazenam embeddings e fazem busca por similaridade (cosine similarity). ChromaDB: grátis, local. Pinecone: cloud, escala. Essencial para RAG eficiente.
                             </p>
+                            <p class="text-sm mb-1.5 text-neutral-700 dark:text-neutral-300">
+                                <strong class="text-[#10B981]">Por que aprender:</strong> Vector databases permitem buscar 'conceitos similares' ao invés de palavras exatas. Transforma biblioteca de 10.000 PDFs educacionais em sistema de busca inteligente consultável por IA.
+                            </p>
+                            <p class="text-sm text-neutral-700 dark:text-neutral-300">
+                                <strong class="text-[#10B981]">Conceitos chave:</strong> ChromaDB, Pinecone, Weaviate, Qdrant, Milvus, Vector store, Similarity search, Indexing, CRUD de vetores
+                            </p>
                         </div>
                     </li>
 
@@ -376,6 +424,12 @@
                         <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border-l-4 border-[#10B981]">
                             <p class="text-sm mb-1.5 text-neutral-700 dark:text-neutral-300">
                                 <strong class="text-[#10B981]">O que é:</strong> Treinar modelo em dados específicos (mínimo 100 exemplos). Uso educacional: correção em estilo institucional, geração de questões padrão ENEM, chatbot de suporte. Custo: $0.008/1k tokens.
+                            </p>
+                            <p class="text-sm mb-1.5 text-neutral-700 dark:text-neutral-300">
+                                <strong class="text-[#10B981]">Por que aprender:</strong> Fine-tuning personaliza comportamento do modelo (tom, formato, estilo de feedback). Útil para criar 'professor virtual' que segue pedagogia institucional específica. Requer 100-1000 exemplos.
+                            </p>
+                            <p class="text-sm text-neutral-700 dark:text-neutral-300">
+                                <strong class="text-[#10B981]">Conceitos chave:</strong> Fine-tuning, Treinamento adicional, Exemplos rotulados, Loss function, Epochs, Learning rate, Overfitting, Validation, Especialização
                             </p>
                         </div>
                     </li>
@@ -423,6 +477,12 @@
                             <p class="text-sm mb-1.5 text-neutral-700 dark:text-neutral-300">
                                 <strong class="text-[#10B981]">O que é:</strong> Agente = LLM + Ferramentas + Loop de Raciocínio. Diferente de chatbot: executa multi-step, usa tools (busca, cálculo, APIs), raciocina iterativamente até completar tarefa complexa.
                             </p>
+                            <p class="text-sm mb-1.5 text-neutral-700 dark:text-neutral-300">
+                                <strong class="text-[#10B981]">Por que aprender:</strong> Agentes vão além de chatbots: planejam, usam ferramentas e executam multi-step. Podem automatizar criação completa de aulas (pesquisar → rascunhar → revisar → formatar) sem intervenção.
+                            </p>
+                            <p class="text-sm text-neutral-700 dark:text-neutral-300">
+                                <strong class="text-[#10B981]">Conceitos chave:</strong> Agentes de IA, LLM como orquestrador, Tool use, Planning, Multi-step reasoning, Autonomia, Chain-of-thought, Looping
+                            </p>
                         </div>
                     </li>
 
@@ -434,6 +494,12 @@
                         <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border-l-4 border-[#10B981]">
                             <p class="text-sm mb-1.5 text-neutral-700 dark:text-neutral-300">
                                 <strong class="text-[#10B981]">O que é:</strong> Loop: 1) REASON ("que informação preciso?"), 2) ACT (usar ferramenta), 3) OBSERVE (ver resultado), 4) Repetir ou finalizar. Exemplo: busca → analisa → busca mais → sintetiza.
+                            </p>
+                            <p class="text-sm mb-1.5 text-neutral-700 dark:text-neutral-300">
+                                <strong class="text-[#10B981]">Por que aprender:</strong> ReAct = ciclo RACIOCINAR→AGIR→OBSERVAR que permite agentes resolverem problemas complexos. Como aluno resolvendo exercício: pensa, tenta, verifica, ajusta, repete até acertar.
+                            </p>
+                            <p class="text-sm text-neutral-700 dark:text-neutral-300">
+                                <strong class="text-[#10B981]">Conceitos chave:</strong> ReAct, Reason, Act, Observe, Loop, Thought chain, Tool selection, Feedback loop, Iteração, Self-correction
                             </p>
                         </div>
                     </li>
@@ -447,6 +513,12 @@
                             <p class="text-sm mb-1.5 text-neutral-700 dark:text-neutral-300">
                                 <strong class="text-[#10B981]">O que é:</strong> Funções Python que agente pode chamar: buscar PDFs, gerar quiz, avaliar resposta, recomendar material. Anatomia: nome, função, descrição (como LLM sabe quando usar).
                             </p>
+                            <p class="text-sm mb-1.5 text-neutral-700 dark:text-neutral-300">
+                                <strong class="text-[#10B981]">Por que aprender:</strong> Tools são 'superpoderes' do agente: buscar internet, ler arquivos, executar código, consultar banco de dados. Educador define quais tools agente pode usar para limitar escopo e garantir segurança.
+                            </p>
+                            <p class="text-sm text-neutral-700 dark:text-neutral-300">
+                                <strong class="text-[#10B981]">Conceitos chave:</strong> Function calling, Tool definition, Tool execution, API integration, Calculadora, Busca, Geração, Avaliação, Permissões
+                            </p>
                         </div>
                     </li>
 
@@ -459,6 +531,12 @@
                             <p class="text-sm mb-1.5 text-neutral-700 dark:text-neutral-300">
                                 <strong class="text-[#10B981]">O que é:</strong> Agente que NUNCA dá resposta direta, sempre faz perguntas guiadas. Usa tools: avaliar_compreensao(), gerar_pergunta_socratica(). Implementado com LangChain.
                             </p>
+                            <p class="text-sm mb-1.5 text-neutral-700 dark:text-neutral-300">
+                                <strong class="text-[#10B981]">Por que aprender:</strong> Agente socrático nunca dá resposta pronta, sempre faz perguntas guiadas. Desenvolve pensamento crítico forçando aluno a construir entendimento ao invés de receber passivamente.
+                            </p>
+                            <p class="text-sm text-neutral-700 dark:text-neutral-300">
+                                <strong class="text-[#10B981]">Conceitos chave:</strong> Método socrático, Perguntas guiadas, Scaffolding, Zona de desenvolvimento proximal, Metacognição, Pensamento crítico, Maiêutica, Descoberta guiada
+                            </p>
                         </div>
                     </li>
 
@@ -470,6 +548,12 @@
                         <div class="topic-explanation hidden ml-6 mt-2 p-4 bg-blue-50 dark:bg-blue-900/20 rounded-lg border-l-4 border-[#10B981]">
                             <p class="text-sm mb-1.5 text-neutral-700 dark:text-neutral-300">
                                 <strong class="text-[#10B981]">O que é:</strong> Múltiplos agentes especializados trabalhando juntos. Exemplo: Pesquisador + Designer + Criador + Revisor criando curso completo. Cada um com ferramentas e papéis específicos.
+                            </p>
+                            <p class="text-sm mb-1.5 text-neutral-700 dark:text-neutral-300">
+                                <strong class="text-[#10B981]">Por que aprender:</strong> Sistemas multi-agente dividem tarefa complexa em especialistas: Pesquisador busca fontes, Designer estrutura conteúdo, Criador escreve, Revisor valida. Colaboração entre IAs produz resultado mais robusto.
+                            </p>
+                            <p class="text-sm text-neutral-700 dark:text-neutral-300">
+                                <strong class="text-[#10B981]">Conceitos chave:</strong> Multi-agent systems, Agentes especializados, Coordenação, Comunicação inter-agentes, Divisão de trabalho, Orquestração, CrewAI, AutoGen, Workflows
                             </p>
                         </div>
                     </li>
