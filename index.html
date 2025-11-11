@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SuperProfessores | Transformando Educadores em Arquitetos do Futuro</title>
+    <meta name="description" content="Programa completo de formação em IA para educadores brasileiros. 2 trilhas especializadas: use IA como ferramenta ou ensine IA para alunos.">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        'trilha-a': '#9b59b6',
+                        'trilha-b': '#10B981',
+                        success: '#22C55E',
+                        warning: '#F59E0B',
+                        error: '#EF4444',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+        /* Smooth transitions for dark mode */
+        * {
+            transition: background-color 200ms ease-in-out, border-color 200ms ease-in-out, color 200ms ease-in-out;
+        }
+
+        /* Remove transition from page load */
+        .preload * {
+            transition: none !important;
+        }
+
+        /* Fade-in animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 500ms ease-out, transform 500ms ease-out;
+        }
+
+        .fade-in-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Smooth scroll behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body class="preload bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/90 dark:bg-neutral-800/90 backdrop-blur-sm border-b border-neutral-200 dark:border-neutral-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="#" class="text-2xl font-bold bg-gradient-to-r from-primary to-trilha-a bg-clip-text text-transparent">
+                        🎓 SuperProfessores
+                    </a>
+                </div>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#inicio" class="text-neutral-700 dark:text-neutral-300 hover:text-primary dark:hover:text-primary font-medium">Início</a>
+                    <a href="#trilhas" class="text-neutral-700 dark:text-neutral-300 hover:text-primary dark:hover:text-primary font-medium">Trilhas</a>
+                    <a href="#estrutura" class="text-neutral-700 dark:text-neutral-300 hover:text-primary dark:hover:text-primary font-medium">Estrutura</a>
+                    <a href="#certificacoes" class="text-neutral-700 dark:text-neutral-300 hover:text-primary dark:hover:text-primary font-medium">Certificações</a>
+                    <a href="https://github.com/inematds/SuperProf" target="_blank" class="text-neutral-700 dark:text-neutral-300 hover:text-primary dark:hover:text-primary font-medium">GitHub</a>
+
+                    <!-- Dark Mode Toggle -->
+                    <button id="theme-toggle" class="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors">
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg bg-neutral-100 dark:bg-neutral-700">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-neutral-200 dark:border-neutral-700">
+            <div class="px-4 py-4 space-y-3">
+                <a href="#inicio" class="block text-neutral-700 dark:text-neutral-300 hover:text-primary font-medium">Início</a>
+                <a href="#trilhas" class="block text-neutral-700 dark:text-neutral-300 hover:text-primary font-medium">Trilhas</a>
+                <a href="#estrutura" class="block text-neutral-700 dark:text-neutral-300 hover:text-primary font-medium">Estrutura</a>
+                <a href="#certificacoes" class="block text-neutral-700 dark:text-neutral-300 hover:text-primary font-medium">Certificações</a>
+                <a href="https://github.com/inematds/SuperProf" target="_blank" class="block text-neutral-700 dark:text-neutral-300 hover:text-primary font-medium">GitHub</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="inicio" class="relative overflow-hidden bg-gradient-to-br from-primary/10 via-trilha-a/10 to-trilha-b/10 dark:from-primary/20 dark:via-trilha-a/20 dark:to-trilha-b/20 py-20 lg:py-32">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+                    <span class="bg-gradient-to-r from-primary via-trilha-a to-trilha-b bg-clip-text text-transparent">
+                        SuperProfessores
+                    </span>
+                </h1>
+                <p class="text-xl sm:text-2xl text-neutral-700 dark:text-neutral-300 mb-4 max-w-3xl mx-auto">
+                    Transformando educadores em arquitetos do futuro da aprendizagem
+                </p>
+                <p class="text-lg text-neutral-600 dark:text-neutral-400 mb-8 max-w-2xl mx-auto">
+                    Programa completo de formação em IA para educadores brasileiros
+                </p>
+
+                <!-- CTAs -->
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <a href="#trilhas" class="px-8 py-4 bg-primary text-white rounded-lg font-semibold hover:bg-primary/90 transform hover:scale-105 transition-all shadow-lg hover:shadow-xl">
+                        Escolher Minha Trilha
+                    </a>
+                    <a href="https://github.com/inematds/SuperProf" target="_blank" class="px-8 py-4 bg-white dark:bg-neutral-800 text-primary dark:text-primary border-2 border-primary rounded-lg font-semibold hover:bg-primary hover:text-white dark:hover:bg-primary dark:hover:text-white transform hover:scale-105 transition-all">
+                        Ver no GitHub
+                    </a>
+                </div>
+
+                <!-- Stats -->
+                <div class="mt-16 grid grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-primary">240h</div>
+                        <div class="text-sm text-neutral-600 dark:text-neutral-400 mt-2">Carga horária total</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-trilha-a">2</div>
+                        <div class="text-sm text-neutral-600 dark:text-neutral-400 mt-2">Trilhas especializadas</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-trilha-b">R$ 0</div>
+                        <div class="text-sm text-neutral-600 dark:text-neutral-400 mt-2">Ferramentas gratuitas</div>
+                    </div>
+                    <div class="text-center">
+                        <div class="text-4xl font-bold text-success">74.8%</div>
+                        <div class="text-sm text-neutral-600 dark:text-neutral-400 mt-2">Professores apoiam IA</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problema e Solução -->
+    <section class="py-16 bg-white dark:bg-neutral-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-3xl font-bold mb-6">🎯 O Problema</h2>
+                    <p class="text-lg text-neutral-700 dark:text-neutral-300 mb-4">
+                        As ferramentas de IA estão evoluindo <strong>a cada 4-6 meses</strong>. O que você aprende hoje pode estar obsoleto amanhã.
+                    </p>
+                    <div class="bg-yellow-50 dark:bg-yellow-900/20 border-l-4 border-warning p-4 rounded">
+                        <p class="text-neutral-800 dark:text-neutral-200">
+                            <strong>Tempo médio de obsolescência:</strong> 4-6 meses
+                        </p>
+                    </div>
+                </div>
+
+                <div>
+                    <h2 class="text-3xl font-bold mb-6">💡 Nossa Solução</h2>
+                    <div class="bg-success/10 dark:bg-success/20 border-l-4 border-success p-6 rounded-lg">
+                        <p class="text-xl font-semibold text-neutral-900 dark:text-neutral-100 mb-3">
+                            Ensinamos <span class="text-success">PRINCÍPIOS atemporais</span>, não ferramentas temporais
+                        </p>
+                        <ul class="space-y-2 text-neutral-700 dark:text-neutral-300">
+                            <li class="flex items-start">
+                                <span class="text-success mr-2">✓</span>
+                                <span>80% princípios que duram anos</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-success mr-2">✓</span>
+                                <span>20% ferramentas atuais (atualizadas trimestralmente)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-success mr-2">✓</span>
+                                <span>Comunidade viva com updates mensais</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trilhas Section -->
+    <section id="trilhas" class="py-20 bg-neutral-50 dark:bg-neutral-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">🎓 Escolha Sua Trilha</h2>
+                <p class="text-xl text-neutral-600 dark:text-neutral-400">
+                    Dois objetivos diferentes, duas especializações distintas
+                </p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Trilha A -->
+                <div class="trilha-card bg-white dark:bg-neutral-800 rounded-2xl shadow-xl overflow-hidden border-2 border-transparent hover:border-trilha-a transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                    <div class="bg-gradient-to-r from-trilha-a to-purple-600 p-6 text-white">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-3xl font-bold">🔵 Trilha A</h3>
+                            <span class="bg-white/20 px-4 py-2 rounded-full text-sm font-semibold">180 horas</span>
+                        </div>
+                        <p class="text-2xl font-semibold mb-2">Professor 2.0</p>
+                        <p class="text-purple-100">Usando IA para Ensinar Melhor</p>
+                    </div>
+
+                    <div class="p-6">
+                        <p class="text-neutral-700 dark:text-neutral-300 mb-6">
+                            Para professores que querem usar IA como ferramenta de produtividade e inovação pedagógica
+                        </p>
+
+                        <h4 class="font-semibold text-neutral-900 dark:text-neutral-100 mb-3">Você aprenderá a:</h4>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-start">
+                                <span class="text-trilha-a mr-2">✓</span>
+                                <span class="text-neutral-700 dark:text-neutral-300">Dominar ChatGPT, Claude, Gemini, NotebookLM</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-trilha-a mr-2">✓</span>
+                                <span class="text-neutral-700 dark:text-neutral-300">Criar prompts avançados para qualquer LLM</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-trilha-a mr-2">✓</span>
+                                <span class="text-neutral-700 dark:text-neutral-300">Automatizar design instrucional</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-trilha-a mr-2">✓</span>
+                                <span class="text-neutral-700 dark:text-neutral-300">Analisar dados educacionais com IA</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-trilha-a mr-2">✓</span>
+                                <span class="text-neutral-700 dark:text-neutral-300">Criar chatbots tutores sem programar</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-trilha-a mr-2">✓</span>
+                                <span class="text-neutral-700 dark:text-neutral-300">Liderar transformação digital na escola</span>
+                            </li>
+                        </ul>
+
+                        <a href="doc/comparacao_trilhas.html#trilha-a" class="block w-full text-center px-6 py-3 bg-trilha-a text-white rounded-lg font-semibold hover:bg-purple-700 transition-colors">
+                            Saiba Mais sobre Trilha A
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Trilha B -->
+                <div class="trilha-card bg-white dark:bg-neutral-800 rounded-2xl shadow-xl overflow-hidden border-2 border-transparent hover:border-trilha-b transition-all duration-300 hover:shadow-2xl hover:-translate-y-2">
+                    <div class="bg-gradient-to-r from-trilha-b to-green-600 p-6 text-white">
+                        <div class="flex items-center justify-between mb-4">
+                            <h3 class="text-3xl font-bold">🟢 Trilha B</h3>
+                            <span class="bg-white/20 px-4 py-2 rounded-full text-sm font-semibold">120 horas</span>
+                        </div>
+                        <p class="text-2xl font-semibold mb-2">Educador de IA</p>
+                        <p class="text-green-100">Ensinando IA para Alunos</p>
+                    </div>
+
+                    <div class="p-6">
+                        <p class="text-neutral-700 dark:text-neutral-300 mb-6">
+                            Para professores que querem ensinar conceitos de IA, programação e pensamento computacional
+                        </p>
+
+                        <h4 class="font-semibold text-neutral-900 dark:text-neutral-100 mb-3">Você aprenderá a:</h4>
+                        <ul class="space-y-2 mb-6">
+                            <li class="flex items-start">
+                                <span class="text-trilha-b mr-2">✓</span>
+                                <span class="text-neutral-700 dark:text-neutral-300">Explicar IA de forma lúdica para crianças</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-trilha-b mr-2">✓</span>
+                                <span class="text-neutral-700 dark:text-neutral-300">Criar currículos de IA por faixa etária</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-trilha-b mr-2">✓</span>
+                                <span class="text-neutral-700 dark:text-neutral-300">Usar ferramentas educacionais (Scratch, Teachable Machine)</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-trilha-b mr-2">✓</span>
+                                <span class="text-neutral-700 dark:text-neutral-300">Orientar projetos estudantis de IA</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-trilha-b mr-2">✓</span>
+                                <span class="text-neutral-700 dark:text-neutral-300">Ensinar ética e pensamento crítico sobre IA</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-trilha-b mr-2">✓</span>
+                                <span class="text-neutral-700 dark:text-neutral-300">Preparar alunos para o futuro do trabalho</span>
+                            </li>
+                        </ul>
+
+                        <a href="doc/comparacao_trilhas.html#trilha-b" class="block w-full text-center px-6 py-3 bg-trilha-b text-white rounded-lg font-semibold hover:bg-green-700 transition-colors">
+                            Saiba Mais sobre Trilha B
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Estrutura do Programa -->
+    <section id="estrutura" class="py-20 bg-white dark:bg-neutral-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">📚 Estrutura do Programa</h2>
+                <p class="text-xl text-neutral-600 dark:text-neutral-400">
+                    Base comum + especialização
+                </p>
+            </div>
+
+            <!-- Nível 1 -->
+            <div class="mb-12">
+                <div class="bg-gradient-to-r from-primary to-blue-600 rounded-2xl p-8 text-white mb-6">
+                    <h3 class="text-3xl font-bold mb-2">Nível 1: Fundamentos</h3>
+                    <p class="text-xl text-blue-100">60 horas • Obrigatório para ambas as trilhas</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div class="bg-neutral-50 dark:bg-neutral-900 p-4 rounded-lg border border-neutral-200 dark:border-neutral-700">
+                        <div class="font-semibold mb-2">Módulo 1.1 (8h)</div>
+                        <div class="text-sm text-neutral-600 dark:text-neutral-400">A Revolução da IA na Educação</div>
+                    </div>
+                    <div class="bg-neutral-50 dark:bg-neutral-900 p-4 rounded-lg border border-neutral-200 dark:border-neutral-700">
+                        <div class="font-semibold mb-2">Módulo 1.2 (12h)</div>
+                        <div class="text-sm text-neutral-600 dark:text-neutral-400">Ecossistema de Ferramentas (Nov 2025)</div>
+                    </div>
+                    <div class="bg-neutral-50 dark:bg-neutral-900 p-4 rounded-lg border border-neutral-200 dark:border-neutral-700">
+                        <div class="font-semibold mb-2">Módulo 1.3 (16h)</div>
+                        <div class="text-sm text-neutral-600 dark:text-neutral-400">Prompt Engineering Universal</div>
+                    </div>
+                    <div class="bg-neutral-50 dark:bg-neutral-900 p-4 rounded-lg border border-neutral-200 dark:border-neutral-700">
+                        <div class="font-semibold mb-2">Módulo 1.4 (12h)</div>
+                        <div class="text-sm text-neutral-600 dark:text-neutral-400">Pensamento Crítico e Avaliação de IA</div>
+                    </div>
+                    <div class="bg-neutral-50 dark:bg-neutral-900 p-4 rounded-lg border border-neutral-200 dark:border-neutral-700">
+                        <div class="font-semibold mb-2">Módulo 1.5 (12h)</div>
+                        <div class="text-sm text-neutral-600 dark:text-neutral-400">Projeto Prático de 30 dias</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Especialização -->
+            <div class="text-center mb-8">
+                <div class="inline-block bg-neutral-100 dark:bg-neutral-700 px-6 py-3 rounded-full font-semibold">
+                    Depois se Especializa ↓
+                </div>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Níveis 2A e 3A -->
+                <div class="bg-gradient-to-br from-trilha-a/10 to-purple-600/10 dark:from-trilha-a/20 dark:to-purple-600/20 p-6 rounded-2xl border-2 border-trilha-a">
+                    <h4 class="text-2xl font-bold mb-4 text-trilha-a">Trilha A: Níveis 2A + 3A</h4>
+                    <p class="text-neutral-700 dark:text-neutral-300 mb-4">120 horas adicionais (60h + 60h)</p>
+                    <ul class="space-y-2 text-sm">
+                        <li>• Nível 2A: IA Generativa Avançada, Learning Analytics, Design Automatizado</li>
+                        <li>• Nível 3A: Estratégia Institucional, ROI, Formação de Multiplicadores</li>
+                    </ul>
+                </div>
+
+                <!-- Nível 2B -->
+                <div class="bg-gradient-to-br from-trilha-b/10 to-green-600/10 dark:from-trilha-b/20 dark:to-green-600/20 p-6 rounded-2xl border-2 border-trilha-b">
+                    <h4 class="text-2xl font-bold mb-4 text-trilha-b">Trilha B: Nível 2B</h4>
+                    <p class="text-neutral-700 dark:text-neutral-300 mb-4">60 horas adicionais</p>
+                    <ul class="space-y-2 text-sm">
+                        <li>• Fundamentos de IA para Sala de Aula</li>
+                        <li>• Currículos por Faixa Etária (Fund I, II, Médio)</li>
+                        <li>• Ferramentas Educacionais e Projetos Estudantis</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificações -->
+    <section id="certificacoes" class="py-20 bg-neutral-50 dark:bg-neutral-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-bold mb-4">🎓 Certificações</h2>
+                <p class="text-xl text-neutral-600 dark:text-neutral-400">
+                    Reconhecimento do seu aprendizado
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg text-center">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-3xl">📘</span>
+                    </div>
+                    <h3 class="font-bold mb-2">Nível 1</h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-2">60 horas</p>
+                    <p class="text-xs font-semibold text-primary">SuperProfessor Fundamentos</p>
+                </div>
+
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg text-center">
+                    <div class="w-16 h-16 bg-trilha-a/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-3xl">🔵</span>
+                    </div>
+                    <h3 class="font-bold mb-2">Trilha A Completa</h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-2">180 horas</p>
+                    <p class="text-xs font-semibold text-trilha-a">Mestre em IA Aplicada</p>
+                </div>
+
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg text-center">
+                    <div class="w-16 h-16 bg-trilha-b/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-3xl">🟢</span>
+                    </div>
+                    <h3 class="font-bold mb-2">Trilha B Completa</h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-2">120 horas</p>
+                    <p class="text-xs font-semibold text-trilha-b">Educador de IA Certificado</p>
+                </div>
+
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg text-center border-2 border-success">
+                    <div class="w-16 h-16 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-3xl">👑</span>
+                    </div>
+                    <h3 class="font-bold mb-2">Ambas Trilhas</h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-2">240 horas</p>
+                    <p class="text-xs font-semibold text-success">Grande Mestre IA Educacional</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Final -->
+    <section class="py-20 bg-gradient-to-r from-primary via-trilha-a to-trilha-b">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
+            <h2 class="text-4xl font-bold mb-6">Pronto para Começar?</h2>
+            <p class="text-xl mb-8 text-blue-100">
+                Explore a documentação completa e escolha sua trilha de aprendizado
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="doc/superprofessores_modelo_hibrido_2025.html" class="px-8 py-4 bg-white text-primary rounded-lg font-semibold hover:bg-neutral-100 transform hover:scale-105 transition-all shadow-lg">
+                    📖 Proposta Completa
+                </a>
+                <a href="doc/comparacao_trilhas.html" class="px-8 py-4 bg-white/10 backdrop-blur text-white border-2 border-white rounded-lg font-semibold hover:bg-white/20 transform hover:scale-105 transition-all">
+                    🆚 Comparar Trilhas
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-neutral-900 dark:bg-black text-neutral-300 py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <h3 class="text-xl font-bold text-white mb-4">SuperProfessores</h3>
+                    <p class="text-sm">
+                        Transformando educadores em arquitetos do futuro da aprendizagem
+                    </p>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Links Rápidos</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li><a href="#trilhas" class="hover:text-primary">Trilhas</a></li>
+                        <li><a href="#estrutura" class="hover:text-primary">Estrutura</a></li>
+                        <li><a href="#certificacoes" class="hover:text-primary">Certificações</a></li>
+                        <li><a href="doc/" class="hover:text-primary">Documentação</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Contato</h4>
+                    <ul class="space-y-2 text-sm">
+                        <li>📧 inematds@gmail.com</li>
+                        <li>
+                            <a href="https://github.com/inematds/SuperProf" target="_blank" class="hover:text-primary">
+                                🔗 GitHub
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-neutral-800 mt-8 pt-8 text-center text-sm">
+                <p>&copy; 2025 SuperProfessores. Licença MIT.</p>
+                <p class="mt-2 text-neutral-500">Última atualização: Novembro 2025 • Versão 3.0 (Modelo Híbrido)</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="js/app.js"></script>
+</body>
+</html>
