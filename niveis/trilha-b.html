@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trilha B: Educador de IA | SuperProfessores</title>
+    <meta name="description" content="Ensinando IA para Alunos - 120 horas de formação especializada">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        'trilha-a': '#9b59b6',
+                        'trilha-b': '#10B981',
+                        success: '#22C55E',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            transition: background-color 200ms ease-in-out, border-color 200ms ease-in-out, color 200ms ease-in-out;
+        }
+        .preload * {
+            transition: none !important;
+        }
+    </style>
+</head>
+<body class="preload bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/90 dark:bg-neutral-800/90 backdrop-blur-sm border-b border-neutral-200 dark:border-neutral-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../index.html" class="text-2xl font-bold bg-gradient-to-r from-primary to-trilha-b bg-clip-text text-transparent">
+                        🎓 SuperProfessores
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="../index.html" class="text-neutral-700 dark:text-neutral-300 hover:text-primary font-medium">Início</a>
+                    <a href="../index.html#trilhas" class="text-neutral-700 dark:text-neutral-300 hover:text-primary font-medium">Trilhas</a>
+                    <a href="https://github.com/inematds/SuperProf" target="_blank" class="text-neutral-700 dark:text-neutral-300 hover:text-primary font-medium">GitHub</a>
+                    <button id="theme-toggle" class="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600">
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Breadcrumb -->
+    <div class="bg-white dark:bg-neutral-800 border-b border-neutral-200 dark:border-neutral-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <nav class="flex text-sm" aria-label="Breadcrumb">
+                <a href="../index.html" class="text-primary hover:text-blue-700">Início</a>
+                <span class="mx-2 text-neutral-400">/</span>
+                <a href="../index.html#trilhas" class="text-primary hover:text-blue-700">Trilhas</a>
+                <span class="mx-2 text-neutral-400">/</span>
+                <span class="text-neutral-600 dark:text-neutral-400">Trilha B</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-trilha-b to-green-600 py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+            <div class="flex items-center gap-3 mb-6">
+                <span class="text-5xl">🟢</span>
+                <div>
+                    <h1 class="text-5xl lg:text-6xl font-bold">Trilha B: Educador de IA</h1>
+                    <p class="text-2xl text-green-100 mt-2">Ensinando IA para Alunos</p>
+                </div>
+            </div>
+
+            <p class="text-xl text-green-100 max-w-3xl mb-8">
+                Capacite-se para ensinar conceitos de IA, programação e pensamento computacional para crianças e adolescentes
+            </p>
+
+            <!-- Stats -->
+            <div class="grid md:grid-cols-4 gap-6 mt-12">
+                <div class="bg-white/10 backdrop-blur p-6 rounded-xl">
+                    <div class="text-3xl font-bold">120h</div>
+                    <div class="text-sm text-green-100 mt-2">Carga horária total</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur p-6 rounded-xl">
+                    <div class="text-3xl font-bold">2</div>
+                    <div class="text-sm text-green-100 mt-2">Níveis progressivos</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur p-6 rounded-xl">
+                    <div class="text-3xl font-bold">10</div>
+                    <div class="text-sm text-green-100 mt-2">Módulos especializados</div>
+                </div>
+                <div class="bg-white/10 backdrop-blur p-6 rounded-xl">
+                    <div class="text-3xl font-bold">3</div>
+                    <div class="text-sm text-green-100 mt-2">Faixas etárias (6-17 anos)</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+        <!-- Objetivos -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8">🎯 Você Aprenderá A:</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl border-2 border-trilha-b/20">
+                    <div class="flex items-start gap-4">
+                        <span class="text-3xl">🎨</span>
+                        <div>
+                            <h3 class="font-bold text-lg mb-2">Explicar IA de Forma Lúdica</h3>
+                            <p class="text-neutral-600 dark:text-neutral-400">Atividades unplugged, storytelling e dinâmicas para ensinar conceitos complexos de forma acessível</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl border-2 border-trilha-b/20">
+                    <div class="flex items-start gap-4">
+                        <span class="text-3xl">📋</span>
+                        <div>
+                            <h3 class="font-bold text-lg mb-2">Criar Currículos por Faixa Etária</h3>
+                            <p class="text-neutral-600 dark:text-neutral-400">Planos pedagógicos alinhados com BNCC para Fundamental I, II e Ensino Médio</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl border-2 border-trilha-b/20">
+                    <div class="flex items-start gap-4">
+                        <span class="text-3xl">🛠️</span>
+                        <div>
+                            <h3 class="font-bold text-lg mb-2">Usar Ferramentas Educacionais</h3>
+                            <p class="text-neutral-600 dark:text-neutral-400">Scratch for AI, Teachable Machine, MIT App Inventor, Code.org e mais</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl border-2 border-trilha-b/20">
+                    <div class="flex items-start gap-4">
+                        <span class="text-3xl">🏆</span>
+                        <div>
+                            <h3 class="font-bold text-lg mb-2">Orientar Projetos Estudantis</h3>
+                            <p class="text-neutral-600 dark:text-neutral-400">Mentorar alunos em feiras de ciências, competições de IA e iniciação científica</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Para quem é -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8">👥 Para Quem É Esta Trilha?</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-gradient-to-br from-trilha-b/10 to-green-100/50 dark:from-trilha-b/20 dark:to-green-900/20 p-6 rounded-xl">
+                    <div class="text-3xl mb-3">👨‍🏫</div>
+                    <h3 class="font-bold mb-2">Professores de Tecnologia</h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400">Que querem incluir IA no currículo de informática, programação ou robótica</p>
+                </div>
+                <div class="bg-gradient-to-br from-trilha-b/10 to-green-100/50 dark:from-trilha-b/20 dark:to-green-900/20 p-6 rounded-xl">
+                    <div class="text-3xl mb-3">🔬</div>
+                    <h3 class="font-bold mb-2">Professores de Ciências</h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400">Que desejam usar IA como ferramenta de ensino de método científico e experimentação</p>
+                </div>
+                <div class="bg-gradient-to-br from-trilha-b/10 to-green-100/50 dark:from-trilha-b/20 dark:to-green-900/20 p-6 rounded-xl">
+                    <div class="text-3xl mb-3">🎓</div>
+                    <h3 class="font-bold mb-2">Coordenadores Pedagógicos</h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400">Responsáveis por implementar pensamento computacional e cultura digital na escola</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Estrutura dos Níveis -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8">📚 Estrutura da Trilha</h2>
+
+            <!-- Nível 1 -->
+            <div class="mb-8">
+                <a href="nivel-1.html" class="block bg-gradient-to-r from-primary to-blue-600 rounded-2xl p-8 text-white hover:shadow-2xl transition-all hover:-translate-y-1">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-3xl font-bold">Nível 1: Fundamentos</h3>
+                        <span class="px-4 py-2 bg-white/20 rounded-full text-sm font-semibold">60 horas</span>
+                    </div>
+                    <p class="text-xl text-blue-100 mb-4">Base comum obrigatória para ambas as trilhas</p>
+                    <div class="grid md:grid-cols-5 gap-3">
+                        <div class="bg-white/10 backdrop-blur p-3 rounded-lg text-sm">
+                            <div class="font-semibold">Módulo 1.1</div>
+                            <div class="text-xs text-blue-200">Revolução da IA (8h)</div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur p-3 rounded-lg text-sm">
+                            <div class="font-semibold">Módulo 1.2</div>
+                            <div class="text-xs text-blue-200">Ferramentas (12h)</div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur p-3 rounded-lg text-sm">
+                            <div class="font-semibold">Módulo 1.3</div>
+                            <div class="text-xs text-blue-200">Prompt Eng. (16h)</div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur p-3 rounded-lg text-sm">
+                            <div class="font-semibold">Módulo 1.4</div>
+                            <div class="text-xs text-blue-200">Pensamento Crítico (12h)</div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur p-3 rounded-lg text-sm">
+                            <div class="font-semibold">Módulo 1.5</div>
+                            <div class="text-xs text-blue-200">Projeto Prático (12h)</div>
+                        </div>
+                    </div>
+                    <div class="mt-4 text-sm text-blue-200">👉 Clique para ver todo o conteúdo detalhado</div>
+                </a>
+            </div>
+
+            <!-- Nível 2B -->
+            <div class="mb-8">
+                <div class="bg-gradient-to-r from-trilha-b to-green-700 rounded-2xl p-8 text-white">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-3xl font-bold">Nível 2B: Ensino de IA - Pedagogia para o Futuro</h3>
+                        <span class="px-4 py-2 bg-white/20 rounded-full text-sm font-semibold">60 horas</span>
+                    </div>
+                    <p class="text-xl text-green-100 mb-6">Metodologias e recursos para ensinar IA como disciplina</p>
+                    <div class="grid md:grid-cols-5 gap-3">
+                        <div class="bg-white/10 backdrop-blur p-4 rounded-lg">
+                            <div class="font-bold mb-2">2B.1</div>
+                            <div class="text-sm mb-1">Fundamentos para Sala de Aula</div>
+                            <div class="text-xs text-green-200">12 horas</div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur p-4 rounded-lg">
+                            <div class="font-bold mb-2">2B.2</div>
+                            <div class="text-sm mb-1">Currículos por Faixa Etária</div>
+                            <div class="text-xs text-green-200">16 horas</div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur p-4 rounded-lg">
+                            <div class="font-bold mb-2">2B.3</div>
+                            <div class="text-sm mb-1">Ferramentas Educacionais</div>
+                            <div class="text-xs text-green-200">12 horas</div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur p-4 rounded-lg">
+                            <div class="font-bold mb-2">2B.4</div>
+                            <div class="text-sm mb-1">Projetos Estudantis</div>
+                            <div class="text-xs text-green-200">12 horas</div>
+                        </div>
+                        <div class="bg-white/10 backdrop-blur p-4 rounded-lg">
+                            <div class="font-bold mb-2">2B.5</div>
+                            <div class="text-sm mb-1">Avaliação de Aprendizado</div>
+                            <div class="text-xs text-green-200">8 horas</div>
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <h4 class="font-bold mb-3 text-lg">🎯 Destaques do Nível 2B:</h4>
+                        <ul class="space-y-2 text-sm text-green-100">
+                            <li class="flex items-start gap-2">
+                                <span>✓</span>
+                                <span>Atividades unplugged (sem computador) para ensinar algoritmos</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span>✓</span>
+                                <span>Currículos específicos para Fundamental I (6-10 anos), Fundamental II (11-14 anos) e Ensino Médio (15-17 anos)</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span>✓</span>
+                                <span>Ferramentas: Scratch for AI, Teachable Machine, MIT App Inventor, Code.org, Quick Draw!</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span>✓</span>
+                                <span>Como orientar projetos para competições: Google Science Fair, Mostratec, Febrace</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <span>✓</span>
+                                <span>Alinhamento com BNCC (competências digitais e pensamento computacional)</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 text-sm text-green-200 italic">📝 Conteúdo detalhado em breve</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Exemplos de Projetos -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8">🚀 Exemplos de Projetos que seus Alunos Criarão</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <div class="text-2xl mb-3">🧸</div>
+                    <h3 class="font-bold mb-2">Fundamental I (6-10 anos)</h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">Classificador de Brinquedos com IA</p>
+                    <p class="text-xs text-neutral-500 dark:text-neutral-500">Alunos ensinam IA a diferenciar brinquedos usando Teachable Machine e criam jogo interativo</p>
+                </div>
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <div class="text-2xl mb-3">🇧🇷</div>
+                    <h3 class="font-bold mb-2">Fundamental II (11-14 anos)</h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">Chatbot sobre História do Brasil</p>
+                    <p class="text-xs text-neutral-500 dark:text-neutral-500">Programação básica em Scratch for AI para criar assistente que responde perguntas históricas</p>
+                </div>
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <div class="text-2xl mb-3">📰</div>
+                    <h3 class="font-bold mb-2">Ensino Médio (15-17 anos)</h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-3">Detector de Fake News com ML</p>
+                    <p class="text-xs text-neutral-500 dark:text-neutral-500">Python + machine learning para analisar notícias e prever veracidade, explorando ética algorítmica</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certificações -->
+        <section class="mb-16">
+            <h2 class="text-3xl font-bold mb-8">🎓 Certificações da Trilha B</h2>
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg text-center border-2 border-primary/20">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-3xl">📘</span>
+                    </div>
+                    <h3 class="font-bold mb-2">Nível 1</h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-2">60 horas</p>
+                    <p class="text-xs font-semibold text-primary">SuperProfessor Fundamentos em IA</p>
+                </div>
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg text-center border-2 border-trilha-b/20">
+                    <div class="w-16 h-16 bg-trilha-b/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-3xl">🟢</span>
+                    </div>
+                    <h3 class="font-bold mb-2">Trilha B Completa</h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-2">120 horas</p>
+                    <p class="text-xs font-semibold text-trilha-b">Educador de IA Certificado</p>
+                </div>
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg text-center border-2 border-success/20">
+                    <div class="w-16 h-16 bg-success/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <span class="text-3xl">👑</span>
+                    </div>
+                    <h3 class="font-bold mb-2">Ambas Trilhas (A+B)</h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400 mb-2">240 horas</p>
+                    <p class="text-xs font-semibold text-success">Grande Mestre IA Educacional</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="bg-gradient-to-r from-trilha-b to-green-700 rounded-2xl p-12 text-center text-white">
+            <h2 class="text-3xl font-bold mb-4">Pronto para formar a próxima geração?</h2>
+            <p class="text-xl text-green-100 mb-8 max-w-2xl mx-auto">
+                Comece pelo Nível 1: Fundamentos e aprenda a ensinar IA para crianças e adolescentes
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="nivel-1.html" class="px-8 py-4 bg-white text-trilha-b rounded-lg font-semibold hover:bg-neutral-100 transition-all shadow-lg inline-block">
+                    🚀 Começar Nível 1
+                </a>
+                <a href="../doc/superprofessores_modelo_hibrido_2025.md" class="px-8 py-4 bg-white/10 backdrop-blur border-2 border-white text-white rounded-lg font-semibold hover:bg-white/20 transition-all inline-block">
+                    📖 Proposta Completa
+                </a>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-neutral-900 dark:bg-black text-neutral-300 py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2025 SuperProfessores. Licença MIT.</p>
+            <p class="mt-2 text-neutral-500">Última atualização: Novembro 2025</p>
+        </div>
+    </footer>
+
+    <script src="../js/app.js"></script>
+</body>
+</html>
