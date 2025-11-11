@@ -1,0 +1,96 @@
+# Site settings
+title: SuperProfessores
+description: Transformando educadores em arquitetos do futuro da aprendizagem
+baseurl: "/SuperProf"
+url: "https://inematds.github.io"
+
+# Theme - Just-the-Docs (recomendado para documentação educacional)
+remote_theme: just-the-docs/just-the-docs
+
+# Logo
+logo: "/assets/images/logo.png"
+
+# Cor principal (azul educação)
+color_scheme: superprofessores
+
+# Busca ativada
+search_enabled: true
+search:
+  heading_level: 2
+  previews: 3
+  preview_words_before: 5
+  preview_words_after: 10
+  tokenizer_separator: /[\s/]+/
+  rel_url: true
+  button: true
+
+# Navegação
+nav_enabled: true
+nav_sort: case_insensitive
+
+# Botões de ação no topo
+aux_links:
+  "⭐ GitHub":
+    - "https://github.com/inematds/SuperProf"
+  "✉️ Contato":
+    - "mailto:inematds@gmail.com"
+aux_links_new_tab: true
+
+# Rodapé
+footer_content: "Copyright &copy; 2025 SuperProfessores. Distribuído sob <a href=\"https://github.com/inematds/SuperProf/blob/main/LICENSE\">Licença MIT</a>."
+
+# Back to top
+back_to_top: true
+back_to_top_text: "↑ Voltar ao topo"
+
+# Last modified date
+last_edit_timestamp: true
+last_edit_time_format: "%d %b %Y às %H:%M"
+
+# Mermaid (diagramas)
+mermaid:
+  version: "10.6.1"
+
+# Code highlighting
+kramdown:
+  syntax_highlighter_opts:
+    block:
+      line_numbers: false
+
+# Plugins
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+  - jekyll-remote-theme
+  - jekyll-sitemap
+
+# Exclude
+exclude:
+  - node_modules/
+  - .bmad-core/
+  - .claude/
+  - package.json
+  - package-lock.json
+  - GUIA_GITHUB_PAGES.md
+  - .gitignore
+  - Gemfile
+  - Gemfile.lock
+
+# Collections (opcional para organizar conteúdo)
+collections:
+  docs:
+    permalink: "/:collection/:path/"
+    output: true
+
+# Defaults
+defaults:
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "default"
+  - scope:
+      path: "doc"
+    values:
+      layout: "default"
+      nav_exclude: false

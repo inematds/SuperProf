@@ -1,0 +1,40 @@
+// SuperProfessores Color Scheme
+// Paleta moderna e profissional para educação
+
+// Cores primárias
+$blue-300: #4a90e2; // Azul educação principal
+$blue-200: #6ba3e8;
+$blue-100: #a5c9f3;
+
+// Cores secundárias
+$green-300: #2ecc71; // Verde para trilha B
+$purple-300: #9b59b6; // Roxo para trilha A
+$orange-300: #e67e22; // Laranja para destaques
+
+// Cores neutras
+$grey-dk-300: #2c3e50;
+$grey-dk-200: #34495e;
+$grey-dk-100: #7f8c8d;
+$grey-lt-300: #ecf0f1;
+$grey-lt-200: #f8f9fa;
+$grey-lt-100: #ffffff;
+
+// Aplicar cores
+$link-color: $blue-300;
+$btn-primary-color: $blue-300;
+$base-button-color: $grey-lt-200;
+
+// Sidebar
+$sidebar-color: $grey-dk-300;
+$nav-child-link-color: $grey-lt-100;
+$search-background-color: $grey-dk-200;
+
+// Code blocks
+$code-background-color: $grey-lt-200;
+$code-linenumber-color: $grey-dk-100;
+
+// Feedback colors
+$feedback-color-success: $green-300;
+$feedback-color-info: $blue-300;
+$feedback-color-warning: $orange-300;
+$feedback-color-error: #e74c3c;
