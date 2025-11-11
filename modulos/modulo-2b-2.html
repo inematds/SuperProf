@@ -1,81 +1,580 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo 2B.2: Fine-Tuning e RAG | SuperProfessores</title>
+    <title>Módulo 2B.2: Fine-Tuning e RAG - Especializando LLMs | SuperProfessores</title>
+    <meta name="description" content="Aprenda a adaptar LLMs para necessidades educacionais específicas. Domine técnicas de fine-tuning (ajuste fino) e RAG (Retrieval-Augmented Generation)">
+
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{'module':'#10B981'}}}}</script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        'trilha-a': '#9b59b6',
+                        'trilha-b': '#10B981',
+                        'module-color': '#10B981',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            transition: background-color 200ms ease-in-out, border-color 200ms ease-in-out, color 200ms ease-in-out;
+        }
+        .preload * {
+            transition: none !important;
+        }
+    </style>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-    
-    <nav class="bg-white dark:bg-gray-800 shadow-sm">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <a href="../index.html" class="text-2xl font-bold" style="color: #10B981">SuperProfessores</a>
-                <a href="../niveis/nivel-2b.html" class="text-gray-600 dark:text-gray-300 hover:text-module">← Voltar</a>
+<body class="preload bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/90 dark:bg-neutral-800/90 backdrop-blur-sm border-b border-neutral-200 dark:border-neutral-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../index.html" class="text-2xl font-bold bg-gradient-to-r from-primary to-trilha-a bg-clip-text text-transparent">
+                        🎓 SuperProfessores
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="../index.html" class="text-neutral-700 dark:text-neutral-300 hover:text-primary font-medium">Início</a>
+                    <a href="../niveis/nivel-2b.html" class="text-neutral-700 dark:text-neutral-300 hover:text-primary font-medium">Nível 2B</a>
+                    <a href="https://github.com/inematds/SuperProf" target="_blank" class="text-neutral-700 dark:text-neutral-300 hover:text-primary font-medium">GitHub</a>
+                    <button id="theme-toggle" class="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600">
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
 
-    <section class="py-16 text-white" style="background: linear-gradient(to right, #10B981, #6366f1);">
-        <div class="container mx-auto px-6">
-            <h1 class="text-4xl font-bold mb-4">Módulo 2B.2: Fine-Tuning e RAG</h1>
-            <p class="text-xl opacity-90">RAG implementation, vector databases, embeddings, fine-tuning prático, privacidade</p>
+    <!-- Breadcrumb -->
+    <div class="bg-white dark:bg-neutral-800 border-b border-neutral-200 dark:border-neutral-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <nav class="flex text-sm" aria-label="Breadcrumb">
+                <a href="../index.html" class="text-primary hover:text-blue-700">Início</a>
+                <span class="mx-2 text-neutral-400">/</span>
+                <a href="../niveis/nivel-2b.html" class="text-primary hover:text-blue-700">Trilha B</a><span class="mx-2 text-neutral-400">/</span><a href="../niveis/nivel-2b.html" class="text-primary hover:text-blue-700">Nível 2B</a><span class="mx-2 text-neutral-400">/</span><span class="text-neutral-600 dark:text-neutral-400">Módulo</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="bg-gradient-to-r from-module-color to-purple-700 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+            <span class="inline-block px-4 py-2 bg-white/20 rounded-full text-sm font-semibold mb-4">Técnico</span>
+            <h1 class="text-4xl lg:text-5xl font-bold mb-4">Módulo 2B.2: Fine-Tuning e RAG - Especializando LLMs</h1>
+            <p class="text-xl text-purple-100 max-w-3xl">
+                Aprenda a adaptar LLMs para necessidades educacionais específicas. Domine técnicas de fine-tuning (ajuste fino) e RAG (Retrieval-Augmented Generation) para criar assistentes especializados, bases de conhecimento personalizadas e sistemas de Q&A insti
+            </p>
         </div>
     </section>
 
-    <section class="container mx-auto px-6 py-12">
-        <div class="max-w-4xl mx-auto">
-            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 mb-8">
-                <h2 class="text-2xl font-bold mb-4">📖 Visão Geral</h2>
-                <p class="text-gray-600 dark:text-gray-400 mb-6">RAG implementation, vector databases, embeddings, fine-tuning prático, privacidade</p>
-                
-                <div class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-4 mb-6">
-                    <p class="text-sm">
-                        📥 Para acessar o conteúdo completo com todos os detalhes, exemplos, prompts e recursos, 
-                        <a href="../pdfs/modulo-2b-2.md" class="font-bold underline" style="color: #10B981" download>baixe o arquivo MD</a>.
-                    </p>
-                </div>
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-                <h2 class="text-2xl font-bold mb-4">📚 Recursos</h2>
-                <div class="space-y-3">
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">📹</span>
-                        <span>Videoaulas interativas</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">💬</span>
-                        <span>Atividades práticas hands-on</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">✅</span>
-                        <span>Avaliações e projetos</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">📖</span>
-                        <span>Referências e leituras complementares</span>
-                    </div>
-                </div>
+        <!-- Visão Geral -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6">📖 Visão Geral</h2>
+            <div class="prose prose-lg dark:prose-invert max-w-none">
+                <p class="text-lg text-neutral-700 dark:text-neutral-300 mb-4">
+                    Aprenda a adaptar LLMs para necessidades educacionais específicas. Domine técnicas de fine-tuning (ajuste fino) e RAG (Retrieval-Augmented Generation) para criar assistentes especializados, bases de conhecimento personalizadas e sistemas de Q&A institucionais.
+                </p>
+                <p class='text-lg text-neutral-700 dark:text-neutral-300'><strong>Ao final deste módulo, você será capaz de:</strong></p>
+                <ul class='list-disc pl-6 space-y-2 text-neutral-700 dark:text-neutral-300'><li>Entender quando usar RAG vs Fine-Tuning</li><li>Implementar sistema RAG do zero (Python básico)</li><li>Criar embeddings de materiais educacionais</li><li>Fazer fine-tuning de modelo open-source (opcional)</li><li>Construir chatbot especializado em conteúdo próprio</li></ul>
+            </div>
+        </section>
 
-                <div class="mt-8 flex gap-4">
-                    <a href="../pdfs/modulo-2b-2.md" class="px-6 py-3 text-white rounded-lg hover:opacity-90 transition" style="background-color: #10B981" download>
-                        📥 Download Completo (MD/PDF)
-                    </a>
-                    <a href="../niveis/nivel-2b.html" class="px-6 py-3 border-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition" style="border-color: #10B981; color: #10B981">
-                        ← Voltar para Nível 2B
-                    </a>
+        <!-- Conteúdo Detalhado -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-8">📚 Conteúdo Detalhado</h2>
+            
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">🎯</span>
+                    <span>RAG vs Fine-Tuning: Quando Usar Cada Um?</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-4">### Problema Comum:
+<strong>Cenário:</strong> Universidade quer chatbot que responde sobre regulamentos internos
+<strong>Opção 1: Prompt Engineering</strong> ❌
+<ul class="space-y-2 list-disc pl-6">
+<li>Colar regulamento no prompt</li>
+<li>Limite: Contexto máximo (128k-200k tokens)</li>
+<li>Problema: Documento tem 500 páginas = 500k tokens</li>
+</ul>
+<strong>Opção 2: Fine-Tuning</strong> ⚠️
+<ul class="space-y-2 list-disc pl-6">
+<li>Treinar modelo nos regulamentos</li>
+<li>Problema: Caro ($$$), lento, não atualiza fácil</li>
+<li>Risco: Modelo "memoriza" mas pode alucinar</li>
+</ul>
+<strong>Opção 3: RAG</strong> ✅
+<ul class="space-y-2 list-disc pl-6">
+<li>Busca trechos relevantes + injeta no prompt</li>
+<li>Barato, rápido, atualizável, verificável</li>
+<li><strong>Solução ideal para 90% dos casos educacionais</strong></li>
+</ul>
+---</p>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-6 text-center">
-            <p>© 2025 SuperProfessores | Licença MIT</p>
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">📊</span>
+                    <span>Tabela Comparativa</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-4">| Critério | RAG | Fine-Tuning |
+|----------|-----|-------------|
+| <strong>Custo</strong> | $ (barato) | $$$ (caro) |
+| <strong>Tempo setup</strong> | Horas | Dias/Semanas |
+| <strong>Atualização</strong> | Imediata (add docs) | Requer re-treino |
+| <strong>Verificabilidade</strong> | Alta (cita fonte) | Baixa (caixa-preta) |
+| <strong>Privacidade</strong> | Boa (docs locais) | Depende (modelo onde?) |
+| <strong>Complexidade</strong> | Baixa | Alta |
+| <strong>Casos de uso</strong> | Q&A, busca, suporte | Estilo, formato, domínio |
+### Regra Prática:
+<strong>Use RAG quando:</strong>
+✅ Precisa de fontes verificáveis
+✅ Conteúdo muda frequentemente
+✅ Base de conhecimento grande (>100k tokens)
+✅ Budget limitado
+✅ Quer controle sobre o que modelo "sabe"
+<strong>Use Fine-Tuning quando:</strong>
+✅ Precisa mudar comportamento/estilo do modelo
+✅ Domínio muito específico (jargão técnico)
+✅ Dados sensíveis (não podem ir para API externa)
+✅ Tem expertise técnico + infraestrutura
+<strong>Use Ambos quando:</strong>
+✅ Fine-tune para estilo + RAG para conhecimento
+✅ Exemplo: Modelo fine-tuned para falar como professor + RAG para conteúdo de cursos
+---</p>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">🔍</span>
+                    <span>RAG: Retrieval-Augmented Generation</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-4">### Como Funciona (5 Passos):
+``<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+1. INDEXAÇÃO (Feito 1x, ou quando docs mudam)
+   └─ Quebrar documentos em chunks (pedaços)
+   └─ Gerar embeddings para cada chunk
+   └─ Armazenar em vector database
+2. QUERY (Cada pergunta do usuário)
+   └─ Usuário faz pergunta
+   └─ Gerar embedding da pergunta
+3. RETRIEVAL
+   └─ Buscar chunks mais similares (cosine similarity)
+   └─ Retornar top 5-10 chunks
+4. AUGMENTATION
+   └─ Montar prompt: "Baseado nestes trechos: [chunks], responda: [pergunta]"
+5. GENERATION
+   └─ LLM gera resposta usando chunks como contexto
+</code>``
+---</p>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">🛠️</span>
+                    <span>Implementando RAG: Passo-a-Passo</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-4">### Setup Inicial (Python + Bibliotecas)
+``<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">bash
+pip install openai langchain chromadb pypdf sentence-transformers
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+<strong>Bibliotecas:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li></code>openai<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">: Acesso a GPT-4/GPT-3.5</li>
+<li></code>langchain<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">: Framework para LLM apps</li>
+<li></code>chromadb<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">: Vector database (grátis, local)</li>
+<li></code>pypdf<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">: Ler PDFs</li>
+<li></code>sentence-transformers<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">: Gerar embeddings</li>
+</ul>
+---
+### Passo 1: Preparar Documentos
+<strong>Exemplo:</strong> 10 PDFs de apostilas de curso
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">python
+from langchain.document_loaders import PyPDFLoader
+from langchain.text_splitter import RecursiveCharacterTextSplitter
+# Carregar PDFs
+docs = []
+for pdf_file in ["aula1.pdf", "aula2.pdf", ...]:
+    loader = PyPDFLoader(pdf_file)
+    docs.extend(loader.load())
+# Quebrar em chunks (1000 chars, overlap 200)
+splitter = RecursiveCharacterTextSplitter(
+    chunk_size=1000,
+    chunk_overlap=200  # Overlap garante contexto entre chunks
+)
+chunks = splitter.split_documents(docs)
+print(f"Total de chunks: {len(chunks)}")
+# Saída: Total de chunks: 487
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+<strong>Por que chunk_size=1000?</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Pequeno demais (100): Perde contexto</li>
+<li>Grande demais (5000): Retrieval impreciso</li>
+<li>1000-1500: Sweet spot para maioria dos casos</li>
+</ul>
+---
+### Passo 2: Gerar Embeddings e Armazenar
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">python
+from langchain.embeddings import OpenAIEmbeddings
+from langchain.vectorstores import Chroma
+# Gerar embeddings (usando OpenAI ada-002)
+embeddings = OpenAIEmbeddings(model="text-embedding-ada-002")
+# Criar vector database
+vectordb = Chroma.from_documents(
+    documents=chunks,
+    embedding=embeddings,
+    persist_directory="./db_curso"  # Salva localmente
+)
+vectordb.persist()
+print("Database criado!")
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+<strong>Custo:</strong> ~$0.0001 per 1k tokens
+<ul class="space-y-2 list-disc pl-6">
+<li>487 chunks × 1000 chars ≈ 487k tokens</li>
+<li>Custo: ~$0.05 (único)</li>
+</ul>
+<strong>Alternativa Grátis:</strong> Usar </code>HuggingFaceEmbeddings<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded"> ao invés de OpenAI
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">python
+from langchain.embeddings import HuggingFaceEmbeddings
+embeddings = HuggingFaceEmbeddings(
+    model_name="sentence-transformers/paraphrase-multilingual-mpnet-base-v2"
+)
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+---
+### Passo 3: Fazer Perguntas (Query)
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">python
+from langchain.chains import RetrievalQA
+from langchain.llms import OpenAI
+# Carregar database
+vectordb = Chroma(
+    persist_directory="./db_curso",
+    embedding_function=embeddings
+)
+# Criar chain de Q&A
+qa_chain = RetrievalQA.from_chain_type(
+    llm=OpenAI(model="gpt-3.5-turbo"),
+    retriever=vectordb.as_retriever(search_kwargs={"k": 5}),  # Top 5 chunks
+    return_source_documents=True  # Retorna fontes
+)
+# Fazer pergunta
+result = qa_chain("Qual a diferença entre RAG e Fine-Tuning?")
+print("Resposta:", result['result'])
+print("\nFontes:")
+for doc in result['source_documents']:
+    print(f"- {doc.metadata['source']} (página {doc.metadata['page']})")
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+<strong>Output:</strong>
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+Resposta: RAG (Retrieval-Augmented Generation) é uma técnica que busca
+informações relevantes em uma base de dados e as injeta no contexto do prompt,
+enquanto Fine-Tuning é o processo de retreinar um modelo em dados específicos...
+Fontes:
+<ul class="space-y-2 list-disc pl-6">
+<li>aula5.pdf (página 12)</li>
+<li>aula5.pdf (página 13)</li>
+<li>aula7.pdf (página 8)</li>
+</ul>
+</code>``
+---</p>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">🎨</span>
+                    <span>Melhorando o RAG</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-4">### Problema 1: Retrieval Ruim (Chunks Irrelevantes)
+<strong>Sintoma:</strong> LLM responde "Não encontrei informação sobre isso" mesmo tendo
+<strong>Causas:</strong>
+1. Embeddings ruins
+2. Chunks muito grandes/pequenos
+3. Pergunta mal formulada
+<strong>Soluções:</strong>
+<strong>A) Query Expansion (Expandir Pergunta)</strong>
+``<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">python
+# Antes
+query = "RAG"
+# Depois
+query_expanded = """
+RAG, Retrieval-Augmented Generation, busca semântica,
+recuperação de informação, embeddings
+"""
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+<strong>B) Hybrid Search (Keyword + Semantic)</strong>
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">python
+# Combinar BM25 (keyword) + embeddings (semantic)
+from langchain.retrievers import BM25Retriever, EnsembleRetriever
+keyword_retriever = BM25Retriever.from_documents(chunks)
+semantic_retriever = vectordb.as_retriever()
+ensemble = EnsembleRetriever(
+    retrievers=[keyword_retriever, semantic_retriever],
+    weights=[0.4, 0.6]  # 40% keyword, 60% semantic
+)
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+<strong>C) Reranking</strong>
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">python
+# Buscar top 20, rerankar para top 5
+from sentence_transformers import CrossEncoder
+reranker = CrossEncoder('cross-encoder/ms-marco-MiniLM-L-6-v2')
+def rerank(query, docs):
+    pairs = [[query, doc.page_content] for doc in docs]
+    scores = reranker.predict(pairs)
+    return sorted(zip(docs, scores), key=lambda x: x[1], reverse=True)[:5]
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+---
+### Problema 2: Resposta Sem Contexto
+<strong>Sintoma:</strong> Resposta correta, mas não cita fonte ou dá detalhes
+<strong>Solução:</strong> Melhorar Prompt de Síntese
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">python
+from langchain.prompts import PromptTemplate
+template = """
+Você é um assistente educacional especializado.
+Use APENAS os trechos abaixo para responder. Se não souber, diga "Não encontrei essa informação nos materiais".
+Contexto:
+{context}
+Pergunta: {question}
+Instruções:
+1. Responda de forma clara e educativa
+2. Cite a fonte ([Fonte: nome_arquivo, página X])
+3. Se múltiplas fontes, liste todas
+4. Use exemplos dos trechos quando possível
+Resposta:
+"""
+prompt = PromptTemplate(template=template, input_variables=["context", "question"])
+qa_chain = RetrievalQA.from_chain_type(
+    llm=llm,
+    retriever=retriever,
+    chain_type_kwargs={"prompt": prompt}
+)
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+---
+### Problema 3: Custo e Latência
+<strong>Sintoma:</strong> Cada query demora 3-5 segundos e custa $$
+<strong>Soluções:</strong>
+<strong>A) Cache de Embeddings</strong>
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">python
+import shelve
+cache = shelve.open("embedding_cache")
+def get_embedding_cached(text):
+    if text in cache:
+        return cache[text]
+    else:
+        emb = embeddings.embed_query(text)
+        cache[text] = emb
+        return emb
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+<strong>B) Usar Modelo Menor para Retrieval</strong>
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">python
+# Retrieval: HuggingFace (grátis, local)
+# Generation: GPT-4 (pago, mas só 1x por query)
+retriever_embeddings = HuggingFaceEmbeddings()  # Grátis
+generation_llm = OpenAI(model="gpt-4")  # Qualidade
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+<strong>C) Batch Queries</strong>
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">python
+# Se processando múltiplas perguntas, fazer em batch
+queries = ["Pergunta 1", "Pergunta 2", ...]
+embeddings_batch = embeddings.embed_documents(queries)  # 1 API call
+</code>``
+---</p>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">🔧</span>
+                    <span>Fine-Tuning: Quando e Como</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-4">### O que é Fine-Tuning?
+<strong>Pré-treino:</strong> Modelo aprende linguagem geral (Wikipedia, livros, web)
+<strong>Fine-tuning:</strong> Modelo aprende tarefa/domínio específico (seus dados)
+### Exemplo: GPT-3 → ChatGPT
+``<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+GPT-3 (base): Completa texto
+Input: "Professor é"
+Output: "uma profissão importante que..." [neutro]
+ChatGPT (fine-tuned): Conversa
+Input: "Explique fotossíntese"
+Output: "Claro! Fotossíntese é o processo..." [instrutivo]
+Diferença: Fine-tuned com 10k+ exemplos de conversas instrutivas
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+---
+### Quando Fine-Tuning Faz Sentido (Educação):
+<strong>Caso 1: Correção Automática com Estilo Específico</strong>
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+Dados: 1000 redações + correções de professor específico
+Objetivo: Modelo que corrige no estilo desse professor
+Resultado: Feedback personalizado em escala
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+<strong>Caso 2: Geração de Questões de Múltipla Escolha</strong>
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+Dados: 5000 questões criadas por instituição
+Objetivo: Gerar novas questões no mesmo formato/dificuldade
+Resultado: Banco de questões infinito
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+<strong>Caso 3: Chatbot de Suporte Institucional</strong>
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+Dados: 2 anos de tickets de suporte + respostas
+Objetivo: Automatizar 70% das perguntas comuns
+Resultado: Suporte 24/7
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+---
+### Processo de Fine-Tuning (OpenAI GPT-3.5)
+<strong>Passo 1: Preparar Dados (JSONL)</strong>
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">json
+{"messages": [
+  {"role": "system", "content": "Você é um corretor de redações do ENEM"},
+  {"role": "user", "content": "Redação: [TEXTO]"},
+  {"role": "assistant", "content": "Análise: [FEEDBACK DETALHADO]"}
+]}
+{"messages": [...]}
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+<strong>Requisitos:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Mínimo: 10 exemplos (recomendado: 50-100)</li>
+<li>Formato: JSONL (1 exemplo por linha)</li>
+<li>Qualidade > Quantidade</li>
+</ul>
+<strong>Passo 2: Upload e Treino</strong>
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">python
+import openai
+# Upload do arquivo
+file = openai.File.create(
+  file=open("treino.jsonl", "rb"),
+  purpose='fine-tune'
+)
+# Iniciar fine-tune
+job = openai.FineTuningJob.create(
+  training_file=file.id,
+  model="gpt-3.5-turbo"
+)
+# Acompanhar progresso
+openai.FineTuningJob.retrieve(job.id)
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+<strong>Tempo:</strong> 10 min - 2h (depende do tamanho)
+<strong>Custo:</strong> $0.008 / 1k tokens (8x mais barato que treino from scratch)
+<strong>Passo 3: Usar Modelo Fine-Tuned</strong>
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">python
+completion = openai.ChatCompletion.create(
+  model="ft:gpt-3.5-turbo:org:modelo_redacao:abc123",  # Seu modelo
+  messages=[
+    {"role": "system", "content": "Você é um corretor de redações do ENEM"},
+    {"role": "user", "content": "Redação: [NOVA REDAÇÃO]"}
+  ]
+)
+</code>``
+---</p>
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/10 dark:to-purple-900/10 rounded-xl p-8 text-center border-2 border-dashed border-module-color">
+                <p class="text-lg font-semibold text-neutral-700 dark:text-neutral-300 mb-2">
+                    📚 Conteúdo Completo
+                </p>
+                <p class="text-neutral-600 dark:text-neutral-400 mb-4">
+                    Faça download do material completo em Markdown para acessar todos os tópicos, exemplos, prompts e atividades detalhadas.
+                </p>
+                <a href="../pdfs/modulo-2b-2.md" download class="inline-block px-6 py-3 bg-module-color text-white rounded-lg font-semibold hover:opacity-90 transition-colors">
+                    📄 Baixar Material Completo (MD)
+                </a>
+            </div>
+        </section>
+
+        <!-- Recursos -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6">📦 Recursos do Módulo</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <span>📹</span>
+                        <span>Videoaulas</span>
+                    </h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                        Aulas detalhadas sobre cada tópico do módulo
+                    </p>
+                </div>
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <span>💬</span>
+                        <span>Práticas</span>
+                    </h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                        Atividades hands-on com projetos reais
+                    </p>
+                </div>
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <span>✅</span>
+                        <span>Avaliação</span>
+                    </h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                        Quizzes e projetos para certificação
+                    </p>
+                </div>
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <span>📚</span>
+                        <span>Referências</span>
+                    </h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                        Materiais complementares selecionados
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navegação -->
+        <section class="flex justify-between items-center pt-8 border-t border-neutral-200 dark:border-neutral-700">
+            <a href="../niveis/nivel-2b.html" class="px-6 py-3 bg-neutral-200 dark:bg-neutral-700 rounded-lg font-semibold hover:bg-neutral-300 dark:hover:bg-neutral-600 transition-colors">
+                ← Voltar ao Nível 2B
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-neutral-900 dark:bg-black text-neutral-300 py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2025 SuperProfessores. Licença MIT.</p>
         </div>
     </footer>
 
+    <script src="../js/app.js"></script>
 </body>
 </html>

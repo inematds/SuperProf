@@ -1,81 +1,488 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Módulo 2A.4: Gamificação e Engajamento | SuperProfessores</title>
+    <meta name="description" content="Aprenda a usar gamificação baseada em IA para aumentar engajamento em 3-5x. Domine sistemas de pontos, badges, leaderboards adaptativos e narrativas p">
+
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{'module':'#9b59b6'}}}}</script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        'trilha-a': '#9b59b6',
+                        'trilha-b': '#10B981',
+                        'module-color': '#9b59b6',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            transition: background-color 200ms ease-in-out, border-color 200ms ease-in-out, color 200ms ease-in-out;
+        }
+        .preload * {
+            transition: none !important;
+        }
+    </style>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-    
-    <nav class="bg-white dark:bg-gray-800 shadow-sm">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <a href="../index.html" class="text-2xl font-bold" style="color: #9b59b6">SuperProfessores</a>
-                <a href="../niveis/nivel-2a.html" class="text-gray-600 dark:text-gray-300 hover:text-module">← Voltar</a>
+<body class="preload bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/90 dark:bg-neutral-800/90 backdrop-blur-sm border-b border-neutral-200 dark:border-neutral-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../index.html" class="text-2xl font-bold bg-gradient-to-r from-primary to-trilha-a bg-clip-text text-transparent">
+                        🎓 SuperProfessores
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="../index.html" class="text-neutral-700 dark:text-neutral-300 hover:text-primary font-medium">Início</a>
+                    <a href="../niveis/nivel-2a.html" class="text-neutral-700 dark:text-neutral-300 hover:text-primary font-medium">Nível 2A</a>
+                    <a href="https://github.com/inematds/SuperProf" target="_blank" class="text-neutral-700 dark:text-neutral-300 hover:text-primary font-medium">GitHub</a>
+                    <button id="theme-toggle" class="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600">
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
 
-    <section class="py-16 text-white" style="background: linear-gradient(to right, #9b59b6, #6366f1);">
-        <div class="container mx-auto px-6">
-            <h1 class="text-4xl font-bold mb-4">Módulo 2A.4: Gamificação e Engajamento</h1>
-            <p class="text-xl opacity-90">Octalysis Framework, badges significativos, leaderboards éticos</p>
+    <!-- Breadcrumb -->
+    <div class="bg-white dark:bg-neutral-800 border-b border-neutral-200 dark:border-neutral-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <nav class="flex text-sm" aria-label="Breadcrumb">
+                <a href="../index.html" class="text-primary hover:text-blue-700">Início</a>
+                <span class="mx-2 text-neutral-400">/</span>
+                <a href="../niveis/nivel-2a.html" class="text-primary hover:text-blue-700">Trilha A</a><span class="mx-2 text-neutral-400">/</span><a href="../niveis/nivel-2a.html" class="text-primary hover:text-blue-700">Nível 2A</a><span class="mx-2 text-neutral-400">/</span><span class="text-neutral-600 dark:text-neutral-400">Módulo</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="bg-gradient-to-r from-module-color to-purple-700 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+            <span class="inline-block px-4 py-2 bg-white/20 rounded-full text-sm font-semibold mb-4">Pedagógico</span>
+            <h1 class="text-4xl lg:text-5xl font-bold mb-4">Módulo 2A.4: Gamificação e Engajamento</h1>
+            <p class="text-xl text-purple-100 max-w-3xl">
+                Aprenda a usar gamificação baseada em IA para aumentar engajamento em 3-5x. Domine sistemas de pontos, badges, leaderboards adaptativos e narrativas personalizadas.
+            </p>
         </div>
     </section>
 
-    <section class="container mx-auto px-6 py-12">
-        <div class="max-w-4xl mx-auto">
-            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 mb-8">
-                <h2 class="text-2xl font-bold mb-4">📖 Visão Geral</h2>
-                <p class="text-gray-600 dark:text-gray-400 mb-6">Octalysis Framework, badges significativos, leaderboards éticos</p>
-                
-                <div class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-4 mb-6">
-                    <p class="text-sm">
-                        📥 Para acessar o conteúdo completo com todos os detalhes, exemplos, prompts e recursos, 
-                        <a href="../pdfs/modulo-2a-4.md" class="font-bold underline" style="color: #9b59b6" download>baixe o arquivo MD</a>.
-                    </p>
-                </div>
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-                <h2 class="text-2xl font-bold mb-4">📚 Recursos</h2>
-                <div class="space-y-3">
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">📹</span>
-                        <span>Videoaulas interativas</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">💬</span>
-                        <span>Atividades práticas hands-on</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">✅</span>
-                        <span>Avaliações e projetos</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">📖</span>
-                        <span>Referências e leituras complementares</span>
-                    </div>
-                </div>
+        <!-- Visão Geral -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6">📖 Visão Geral</h2>
+            <div class="prose prose-lg dark:prose-invert max-w-none">
+                <p class="text-lg text-neutral-700 dark:text-neutral-300 mb-4">
+                    Aprenda a usar gamificação baseada em IA para aumentar engajamento em 3-5x. Domine sistemas de pontos, badges, leaderboards adaptativos e narrativas personalizadas.
+                </p>
+                <p class='text-lg text-neutral-700 dark:text-neutral-300'><strong>Ao final deste módulo, você será capaz de:</strong></p>
+                <ul class='list-disc pl-6 space-y-2 text-neutral-700 dark:text-neutral-300'><li>Implementar sistema de pontos e recompensas com IA</li><li>Criar desafios adaptativos baseados em perfil</li><li>Design de narrativas gamificadas personalizadas</li><li>Medir engajamento e ajustar mecânicas</li></ul>
+            </div>
+        </section>
 
-                <div class="mt-8 flex gap-4">
-                    <a href="../pdfs/modulo-2a-4.md" class="px-6 py-3 text-white rounded-lg hover:opacity-90 transition" style="background-color: #9b59b6" download>
-                        📥 Download Completo (MD/PDF)
-                    </a>
-                    <a href="../niveis/nivel-2a.html" class="px-6 py-3 border-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition" style="border-color: #9b59b6; color: #9b59b6">
-                        ← Voltar para Nível 2A
-                    </a>
+        <!-- Conteúdo Detalhado -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-8">📚 Conteúdo Detalhado</h2>
+            
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">🎮</span>
+                    <span>Fundamentos de Gamificação</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-4">### O que NÃO é Gamificação:
+❌ Apenas adicionar pontos e badges
+❌ Competição forçada entre alunos
+❌ Recompensas extrínsecas vazias
+### O que É Gamificação Efetiva:
+✅ <strong>Autonomia:</strong> Aluno escolhe desafios
+✅ <strong>Maestria:</strong> Progresso visível e conquistas
+✅ <strong>Propósito:</strong> Conexão com objetivos reais
+✅ <strong>Social:</strong> Colaboração e reconhecimento
+---</p>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-6 text-center">
-            <p>© 2025 SuperProfessores | Licença MIT</p>
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">🏆</span>
+                    <span>Octalysis Framework + IA</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-4">### 8 Core Drives (Yu-kai Chou):
+<strong>1. Epic Meaning & Calling</strong>
+<strong>Como:</strong> IA gera missões conectadas a impacto real
+<strong>Prompt Claude:</strong>
+``<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+Crie missão gamificada sobre [TEMA] que conecte com:
+<ul class="space-y-2 list-disc pl-6">
+<li>Problema real do mundo</li>
+<li>Contribuição para comunidade</li>
+<li>Legado que o aluno deixará</li>
+</ul>
+Tom: Épico mas autêntico
+Formato: Narrativa de 150 palavras + 3 marcos
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+<strong>2. Development & Accomplishment</strong>
+<strong>Como:</strong> Sistema de níveis adaptativo
+<strong>Prompt ChatGPT:</strong>
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+Crie sistema de níveis para [CURSO]:
+<ul class="space-y-2 list-disc pl-6">
+<li>10 níveis (iniciante → mestre)</li>
+<li>Cada nível requer 3 conquistas</li>
+<li>Conquistas têm 3 dificuldades (bronze/prata/ouro)</li>
+<li>IA sugere próxima conquista baseada em perfil</li>
+</ul>
+Formato: JSON estruturado
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+<strong>3. Empowerment of Creativity</strong>
+<strong>Como:</strong> Desafios abertos com showcase
+<strong>Exemplo:</strong>
+> "Crie sua própria explicação de [CONCEITO] usando IA. Melhor criação vira material oficial do curso!"
+<strong>4. Ownership & Possession</strong>
+<strong>Como:</strong> Portfólio gamificado
+<ul class="space-y-2 list-disc pl-6">
+<li>Coleção de badges únicos</li>
+<li>Customização de avatar com IA</li>
+<li>"Itens raros" desbloqueados por maestria</li>
+</ul>
+<strong>5. Social Influence & Relatedness</strong>
+<strong>Como:</strong> Guilds e cooperação
+<ul class="space-y-2 list-disc pl-6">
+<li>Times de 4-6 alunos</li>
+<li>Missões cooperativas (todos ganham ou todos perdem)</li>
+<li>Reconhecimento público de contribuições</li>
+</ul>
+<strong>6. Scarcity & Impatience</strong>
+<strong>Como:</strong> Eventos limitados
+<ul class="space-y-2 list-disc pl-6">
+<li>"Desafio Relâmpago" 24h</li>
+<li>Badges sazonais</li>
+<li>⚠️ Usar com moderação (pode desmotivar)</li>
+</ul>
+<strong>7. Unpredictability & Curiosity</strong>
+<strong>Como:</strong> IA gera surpresas
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+Prompt Gemini:
+Gere "Easter Egg" educacional para aluno que completou [MÓDULO]:
+<ul class="space-y-2 list-disc pl-6">
+<li>Fato surpreendente relacionado</li>
+<li>Mini-desafio bônus inesperado</li>
+<li>Conexão com interesse demonstrado</li>
+</ul>
+</code>``
+<strong>8. Loss & Avoidance</strong>
+<strong>Como:</strong> Streaks positivos (não punitivos)
+<ul class="space-y-2 list-disc pl-6">
+<li>"Você está há 7 dias estudando consecutivos! Continue!"</li>
+<li>Recuperação de streak perdido com missão especial</li>
+</ul>
+---</p>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">🎯</span>
+                    <span>Sistema de Pontos Adaptativo</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-4">### Problema dos Pontos Fixos:
+<ul class="space-y-2 list-disc pl-6">
+<li>Aluno A faz tarefa em 10 min → 100 pontos</li>
+<li>Aluno B faz mesma tarefa em 2h → 100 pontos</li>
+<li>Aluno B se sente injustiçado</li>
+</ul>
+### Solução IA:
+<strong>Pontos baseados em esforço relativo</strong>
+<strong>Prompt NotebookLM:</strong>
+``<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+Analise histórico de [ALUNO]:
+<ul class="space-y-2 list-disc pl-6">
+<li>Tempo médio em tarefas similares: [X min]</li>
+<li>Nível de dificuldade percebido: [Score]</li>
+<li>Curva de aprendizado: [Crescente/Estável/Decrescente]</li>
+</ul>
+Para tarefa [TAREFA]:
+<ul class="space-y-2 list-disc pl-6">
+<li>Tempo gasto: [Y min]</li>
+<li>Qualidade: [Score]</li>
+</ul>
+Calcule pontos considerando:
+1. Esforço relativo (comparado com próprio histórico)
+2. Melhoria em relação a tentativas anteriores
+3. Qualidade do resultado
+4. Bônus por persistência (tentativas múltiplas)
+Fórmula: [Detalhar]
+</code>``
+---</p>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">🏅</span>
+                    <span>Badges Significativos</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-4">### Tipos de Badges:
+<strong>1. Maestria (Skill-based)</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>🎯 "Mestre de Prompts" (100 prompts efetivos)</li>
+<li>📊 "Analista de Dados" (10 análises com IA)</li>
+<li>✍️ "Escritor Aumentado" (20 textos co-criados)</li>
+</ul>
+<strong>2. Sociais (Contribution-based)</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>🤝 "Mentor" (Ajudou 5 colegas)</li>
+<li>💡 "Inovador" (Sugeriu melhoria implementada)</li>
+<li>🌟 "Curador" (Compartilhou 10 recursos úteis)</li>
+</ul>
+<strong>3. Jornada (Progress-based)</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>🚀 "Pioneiro" (Completou módulo em 24h)</li>
+<li>🔥 "Persistente" (Streak de 30 dias)</li>
+<li>🎓 "Graduado" (Completou nível)</li>
+</ul>
+### Gerador de Badges com IA:
+<strong>Prompt DALL-E 3:</strong>
+``<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+Crie badge circular para conquista "[NOME]":
+<ul class="space-y-2 list-disc pl-6">
+<li>Estilo: Flat design, cores vibrantes</li>
+<li>Ícone central: [SÍMBOLO]</li>
+<li>Borda: Gradiente [COR1] → [COR2]</li>
+<li>Elementos: [DETALHES]</li>
+<li>Tamanho: 512x512px</li>
+</ul>
+</code>``
+---</p>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">📊</span>
+                    <span>Leaderboards Éticos</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-4">### Problema dos Leaderboards Tradicionais:
+<ul class="space-y-2 list-disc pl-6">
+<li>Top 10% fica motivado</li>
+<li>90% fica desmotivado</li>
+<li>Competição tóxica</li>
+</ul>
+### Solução: Leaderboards Personalizados
+<strong>Tipos:</strong>
+<strong>1. Leaderboard de Crescimento</strong>
+Não mostra posição absoluta, mas % de melhoria
+``<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+🏆 Top 5 Maior Crescimento (Última Semana):
+1. Ana: +45% em quiz score
+2. Bruno: +38% em tempo de resposta
+3. Você: +32% em complexidade de projetos ⭐
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+<strong>2. Leaderboard de Pares</strong>
+IA agrupa alunos similares (nível, ritmo, estilo)
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+📊 Seu Grupo (Nível Intermediário):
+   Você: 2.340 pontos (3º de 8)
+   [Mostra apenas grupo similar]
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+<strong>3. Leaderboard Cooperativo</strong>
+Time vs Time (não indivíduo vs indivíduo)
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+🤝 Ranking de Guilds:
+1. Guild "Innovators" - 12.450 pts
+2. Sua Guild "Explorers" - 11.890 pts
+3. Guild "Creators" - 10.230 pts
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+---
+## 📖 Narrativas Personalizadas
+### Story-based Learning com IA
+<strong>Estrutura:</strong>
+1. <strong>Mundo:</strong> Contexto imersivo relacionado ao tema
+2. <strong>Personagem:</strong> Aluno é protagonista (ou mentor)
+3. <strong>Conflito:</strong> Problema a resolver com conhecimento
+4. <strong>Resolução:</strong> Aplicação prática = progresso na história
+### Exemplo Prático:
+<strong>Tema:</strong> Prompt Engineering
+<strong>Narrativa Gerada por IA:</strong>
+> <strong>Capítulo 1: A Torre dos Prompts</strong>
+>
+> Você é um(a) Arquiteto(a) de Linguagem em 2025. A Torre Central de IA da cidade está em caos: prompts mal-escritos estão gerando respostas confusas, causando falhas em sistemas críticos.
+>
+> <strong>Sua Missão:</strong> Escalar os 10 andares da Torre, corrigindo prompts quebrados em cada nível. Quanto mais preciso seu conserto, mais rápido você sobe.
+>
+> <strong>Andar 1: Fundações Rachadas</strong>
+> Um prompt vago está causando respostas genéricas:
+>
+> </code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+> Prompt atual: "Me fale sobre IA"
+> Problema: Resposta muito ampla
+>
+> Seu desafio: Reescreva usando Framework CRAFT
+> </code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+<strong>Prompt para Gerar Narrativa:</strong>
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+Crie narrativa gamificada sobre [TEMA]:
+Contexto: [DESCREVER MUNDO/CENÁRIO]
+Personagem: Professor(a) com superpoder de [RELACIONADO AO TEMA]
+Conflito: [PROBLEMA QUE O CONHECIMENTO RESOLVE]
+Estruture em 5 capítulos:
+<ul class="space-y-2 list-disc pl-6">
+<li>Cada capítulo = 1 conceito-chave</li>
+<li>Incluir 2 desafios por capítulo</li>
+<li>Progresso na história = domínio do conceito</li>
+<li>Tom: Aventura + aprendizado</li>
+</ul>
+Público: [IDADE/NÍVEL]
+</code>``
+---</p>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">🎨</span>
+                    <span>Implementação Prática</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-4">### Stack Tecnológico:
+<strong>1. Plataforma Base:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Moodle + Plugin Gamification</li>
+<li>Canvas + Badges</li>
+<li>Google Classroom + extensões</li>
+</ul>
+<strong>2. Ferramentas IA:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>ChatGPT: Geração de desafios adaptativos</li>
+<li>Claude: Feedback narrativo personalizado</li>
+<li>Gemini: Análise de padrões de engajamento</li>
+</ul>
+<strong>3. Integrações:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Zapier: Automatizar badges quando condições são atingidas</li>
+<li>Make.com: Conectar IA com LMS</li>
+</ul>
+### Exemplo de Fluxo:
+``<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+1. Aluno completa quiz no Moodle
+   ↓
+2. Zapier detecta → Envia dados para ChatGPT
+   ↓
+3. ChatGPT analisa desempenho + histórico
+   ↓
+4. Gera feedback personalizado + próximo desafio
+   ↓
+5. Zapier envia de volta para Moodle
+   ↓
+6. Aluno recebe notificação com missão personalizada
+</code>``
+---</p>
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/10 dark:to-purple-900/10 rounded-xl p-8 text-center border-2 border-dashed border-module-color">
+                <p class="text-lg font-semibold text-neutral-700 dark:text-neutral-300 mb-2">
+                    📚 Conteúdo Completo
+                </p>
+                <p class="text-neutral-600 dark:text-neutral-400 mb-4">
+                    Faça download do material completo em Markdown para acessar todos os tópicos, exemplos, prompts e atividades detalhadas.
+                </p>
+                <a href="../pdfs/modulo-2a-4.md" download class="inline-block px-6 py-3 bg-module-color text-white rounded-lg font-semibold hover:opacity-90 transition-colors">
+                    📄 Baixar Material Completo (MD)
+                </a>
+            </div>
+        </section>
+
+        <!-- Recursos -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6">📦 Recursos do Módulo</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <span>📹</span>
+                        <span>Videoaulas</span>
+                    </h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                        Aulas detalhadas sobre cada tópico do módulo
+                    </p>
+                </div>
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <span>💬</span>
+                        <span>Práticas</span>
+                    </h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                        Atividades hands-on com projetos reais
+                    </p>
+                </div>
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <span>✅</span>
+                        <span>Avaliação</span>
+                    </h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                        Quizzes e projetos para certificação
+                    </p>
+                </div>
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <span>📚</span>
+                        <span>Referências</span>
+                    </h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                        Materiais complementares selecionados
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navegação -->
+        <section class="flex justify-between items-center pt-8 border-t border-neutral-200 dark:border-neutral-700">
+            <a href="../niveis/nivel-2a.html" class="px-6 py-3 bg-neutral-200 dark:bg-neutral-700 rounded-lg font-semibold hover:bg-neutral-300 dark:hover:bg-neutral-600 transition-colors">
+                ← Voltar ao Nível 2A
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-neutral-900 dark:bg-black text-neutral-300 py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2025 SuperProfessores. Licença MIT.</p>
         </div>
     </footer>
 
+    <script src="../js/app.js"></script>
 </body>
 </html>

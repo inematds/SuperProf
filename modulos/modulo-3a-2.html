@@ -1,81 +1,572 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo 3A.2: Liderança em Transformação Digital | SuperProfessores</title>
+    <title>Módulo 3A.2: Liderança em Transformação Digital Educacional | SuperProfessores</title>
+    <meta name="description" content="Aprenda a liderar mudanças institucionais rumo à integração efetiva de IA. Domine gestão de resistências, construção de visão compartilhada, desenvolv">
+
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{'module':'#8e44ad'}}}}</script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        'trilha-a': '#9b59b6',
+                        'trilha-b': '#10B981',
+                        'module-color': '#8e44ad',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            transition: background-color 200ms ease-in-out, border-color 200ms ease-in-out, color 200ms ease-in-out;
+        }
+        .preload * {
+            transition: none !important;
+        }
+    </style>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-    
-    <nav class="bg-white dark:bg-gray-800 shadow-sm">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <a href="../index.html" class="text-2xl font-bold" style="color: #8e44ad">SuperProfessores</a>
-                <a href="../niveis/nivel-3a.html" class="text-gray-600 dark:text-gray-300 hover:text-module">← Voltar</a>
+<body class="preload bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/90 dark:bg-neutral-800/90 backdrop-blur-sm border-b border-neutral-200 dark:border-neutral-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../index.html" class="text-2xl font-bold bg-gradient-to-r from-primary to-trilha-a bg-clip-text text-transparent">
+                        🎓 SuperProfessores
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="../index.html" class="text-neutral-700 dark:text-neutral-300 hover:text-primary font-medium">Início</a>
+                    <a href="../niveis/nivel-3a.html" class="text-neutral-700 dark:text-neutral-300 hover:text-primary font-medium">Nível 3A</a>
+                    <a href="https://github.com/inematds/SuperProf" target="_blank" class="text-neutral-700 dark:text-neutral-300 hover:text-primary font-medium">GitHub</a>
+                    <button id="theme-toggle" class="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600">
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
 
-    <section class="py-16 text-white" style="background: linear-gradient(to right, #8e44ad, #6366f1);">
-        <div class="container mx-auto px-6">
-            <h1 class="text-4xl font-bold mb-4">Módulo 3A.2: Liderança em Transformação Digital</h1>
-            <p class="text-xl opacity-90">Gestão de resistências, desenvolvimento docente em escala, medição de impacto, ROI educacional</p>
+    <!-- Breadcrumb -->
+    <div class="bg-white dark:bg-neutral-800 border-b border-neutral-200 dark:border-neutral-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <nav class="flex text-sm" aria-label="Breadcrumb">
+                <a href="../index.html" class="text-primary hover:text-blue-700">Início</a>
+                <span class="mx-2 text-neutral-400">/</span>
+                <a href="../niveis/nivel-3a.html" class="text-primary hover:text-blue-700">Trilha A</a><span class="mx-2 text-neutral-400">/</span><a href="../niveis/nivel-3a.html" class="text-primary hover:text-blue-700">Nível 3A</a><span class="mx-2 text-neutral-400">/</span><span class="text-neutral-600 dark:text-neutral-400">Módulo</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="bg-gradient-to-r from-module-color to-purple-700 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+            <span class="inline-block px-4 py-2 bg-white/20 rounded-full text-sm font-semibold mb-4">Especialista</span>
+            <h1 class="text-4xl lg:text-5xl font-bold mb-4">Módulo 3A.2: Liderança em Transformação Digital Educacional</h1>
+            <p class="text-xl text-purple-100 max-w-3xl">
+                Aprenda a liderar mudanças institucionais rumo à integração efetiva de IA. Domine gestão de resistências, construção de visão compartilhada, desenvolvimento de equipes e medição de impacto organizacional.
+            </p>
         </div>
     </section>
 
-    <section class="container mx-auto px-6 py-12">
-        <div class="max-w-4xl mx-auto">
-            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 mb-8">
-                <h2 class="text-2xl font-bold mb-4">📖 Visão Geral</h2>
-                <p class="text-gray-600 dark:text-gray-400 mb-6">Gestão de resistências, desenvolvimento docente em escala, medição de impacto, ROI educacional</p>
-                
-                <div class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-4 mb-6">
-                    <p class="text-sm">
-                        📥 Para acessar o conteúdo completo com todos os detalhes, exemplos, prompts e recursos, 
-                        <a href="../pdfs/modulo-3a-2.md" class="font-bold underline" style="color: #8e44ad" download>baixe o arquivo MD</a>.
-                    </p>
-                </div>
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-                <h2 class="text-2xl font-bold mb-4">📚 Recursos</h2>
-                <div class="space-y-3">
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">📹</span>
-                        <span>Videoaulas interativas</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">💬</span>
-                        <span>Atividades práticas hands-on</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">✅</span>
-                        <span>Avaliações e projetos</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">📖</span>
-                        <span>Referências e leituras complementares</span>
-                    </div>
-                </div>
+        <!-- Visão Geral -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6">📖 Visão Geral</h2>
+            <div class="prose prose-lg dark:prose-invert max-w-none">
+                <p class="text-lg text-neutral-700 dark:text-neutral-300 mb-4">
+                    Aprenda a liderar mudanças institucionais rumo à integração efetiva de IA. Domine gestão de resistências, construção de visão compartilhada, desenvolvimento de equipes e medição de impacto organizacional.
+                </p>
+                <p class='text-lg text-neutral-700 dark:text-neutral-300'><strong>Ao final deste módulo, você será capaz de:</strong></p>
+                <ul class='list-disc pl-6 space-y-2 text-neutral-700 dark:text-neutral-300'><li>Diagnosticar maturidade digital da instituição</li><li>Construir roadmap de transformação realista</li><li>Gerenciar resistências e construir engajamento</li><li>Desenvolver capacidades docentes em escala</li><li>Medir impacto e demonstrar ROI educacional</li></ul>
+            </div>
+        </section>
 
-                <div class="mt-8 flex gap-4">
-                    <a href="../pdfs/modulo-3a-2.md" class="px-6 py-3 text-white rounded-lg hover:opacity-90 transition" style="background-color: #8e44ad" download>
-                        📥 Download Completo (MD/PDF)
-                    </a>
-                    <a href="../niveis/nivel-3a.html" class="px-6 py-3 border-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition" style="border-color: #8e44ad; color: #8e44ad">
-                        ← Voltar para Nível 3A
-                    </a>
+        <!-- Conteúdo Detalhado -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-8">📚 Conteúdo Detalhado</h2>
+            
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">🎯</span>
+                    <span>Os 8 Desafios da Transformação Digital Educacional</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-4">### 1. "Não temos budget"
+<strong>Realidade:</strong> Custo de não transformar > Custo de transformar
+<strong>Solução:</strong> Demonstrar ROI com pilotos rápidos
+### 2. "Professores vão resistir"
+<strong>Realidade:</strong> Professores resistem a mudanças impostas, não co-criadas
+<strong>Solução:</strong> Envolver desde o dia 1
+### 3. "IA vai substituir professores"
+<strong>Realidade:</strong> IA aumenta, não substitui
+<strong>Solução:</strong> Narrativa clara + exemplos concretos
+### 4. "Não temos infraestrutura"
+<strong>Realidade:</strong> Ferramentas cloud democratizaram acesso
+<strong>Solução:</strong> Começar com gratuitas, escalar conforme necessário
+### 5. "Falta tempo para treinar"
+<strong>Realidade:</strong> IA economiza mais tempo do que consome para aprender
+<strong>Solução:</strong> "Learn by doing" ao invés de treinamento massivo prévio
+### 6. "E a privacidade dos alunos?"
+<strong>Realidade:</strong> Preocupação legítima
+<strong>Solução:</strong> Governança de dados + ferramentas LGPD-compliant
+### 7. "Cada um usa ferramenta diferente"
+<strong>Realidade:</strong> Diversidade é boa no início, padronizar depois
+<strong>Solução:</strong> Fase exploração (3 meses) → Fase convergência
+### 8. "Como medir se está funcionando?"
+<strong>Realidade:</strong> Se não mede, não gerencia
+<strong>Solução:</strong> Dashboard de KPIs desde semana 1
+---</p>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-6 text-center">
-            <p>© 2025 SuperProfessores | Licença MIT</p>
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">📊</span>
+                    <span>Diagnóstico de Maturidade Digital</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-4">### Framework: 5 Níveis de Maturidade
+<strong>Nível 1 - Conscientização (0-20%):</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Instituição reconhece importância da IA</li>
+<li>Discussões iniciais, sem ação</li>
+<li><strong>Ação:</strong> Criar senso de urgência</li>
+</ul>
+<strong>Nível 2 - Experimentação (20-40%):</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Professores isolados testam ferramentas</li>
+<li>Sem coordenação, muito "wild west"</li>
+<li><strong>Ação:</strong> Criar comunidade de prática</li>
+</ul>
+<strong>Nível 3 - Implementação (40-60%):</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Pilotos estruturados em alguns cursos</li>
+<li>Primeiras políticas e guidelines</li>
+<li><strong>Ação:</strong> Sistematizar e documentar</li>
+</ul>
+<strong>Nível 4 - Integração (60-80%):</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>IA integrada em múltiplas disciplinas</li>
+<li>Processos administrativos também usam IA</li>
+<li><strong>Ação:</strong> Otimizar e escalar</li>
+</ul>
+<strong>Nível 5 - Transformação (80-100%):</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>IA permeia toda experiência educacional</li>
+<li>Instituição referência no setor</li>
+<li><strong>Ação:</strong> Inovar e liderar mercado</li>
+</ul>
+### Ferramenta de Diagnóstico:
+<strong>Prompt Claude:</strong>
+``<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+Avalie maturidade digital da instituição [NOME]:
+Dimensões a avaliar (0-10 cada):
+1. INFRAESTRUTURA:
+   - Acesso a internet/devices
+   - Ferramentas digitais disponíveis
+   - Suporte técnico
+2. CAPACITAÇÃO:
+   - % professores treinados em IA
+   - Frequência de PD (Prof. Development)
+   - Qualidade dos treinamentos
+3. CULTURA:
+   - Abertura para inovação
+   - Tolerância a erros
+   - Colaboração entre docentes
+4. LIDERANÇA:
+   - Visão clara para IA
+   - Recursos alocados
+   - Cobrança de resultados
+5. PROCESSOS:
+   - Políticas de uso de IA
+   - Workflows documentados
+   - Avaliação de impacto
+Dados:
+[Responder questionário de 25 perguntas]
+Output:
+<ul class="space-y-2 list-disc pl-6">
+<li>Score por dimensão (radar chart)</li>
+<li>Nível geral de maturidade (1-5)</li>
+<li>Top 3 gaps prioritários</li>
+<li>Recomendações de ação (quick wins + long term)</li>
+</ul>
+Formato: Relatório executivo (3 páginas)
+</code>``
+---</p>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">📌</span>
+                    <span>🗺️ Roadmap de Transformação</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-4">### Template: 3 Horizontes (Nowist, Next, Future)
+<strong>Horizonte 1 - AGORA (0-3 meses): Quick Wins</strong>
+<strong>Objetivo:</strong> Gerar momentum e provar valor
+<strong>Ações:</strong>
+1. <strong>Identificar Champions (Semana 1-2)</strong>
+   - 5-10 professores early adopters
+   - Características: influentes, respeitados, tech-friendly
+2. <strong>Pilotos Rápidos (Semana 3-8)</strong>
+   - 3 use cases diferentes
+   - Ex: Geração de quiz, Feedback em redações, Personalização
+   - Documentar tempo economizado + qualidade
+3. <strong>Showcase (Semana 10-12)</strong>
+   - Evento interno: champions apresentam resultados
+   - Convite: "Quem quer participar da próxima onda?"
+<strong>Métricas de Sucesso:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>3 pilotos completados</li>
+<li>15+ professores engajados</li>
+<li>1 caso documentado com ROI claro</li>
+</ul>
+---
+<strong>Horizonte 2 - PRÓXIMO (3-12 meses): Escala</strong>
+<strong>Objetivo:</strong> Levar para 50%+ da instituição
+<strong>Ações:</strong>
+1. <strong>Programa de Capacitação (Mês 3-6)</strong>
+   - Trilha de 20h para todos os docentes
+   - Baseado em SuperProfessores :)
+   - Certificação interna
+2. <strong>Políticas e Guidelines (Mês 4-5)</strong>
+   - Documento: "Uso Responsável de IA"
+   - Co-criado com professores
+   - Revisão legal (LGPD, direitos autorais)
+3. <strong>Infraestrutura (Mês 6-9)</strong>
+   - Licenças institucionais (ChatGPT Team, etc)
+   - Ferramentas integradas com LMS
+   - Suporte técnico dedicado
+4. <strong>Comunidade de Prática (Contínuo)</strong>
+   - Encontro mensal de compartilhamento
+   - Biblioteca de prompts e casos
+   - Slack/Discord para Q&A
+<strong>Métricas de Sucesso:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>60% professores capacitados</li>
+<li>Políticas aprovadas e publicadas</li>
+<li>20+ casos de uso documentados</li>
+<li>NPS de professores >50</li>
+</ul>
+---
+<strong>Horizonte 3 - FUTURO (12-36 meses): Transformação</strong>
+<strong>Objetivo:</strong> IA como DNA da instituição
+<strong>Ações:</strong>
+1. <strong>Redesenho Curricular (Mês 12-18)</strong>
+   - Currículo aumentado por IA (usar módulo 3A.1)
+   - Competências de IA para todos alunos
+   - Projetos integradores com IA
+2. <strong>Inovação em Avaliação (Mês 15-20)</strong>
+   - Avaliação formativa contínua com IA
+   - Portfólios digitais aumentados
+   - Certificação baseada em competências
+3. <strong>Pesquisa e Desenvolvimento (Mês 18-36)</strong>
+   - Parcerias com universidades
+   - Publicação de casos em journals
+   - Criação de IP (propriedade intelectual)
+4. <strong>Posicionamento de Mercado (Contínuo)</strong>
+   - Marketing: "Escola pioneira em IA"
+   - Eventos: Host de conferências
+   - Thought leadership: Blog, podcast
+<strong>Métricas de Sucesso:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>90% professores usando IA semanalmente</li>
+<li>Currículo redesenhado implementado</li>
+<li>2+ papers publicados</li>
+<li>Aumento de 20% em matrículas</li>
+</ul>
+---</p>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">📌</span>
+                    <span>🤝 Gestão de Resistências</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-4">### Tipos de Resistência e Estratégias:
+<strong>1. Resistência Cognitiva: "Não entendo IA"</strong>
+<strong>Causa:</strong> Medo do desconhecido
+<strong>Sintomas:</strong> Evita treinamentos, faz perguntas básicas repetidas
+<strong>Estratégia:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Buddy system (parear com champion)</li>
+<li>Tutoriais visuais passo-a-passo</li>
+<li>Horário de "office hours" para dúvidas</li>
+</ul>
+<strong>Prompt para Criar Tutoriais:</strong>
+``<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+Crie tutorial em 5 passos para professor iniciante:
+Tarefa: [Ex: "Criar quiz com ChatGPT"]
+Para cada passo:
+<ul class="space-y-2 list-disc pl-6">
+<li>Screenshot anotado</li>
+<li>Texto: máximo 2 frases</li>
+<li>Tempo estimado</li>
+<li>"O que pode dar errado" (troubleshooting)</li>
+</ul>
+Tom: Encorajador, não-técnico
+Formato: PDF ou slide deck
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+---
+<strong>2. Resistência Emocional: "Tenho medo de ser substituído"</strong>
+<strong>Causa:</strong> Ameaça à identidade profissional
+<strong>Sintomas:</strong> Comentários defensivos, sarcasmo
+<strong>Estratégia:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Narrativa de empoderamento (IA como assistant, não replacement)</li>
+<li>Mostrar casos onde professor é MAIS valorizado com IA</li>
+<li>Reconhecimento público de expertise humana insubstituível</li>
+</ul>
+<strong>Script de Conversa 1-on-1:</strong>
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+Líder: "Percebo certa hesitação sua em relação à IA. Posso entender o que te preocupa?"
+[Escutar ativamente]
+Líder: "Entendo sua preocupação. Vou te mostrar como [PROFESSOR RESPEITADO] está usando IA e ficou MAIS efetivo, não menos..."
+[Mostrar caso concreto]
+Líder: "Que tal experimentarmos juntos por 2 semanas, sem pressão? Você escolhe quando parar se não gostar."
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+---
+<strong>3. Resistência Comportamental: "Não tenho tempo"</strong>
+<strong>Causa:</strong> Sobrecarga real ou procrastinação
+<strong>Sintomas:</strong> Sempre tem desculpa, adia treinamentos
+<strong>Estratégia:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Provar que IA economiza mais tempo do que consome</li>
+<li>Micro-learning: 10 min/dia ao invés de curso intensivo</li>
+<li>Remover barreiras: fornecer tempo dedicado</li>
+</ul>
+<strong>Proposta:</strong>
+> "Você terá 2h/semana protegidas nas próximas 4 semanas para explorar IA. Sem aulas, sem reuniões. Use como quiser: treinar, experimentar, ou ajudar outros. Topamos esse experimento?"
+---
+<strong>4. Resistência Política: "Isso é modinha passageira"</strong>
+<strong>Causa:</strong> Ceticismo baseado em tecnologias anteriores que fracassaram
+<strong>Sintomas:</strong> Referências a "última vez que tentaram algo assim"
+<strong>Estratégia:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Reconhecer contexto histórico (validar sentimento)</li>
+<li>Mostrar diferença (escala, velocidade, $$ investidos)</li>
+<li>Convidá-lo como "conselheiro" para evitar erros do passado</li>
+</ul>
+<strong>Script:</strong>
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+"Você tem razão em ser cético. Eu lembro da [TECH ANTERIOR] que não deu certo aqui. O que aprendemos daquilo que devemos evitar agora?"
+[Transformar cético em advisor → gera ownership]
+</code>``
+---</p>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">📌</span>
+                    <span>👥 Desenvolvimento de Capacidades Docentes</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-4">### Programa de Capacitação em 3 Níveis:
+<strong>Nível 1 - Literacy (4h): "Entender IA"</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>O que é IA, o que não é</li>
+<li>Limitações e riscos</li>
+<li>Ética e uso responsável</li>
+<li><strong>Outcome:</strong> Professor pode explicar IA para alunos</li>
+</ul>
+<strong>Nível 2 - Application (12h): "Usar IA"</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Prompt engineering básico</li>
+<li>5 use cases práticos na disciplina</li>
+<li>Integração com ferramentas existentes</li>
+<li><strong>Outcome:</strong> Professor usa IA semanalmente</li>
+</ul>
+<strong>Nível 3 - Innovation (20h): "Criar com IA"</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Design de experiências aumentadas</li>
+<li>Avaliação formativa com IA</li>
+<li>Projetos interdisciplinares</li>
+<li><strong>Outcome:</strong> Professor é champion interno</li>
+</ul>
+### Certificação Interna:
+<strong>Critérios para "IA Educator Certified":</strong>
+1. ✅ Completou trilha de 20h
+2. ✅ Implementou 3 use cases documentados
+3. ✅ Apresentou em showcase interno
+4. ✅ Mentorou 2 colegas
+5. ✅ Contribuiu para biblioteca de práticas
+<strong>Benefícios:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Badge digital para email/LinkedIn</li>
+<li>Menção em site da instituição</li>
+<li>Prioridade para eventos externos</li>
+<li>Bônus financeiro (se viável)</li>
+</ul>
+---</p>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">📈</span>
+                    <span>Medição de Impacto</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-4">### Framework: Kirkpatrick 4 Levels
+<strong>Level 1 - REAÇÃO: "Gostaram?"</strong>
+<strong>Métrica:</strong> NPS de professores/alunos
+<strong>Coleta:</strong> Survey após treinamentos/módulos
+<strong>Meta:</strong> NPS >50
+<strong>Level 2 - APRENDIZAGEM: "Aprenderam?"</strong>
+<strong>Métrica:</strong> Score em avaliações, certificações
+<strong>Coleta:</strong> Quizzes, projetos práticos
+<strong>Meta:</strong> 80% aprovação
+<strong>Level 3 - COMPORTAMENTO: "Estão usando?"</strong>
+<strong>Métrica:</strong> Frequência de uso de ferramentas IA
+<strong>Coleta:</strong> Analytics de plataformas, self-report mensal
+<strong>Meta:</strong> 70% usam semanalmente após 6 meses
+<strong>Level 4 - RESULTADOS: "Há impacto?"</strong>
+<strong>Métricas:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Tempo economizado por professor (hrs/semana)</li>
+<li>Melhoria em performance de alunos (notas, engajamento)</li>
+<li>Redução de evasão</li>
+<li>ROI financeiro (custo do programa vs economia gerada)</li>
+</ul>
+<strong>Coleta:</strong> Dashboard contínuo
+<strong>Meta:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Economia de 3h/semana/professor</li>
+<li>+10% em engajamento de alunos</li>
+<li>-5% evasão</li>
+<li>ROI positivo em 12 meses</li>
+</ul>
+---
+### Dashboard de Liderança:
+<strong>Prompt Claude:</strong>
+``<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+Crie dashboard executivo de transformação digital para [INSTITUIÇÃO]:
+Dados disponíveis:
+<ul class="space-y-2 list-disc pl-6">
+<li>120 professores, 2.400 alunos</li>
+<li>8 meses de programa</li>
+<li>CSV com: professor_id, training_completed, usage_frequency, feedback_score</li>
+</ul>
+KPIs a visualizar:
+1. 📊 ADOÇÃO:
+   - % professores capacitados (barras por mês)
+   - Frequência de uso (heatmap)
+2. 🎯 IMPACTO:
+   - Tempo economizado (agregado)
+   - Performance alunos (before/after)
+3. 💬 SENTIMENTO:
+   - NPS professores (gauge)
+   - Top 3 benefícios citados (word cloud)
+4. 🚦 ALERTAS:
+   - Professores em risco (não usam há 4+ semanas)
+   - Departamentos atrasados
+Formato: HTML interativo com Chart.js
+</code>``
+---</p>
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/10 dark:to-purple-900/10 rounded-xl p-8 text-center border-2 border-dashed border-module-color">
+                <p class="text-lg font-semibold text-neutral-700 dark:text-neutral-300 mb-2">
+                    📚 Conteúdo Completo
+                </p>
+                <p class="text-neutral-600 dark:text-neutral-400 mb-4">
+                    Faça download do material completo em Markdown para acessar todos os tópicos, exemplos, prompts e atividades detalhadas.
+                </p>
+                <a href="../pdfs/modulo-3a-2.md" download class="inline-block px-6 py-3 bg-module-color text-white rounded-lg font-semibold hover:opacity-90 transition-colors">
+                    📄 Baixar Material Completo (MD)
+                </a>
+            </div>
+        </section>
+
+        <!-- Recursos -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6">📦 Recursos do Módulo</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <span>📹</span>
+                        <span>Videoaulas</span>
+                    </h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                        Aulas detalhadas sobre cada tópico do módulo
+                    </p>
+                </div>
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <span>💬</span>
+                        <span>Práticas</span>
+                    </h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                        Atividades hands-on com projetos reais
+                    </p>
+                </div>
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <span>✅</span>
+                        <span>Avaliação</span>
+                    </h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                        Quizzes e projetos para certificação
+                    </p>
+                </div>
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <span>📚</span>
+                        <span>Referências</span>
+                    </h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                        Materiais complementares selecionados
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navegação -->
+        <section class="flex justify-between items-center pt-8 border-t border-neutral-200 dark:border-neutral-700">
+            <a href="../niveis/nivel-3a.html" class="px-6 py-3 bg-neutral-200 dark:bg-neutral-700 rounded-lg font-semibold hover:bg-neutral-300 dark:hover:bg-neutral-600 transition-colors">
+                ← Voltar ao Nível 3A
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-neutral-900 dark:bg-black text-neutral-300 py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2025 SuperProfessores. Licença MIT.</p>
         </div>
     </footer>
 
+    <script src="../js/app.js"></script>
 </body>
 </html>

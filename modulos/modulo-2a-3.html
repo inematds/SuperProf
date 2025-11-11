@@ -1,81 +1,303 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Módulo 2A.3: Personalização em Escala | SuperProfessores</title>
+    <meta name="description" content="Aprenda a criar experiências de aprendizagem personalizadas para cada aluno usando IA. Domine trilhas adaptativas, recomendação de conteúdo e diferenc">
+
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{'module':'#9b59b6'}}}}</script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        'trilha-a': '#9b59b6',
+                        'trilha-b': '#10B981',
+                        'module-color': '#9b59b6',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            transition: background-color 200ms ease-in-out, border-color 200ms ease-in-out, color 200ms ease-in-out;
+        }
+        .preload * {
+            transition: none !important;
+        }
+    </style>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-    
-    <nav class="bg-white dark:bg-gray-800 shadow-sm">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <a href="../index.html" class="text-2xl font-bold" style="color: #9b59b6">SuperProfessores</a>
-                <a href="../niveis/nivel-2a.html" class="text-gray-600 dark:text-gray-300 hover:text-module">← Voltar</a>
+<body class="preload bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/90 dark:bg-neutral-800/90 backdrop-blur-sm border-b border-neutral-200 dark:border-neutral-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../index.html" class="text-2xl font-bold bg-gradient-to-r from-primary to-trilha-a bg-clip-text text-transparent">
+                        🎓 SuperProfessores
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="../index.html" class="text-neutral-700 dark:text-neutral-300 hover:text-primary font-medium">Início</a>
+                    <a href="../niveis/nivel-2a.html" class="text-neutral-700 dark:text-neutral-300 hover:text-primary font-medium">Nível 2A</a>
+                    <a href="https://github.com/inematds/SuperProf" target="_blank" class="text-neutral-700 dark:text-neutral-300 hover:text-primary font-medium">GitHub</a>
+                    <button id="theme-toggle" class="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600">
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
 
-    <section class="py-16 text-white" style="background: linear-gradient(to right, #9b59b6, #6366f1);">
-        <div class="container mx-auto px-6">
-            <h1 class="text-4xl font-bold mb-4">Módulo 2A.3: Personalização em Escala</h1>
-            <p class="text-xl opacity-90">Trilhas adaptativas, recomendação de conteúdo, diferenciação automatizada</p>
+    <!-- Breadcrumb -->
+    <div class="bg-white dark:bg-neutral-800 border-b border-neutral-200 dark:border-neutral-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <nav class="flex text-sm" aria-label="Breadcrumb">
+                <a href="../index.html" class="text-primary hover:text-blue-700">Início</a>
+                <span class="mx-2 text-neutral-400">/</span>
+                <a href="../niveis/nivel-2a.html" class="text-primary hover:text-blue-700">Trilha A</a><span class="mx-2 text-neutral-400">/</span><a href="../niveis/nivel-2a.html" class="text-primary hover:text-blue-700">Nível 2A</a><span class="mx-2 text-neutral-400">/</span><span class="text-neutral-600 dark:text-neutral-400">Módulo</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="bg-gradient-to-r from-module-color to-purple-700 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+            <span class="inline-block px-4 py-2 bg-white/20 rounded-full text-sm font-semibold mb-4">Pedagógico</span>
+            <h1 class="text-4xl lg:text-5xl font-bold mb-4">Módulo 2A.3: Personalização em Escala</h1>
+            <p class="text-xl text-purple-100 max-w-3xl">
+                Aprenda a criar experiências de aprendizagem personalizadas para cada aluno usando IA. Domine trilhas adaptativas, recomendação de conteúdo e diferenciação automatizada.
+            </p>
         </div>
     </section>
 
-    <section class="container mx-auto px-6 py-12">
-        <div class="max-w-4xl mx-auto">
-            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 mb-8">
-                <h2 class="text-2xl font-bold mb-4">📖 Visão Geral</h2>
-                <p class="text-gray-600 dark:text-gray-400 mb-6">Trilhas adaptativas, recomendação de conteúdo, diferenciação automatizada</p>
-                
-                <div class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-4 mb-6">
-                    <p class="text-sm">
-                        📥 Para acessar o conteúdo completo com todos os detalhes, exemplos, prompts e recursos, 
-                        <a href="../pdfs/modulo-2a-3.md" class="font-bold underline" style="color: #9b59b6" download>baixe o arquivo MD</a>.
-                    </p>
-                </div>
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-                <h2 class="text-2xl font-bold mb-4">📚 Recursos</h2>
-                <div class="space-y-3">
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">📹</span>
-                        <span>Videoaulas interativas</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">💬</span>
-                        <span>Atividades práticas hands-on</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">✅</span>
-                        <span>Avaliações e projetos</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">📖</span>
-                        <span>Referências e leituras complementares</span>
-                    </div>
-                </div>
+        <!-- Visão Geral -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6">📖 Visão Geral</h2>
+            <div class="prose prose-lg dark:prose-invert max-w-none">
+                <p class="text-lg text-neutral-700 dark:text-neutral-300 mb-4">
+                    Aprenda a criar experiências de aprendizagem personalizadas para cada aluno usando IA. Domine trilhas adaptativas, recomendação de conteúdo e diferenciação automatizada.
+                </p>
+                <p class='text-lg text-neutral-700 dark:text-neutral-300'><strong>Ao final deste módulo, você será capaz de:</strong></p>
+                <ul class='list-disc pl-6 space-y-2 text-neutral-700 dark:text-neutral-300'><li>Criar trilhas de aprendizagem adaptativas com IA</li><li>Implementar sistema de recomendação de recursos</li><li>Diferenciar conteúdo por nível/estilo automaticamente</li><li>Escalar personalização para 100+ alunos</li></ul>
+            </div>
+        </section>
 
-                <div class="mt-8 flex gap-4">
-                    <a href="../pdfs/modulo-2a-3.md" class="px-6 py-3 text-white rounded-lg hover:opacity-90 transition" style="background-color: #9b59b6" download>
-                        📥 Download Completo (MD/PDF)
-                    </a>
-                    <a href="../niveis/nivel-2a.html" class="px-6 py-3 border-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition" style="border-color: #9b59b6; color: #9b59b6">
-                        ← Voltar para Nível 2A
-                    </a>
+        <!-- Conteúdo Detalhado -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-8">📚 Conteúdo Detalhado</h2>
+            
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">🎯</span>
+                    <span>3 Dimensões da Personalização</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-4">### 1. Personalização de Ritmo
+<strong>O que:</strong> Cada aluno avança na sua velocidade
+<strong>Como:</strong> IA detecta domínio e libera próximo módulo
+### 2. Personalização de Conteúdo
+<strong>O que:</strong> Materiais adaptados ao nível
+<strong>Como:</strong> IA gera versões fácil/média/difícil
+### 3. Personalização de Estilo
+<strong>O que:</strong> Formato preferido (vídeo/texto/áudio)
+<strong>Como:</strong> IA recomenda baseado em histórico
+---</p>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-6 text-center">
-            <p>© 2025 SuperProfessores | Licença MIT</p>
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">📌</span>
+                    <span>🛤️ Trilhas Adaptativas</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <strong>Prompt NotebookLM + Claude:</strong>
+``<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+# Etapa 1: Estruturar trilha base
+Crie trilha de aprendizagem sobre [TEMA] com 10 módulos:
+<ul class="space-y-2 list-disc pl-6">
+<li>3 fundamentos</li>
+<li>4 intermediários</li>
+<li>3 avançados</li>
+</ul>
+Para cada módulo:
+<ul class="space-y-2 list-disc pl-6">
+<li>Pré-requisitos</li>
+<li>Objetivos</li>
+<li>Tempo estimado</li>
+<li>Recursos (vídeo, leitura, prática)</li>
+</ul>
+# Etapa 2: Criar versões diferenciadas
+Para cada módulo, gere 3 versões:
+1. Simplificada (iniciante absoluto)
+2. Padrão (conhecimento básico)
+3. Avançada (já domina conceitos base)
+# Etapa 3: Definir regras de adaptação
+Se aluno errar quiz do módulo X > 2x:
+→ Redirecionar para versão simplificada
+→ Oferecer material de reforço
+→ Sugerir tutoria com professor
+</code>``
+---
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">📦</span>
+                    <span>Sistema de Recomendação</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-4">### Como Funciona:
+1. <strong>Input:</strong> Histórico de interação do aluno (cliques, tempo, quiz)
+2. <strong>Processamento:</strong> IA identifica lacunas e interesses
+3. <strong>Output:</strong> Lista de 5 recursos recomendados
+### Implementação Simples:
+<strong>Prompt Gemini:</strong>
+``<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+Baseado neste perfil de aluno:
+<ul class="space-y-2 list-disc pl-6">
+<li>Completou: [Módulos X, Y, Z]</li>
+<li>Tempo médio: [15 min/módulo]</li>
+<li>Quiz: [Acertos 70%]</li>
+<li>Interesse demonstrado: [Tópicos A, B]</li>
+<li>Estilo preferido: [Vídeo 60%, Texto 40%]</li>
+</ul>
+Recomende 5 próximos recursos:
+1. [Título] - [Tipo] - [Duração] - [Por que?]
+2. ...
+Critérios:
+<ul class="space-y-2 list-disc pl-6">
+<li>Preencher lacunas identificadas</li>
+<li>Respeitar estilo preferido</li>
+<li>Aumentar dificuldade gradualmente</li>
+</ul>
+</code>``
+---</p>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">🎨</span>
+                    <span>Diferenciação Automática</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-4">### Ferramentas:
+<ul class="space-y-2 list-disc pl-6">
+<li><strong>Claude:</strong> Simplificar textos acadêmicos</li>
+<li><strong>ChatGPT:</strong> Criar analogias para diferentes contextos</li>
+<li><strong>Gemini:</strong> Traduzir conceitos para múltiplas linguagens</li>
+</ul>
+### Exemplo Prático:
+<strong>Conceito:</strong> Fotossíntese
+<strong>3 Versões Geradas por IA:</strong>
+<strong>Iniciante (8-10 anos):</strong>
+> "Fotossíntese é como plantas fazem comida usando luz do sol. É tipo cozinhar, mas a receita usa sol, água e ar!"
+<strong>Intermediário (11-14 anos):</strong>
+> "Fotossíntese é o processo onde plantas convertem energia luminosa em glicose. Requer CO2 + H2O + Luz → C6H12O6 + O2."
+<strong>Avançado (15+ anos):</strong>
+> "Fotossíntese oxigênica ocorre em dois estágios: reações luminosas (fotossistemas I e II) e ciclo de Calvin (fixação de carbono via RuBisCO)."
+---</p>
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/10 dark:to-purple-900/10 rounded-xl p-8 text-center border-2 border-dashed border-module-color">
+                <p class="text-lg font-semibold text-neutral-700 dark:text-neutral-300 mb-2">
+                    📚 Conteúdo Completo
+                </p>
+                <p class="text-neutral-600 dark:text-neutral-400 mb-4">
+                    Faça download do material completo em Markdown para acessar todos os tópicos, exemplos, prompts e atividades detalhadas.
+                </p>
+                <a href="../pdfs/modulo-2a-3.md" download class="inline-block px-6 py-3 bg-module-color text-white rounded-lg font-semibold hover:opacity-90 transition-colors">
+                    📄 Baixar Material Completo (MD)
+                </a>
+            </div>
+        </section>
+
+        <!-- Recursos -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6">📦 Recursos do Módulo</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <span>📹</span>
+                        <span>Videoaulas</span>
+                    </h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                        Aulas detalhadas sobre cada tópico do módulo
+                    </p>
+                </div>
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <span>💬</span>
+                        <span>Práticas</span>
+                    </h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                        Atividades hands-on com projetos reais
+                    </p>
+                </div>
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <span>✅</span>
+                        <span>Avaliação</span>
+                    </h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                        Quizzes e projetos para certificação
+                    </p>
+                </div>
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <span>📚</span>
+                        <span>Referências</span>
+                    </h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                        Materiais complementares selecionados
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navegação -->
+        <section class="flex justify-between items-center pt-8 border-t border-neutral-200 dark:border-neutral-700">
+            <a href="../niveis/nivel-2a.html" class="px-6 py-3 bg-neutral-200 dark:bg-neutral-700 rounded-lg font-semibold hover:bg-neutral-300 dark:hover:bg-neutral-600 transition-colors">
+                ← Voltar ao Nível 2A
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-neutral-900 dark:bg-black text-neutral-300 py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2025 SuperProfessores. Licença MIT.</p>
         </div>
     </footer>
 
+    <script src="../js/app.js"></script>
 </body>
 </html>

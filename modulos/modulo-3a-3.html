@@ -1,81 +1,703 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo 3A.3: Projeto de Certificação | SuperProfessores</title>
+    <title>Módulo 3A.3: Projeto de Certificação - Professor 2.0 | SuperProfessores</title>
+    <meta name="description" content="Projeto final integrador onde você demonstra domínio completo das competências do programa. Crie, implemente e documente uma transformação educacional">
+
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{'module':'#8e44ad'}}}}</script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        'trilha-a': '#9b59b6',
+                        'trilha-b': '#10B981',
+                        'module-color': '#8e44ad',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            transition: background-color 200ms ease-in-out, border-color 200ms ease-in-out, color 200ms ease-in-out;
+        }
+        .preload * {
+            transition: none !important;
+        }
+    </style>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-    
-    <nav class="bg-white dark:bg-gray-800 shadow-sm">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <a href="../index.html" class="text-2xl font-bold" style="color: #8e44ad">SuperProfessores</a>
-                <a href="../niveis/nivel-3a.html" class="text-gray-600 dark:text-gray-300 hover:text-module">← Voltar</a>
+<body class="preload bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/90 dark:bg-neutral-800/90 backdrop-blur-sm border-b border-neutral-200 dark:border-neutral-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../index.html" class="text-2xl font-bold bg-gradient-to-r from-primary to-trilha-a bg-clip-text text-transparent">
+                        🎓 SuperProfessores
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="../index.html" class="text-neutral-700 dark:text-neutral-300 hover:text-primary font-medium">Início</a>
+                    <a href="../niveis/nivel-3a.html" class="text-neutral-700 dark:text-neutral-300 hover:text-primary font-medium">Nível 3A</a>
+                    <a href="https://github.com/inematds/SuperProf" target="_blank" class="text-neutral-700 dark:text-neutral-300 hover:text-primary font-medium">GitHub</a>
+                    <button id="theme-toggle" class="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600">
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
 
-    <section class="py-16 text-white" style="background: linear-gradient(to right, #8e44ad, #6366f1);">
-        <div class="container mx-auto px-6">
-            <h1 class="text-4xl font-bold mb-4">Módulo 3A.3: Projeto de Certificação</h1>
-            <p class="text-xl opacity-90">Projeto integrador final, portfólio profissional, apresentação e defesa, certificação Professor 2.0</p>
+    <!-- Breadcrumb -->
+    <div class="bg-white dark:bg-neutral-800 border-b border-neutral-200 dark:border-neutral-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <nav class="flex text-sm" aria-label="Breadcrumb">
+                <a href="../index.html" class="text-primary hover:text-blue-700">Início</a>
+                <span class="mx-2 text-neutral-400">/</span>
+                <a href="../niveis/nivel-3a.html" class="text-primary hover:text-blue-700">Trilha A</a><span class="mx-2 text-neutral-400">/</span><a href="../niveis/nivel-3a.html" class="text-primary hover:text-blue-700">Nível 3A</a><span class="mx-2 text-neutral-400">/</span><span class="text-neutral-600 dark:text-neutral-400">Módulo</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="bg-gradient-to-r from-module-color to-purple-700 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+            <span class="inline-block px-4 py-2 bg-white/20 rounded-full text-sm font-semibold mb-4">Especialista</span>
+            <h1 class="text-4xl lg:text-5xl font-bold mb-4">Módulo 3A.3: Projeto de Certificação - Professor 2.0</h1>
+            <p class="text-xl text-purple-100 max-w-3xl">
+                Projeto final integrador onde você demonstra domínio completo das competências do programa. Crie, implemente e documente uma transformação educacional real usando IA, gerando portfólio profissional e certificação reconhecida.
+            </p>
         </div>
     </section>
 
-    <section class="container mx-auto px-6 py-12">
-        <div class="max-w-4xl mx-auto">
-            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 mb-8">
-                <h2 class="text-2xl font-bold mb-4">📖 Visão Geral</h2>
-                <p class="text-gray-600 dark:text-gray-400 mb-6">Projeto integrador final, portfólio profissional, apresentação e defesa, certificação Professor 2.0</p>
-                
-                <div class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-4 mb-6">
-                    <p class="text-sm">
-                        📥 Para acessar o conteúdo completo com todos os detalhes, exemplos, prompts e recursos, 
-                        <a href="../pdfs/modulo-3a-3.md" class="font-bold underline" style="color: #8e44ad" download>baixe o arquivo MD</a>.
-                    </p>
-                </div>
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-                <h2 class="text-2xl font-bold mb-4">📚 Recursos</h2>
-                <div class="space-y-3">
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">📹</span>
-                        <span>Videoaulas interativas</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">💬</span>
-                        <span>Atividades práticas hands-on</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">✅</span>
-                        <span>Avaliações e projetos</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">📖</span>
-                        <span>Referências e leituras complementares</span>
-                    </div>
-                </div>
+        <!-- Visão Geral -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6">📖 Visão Geral</h2>
+            <div class="prose prose-lg dark:prose-invert max-w-none">
+                <p class="text-lg text-neutral-700 dark:text-neutral-300 mb-4">
+                    Projeto final integrador onde você demonstra domínio completo das competências do programa. Crie, implemente e documente uma transformação educacional real usando IA, gerando portfólio profissional e certificação reconhecida.
+                </p>
+                <p class='text-lg text-neutral-700 dark:text-neutral-300'><strong>Ao final deste módulo, você será capaz de:</strong></p>
+                <ul class='list-disc pl-6 space-y-2 text-neutral-700 dark:text-neutral-300'><li>Sintetizar aprendizados de todos os 11 módulos anteriores</li><li>Implementar projeto real com impacto mensurável</li><li>Documentar processo e resultados de forma profissional</li><li>Apresentar e defender escolhas pedagógicas e técnicas</li><li>Obter certificação "Professor 2.0 IA Educator"</li></ul>
+            </div>
+        </section>
 
-                <div class="mt-8 flex gap-4">
-                    <a href="../pdfs/modulo-3a-3.md" class="px-6 py-3 text-white rounded-lg hover:opacity-90 transition" style="background-color: #8e44ad" download>
-                        📥 Download Completo (MD/PDF)
-                    </a>
-                    <a href="../niveis/nivel-3a.html" class="px-6 py-3 border-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition" style="border-color: #8e44ad; color: #8e44ad">
-                        ← Voltar para Nível 3A
-                    </a>
+        <!-- Conteúdo Detalhado -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-8">📚 Conteúdo Detalhado</h2>
+            
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">🎯</span>
+                    <span>Estrutura do Projeto Final</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-4">### Opções de Projeto (Escolha 1):
+<strong>Opção A: Curso Aumentado por IA (Redesign Completo)</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Pegue curso/disciplina existente</li>
+<li>Redesenhe usando IA em todas as fases (ADDIE)</li>
+<li>Implemente com turma real (mínimo 10 alunos)</li>
+<li>Documente processo e resultados</li>
+</ul>
+<strong>Opção B: Programa de Capacitação Institucional</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Desenhe e conduza capacitação em IA para colegas</li>
+<li>Mínimo 10 participantes, 12h de conteúdo</li>
+<li>Inclua: diagnóstico, trilha personalizada, avaliação</li>
+<li>Meça impacto na prática docente</li>
+</ul>
+<strong>Opção C: Comunidade de Prática de IA na Educação</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Crie e facilite comunidade por 3 meses</li>
+<li>Mínimo 20 membros ativos</li>
+<li>Produza biblioteca de 50+ recursos curados</li>
+<li>Documente evolução e engajamento</li>
+</ul>
+<strong>Opção D: Inovação Pedagógica com IA (Projeto Livre)</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Proponha solução original para problema real</li>
+<li>Deve integrar ≥3 conceitos de módulos diferentes</li>
+<li>Requer aprovação prévia do orientador</li>
+<li>Foco em escalabilidade e impacto</li>
+</ul>
+---</p>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-6 text-center">
-            <p>© 2025 SuperProfessores | Licença MIT</p>
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">📌</span>
+                    <span>📋 Componentes Obrigatórios do Projeto</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-4">### 1. Proposta de Projeto (Semana 1-2)
+<strong>Documento de Proposta (3-5 páginas):</strong>
+<strong>Estrutura:</strong>
+<strong>1.1 Contexto e Problema</strong>
+``<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+<ul class="space-y-2 list-disc pl-6">
+<li>Descreva instituição/contexto</li>
+<li>Identifique problema específico</li>
+<li>Dados: quantifique o problema (tempo perdido, baixo engajamento, etc)</li>
+<li>Por que este problema importa?</li>
+</ul>
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+<strong>1.2 Objetivos SMART</strong>
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+Específico: [O que exatamente vai fazer?]
+Mensurável: [Como vai medir sucesso?]
+Atingível: [É realista em 3 meses?]
+Relevante: [Alinha com objetivos institucionais?]
+Temporal: [Cronograma detalhado]
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+<strong>1.3 Fundamentação Teórica</strong>
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+<ul class="space-y-2 list-disc pl-6">
+<li>Quais conceitos dos módulos 1-11 você vai aplicar?</li>
+<li>Cite pelo menos 5 referências (módulos + literatura adicional)</li>
+<li>Como teoria informa sua prática?</li>
+</ul>
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+<strong>1.4 Metodologia</strong>
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+<ul class="space-y-2 list-disc pl-6">
+<li>Participantes: quantos? perfil?</li>
+<li>Ferramentas IA: quais? por que?</li>
+<li>Fases do projeto: timeline visual (Gantt)</li>
+<li>Riscos: o que pode dar errado? mitigação?</li>
+</ul>
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+<strong>1.5 Plano de Avaliação</strong>
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+<ul class="space-y-2 list-disc pl-6">
+<li>Métricas quantitativas (3-5)</li>
+<li>Métrica qualitativa (entrevistas, observação)</li>
+<li>Instrumentos: surveys, analytics, etc</li>
+<li>Baseline: dados antes do projeto</li>
+</ul>
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+<strong>Prompt para Refinar Proposta:</strong>
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+Revise esta proposta de projeto educacional:
+[Colar proposta]
+Analise:
+1. Objetivos são SMART? Se não, como melhorar?
+2. Escopo é realista para 3 meses? Sugestões?
+3. Metodologia está clara e detalhada?
+4. Falta algum componente crítico?
+5. Avaliação captura impacto real?
+Dê feedback construtivo (tom: mentor experiente)
+Formato: Comentários numerados + proposta revisada
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+---
+### 2. Implementação (Semana 3-10)
+<strong>Diário de Bordo (Semanal):</strong>
+<strong>Template de Entrada Semanal:</strong>
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+📅 Semana X - [Data]
+✅ Realizações:
+<ul class="space-y-2 list-disc pl-6">
+<li>[O que foi feito]</li>
+<li>[Marcos atingidos]</li>
+</ul>
+📊 Dados Coletados:
+<ul class="space-y-2 list-disc pl-6">
+<li>[Métricas atualizadas]</li>
+<li>[Observações qualitativas]</li>
+</ul>
+💡 Aprendizados:
+<ul class="space-y-2 list-disc pl-6">
+<li>[O que funcionou bem]</li>
+<li>[O que não funcionou]</li>
+<li>[Ajustes necessários]</li>
+</ul>
+🤖 Uso de IA:
+<ul class="space-y-2 list-disc pl-6">
+<li>[Ferramentas utilizadas]</li>
+<li>[Prompts-chave (3-5 exemplos)]</li>
+<li>[Tempo economizado estimado]</li>
+</ul>
+⚠️ Desafios:
+<ul class="space-y-2 list-disc pl-6">
+<li>[Obstáculos encontrados]</li>
+<li>[Como foram superados]</li>
+</ul>
+📅 Próxima Semana:
+<ul class="space-y-2 list-disc pl-6">
+<li>[Plano de ação]</li>
+</ul>
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+<strong>IA como Copiloto do Projeto:</strong>
+<strong>Prompt para Check-in Semanal:</strong>
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+Sou professor executando projeto de transformação digital.
+Situação atual:
+<ul class="space-y-2 list-disc pl-6">
+<li>Semana: 5 de 10</li>
+<li>Objetivo: [Resumir]</li>
+<li>Progresso: [Listar conquistas]</li>
+<li>Obstáculos: [Listar]</li>
+<li>Métricas: [Dados atuais vs meta]</li>
+</ul>
+Tarefa:
+1. Avalio progresso: no caminho certo? atrasado? adiantado?
+2. Identifique riscos emergentes
+3. Sugira 3 ações prioritárias para próxima semana
+4. Recomende ajustes no plano se necessário
+Tom: Coach executivo
+Formato: Bullet points acionáveis
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+---
+### 3. Documentação Final (Semana 11-12)
+<strong>Relatório de Projeto (15-25 páginas):</strong>
+<strong>Estrutura Obrigatória:</strong>
+<strong>Capa:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Título do projeto</li>
+<li>Nome completo</li>
+<li>Instituição</li>
+<li>Data</li>
+<li>Logo SuperProfessores</li>
+</ul>
+<strong>Resumo Executivo (1 página):</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Problema, solução, resultados em 300 palavras</li>
+<li>Para executivos que têm 2 minutos</li>
+</ul>
+<strong>Capítulo 1: Introdução</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Contexto e motivação</li>
+<li>Objetivos do projeto</li>
+<li>Estrutura do documento</li>
+</ul>
+<strong>Capítulo 2: Fundamentação</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Revisão de conceitos relevantes (dos módulos)</li>
+<li>Estado da arte (o que outros fizeram)</li>
+<li>Como seu projeto se diferencia</li>
+</ul>
+<strong>Capítulo 3: Metodologia</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Detalhamento de participantes</li>
+<li>Ferramentas e recursos utilizados</li>
+<li>Procedimentos passo-a-passo</li>
+<li>Instrumentos de coleta de dados</li>
+</ul>
+<strong>Capítulo 4: Implementação</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Narrativa do processo (baseado no diário de bordo)</li>
+<li>Ajustes feitos no caminho e por quê</li>
+<li>Exemplos concretos (screenshots, transcrições)</li>
+</ul>
+<strong>Capítulo 5: Resultados</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Dados quantitativos (gráficos, tabelas)</li>
+<li>Análise qualitativa (temas emergentes)</li>
+<li>Comparação antes/depois</li>
+<li>Testes de significância (se aplicável)</li>
+</ul>
+<strong>Capítulo 6: Discussão</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Interpretação dos resultados</li>
+<li>Alinhamento com objetivos</li>
+<li>Limitações do estudo</li>
+<li>Comparação com literatura</li>
+</ul>
+<strong>Capítulo 7: Conclusões e Recomendações</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Síntese de aprendizados</li>
+<li>Implicações práticas</li>
+<li>Próximos passos</li>
+<li>Recomendações para replicação</li>
+</ul>
+<strong>Referências</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Mínimo 15 (módulos + artigos + livros)</li>
+<li>Formato APA ou ABNT</li>
+</ul>
+<strong>Apêndices</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Instrumentos (surveys, roteiros)</li>
+<li>Dados brutos (amostra)</li>
+<li>Prompts utilizados (top 10)</li>
+<li>Material de apoio criado</li>
+</ul>
+---
+### 4. Portfólio Digital (Entrega Final)
+<strong>Componentes:</strong>
+<strong>4.1 Site de Projeto (1 página)</strong>
+Pode usar: Google Sites, Notion, Wix, WordPress
+<strong>Seções:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Hero: Título + descrição 1 frase + imagem impactante</li>
+<li>Problema e Solução (visual)</li>
+<li>Processo (timeline com fotos)</li>
+<li>Resultados (infográficos)</li>
+<li>Depoimentos (2-3 participantes)</li>
+<li>Recursos (downloads: planos, prompts, templates)</li>
+<li>Sobre você (bio + contato)</li>
+</ul>
+<strong>Prompt para Criar Conteúdo do Site:</strong>
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+Crie conteúdo para site de projeto educacional:
+Projeto: [Título e descrição]
+Resultados: [Principais números]
+Público-alvo do site: [Educadores que querem replicar]
+Gere:
+1. Hero headline (10 palavras, impactante)
+2. Descrição do problema (100 palavras, empática)
+3. Descrição da solução (150 palavras, clara)
+4. Seção "Como Funciona" (5 passos visuais)
+5. Seção de resultados (3 métricas + interpretação)
+6. CTA (call-to-action): que ação você quer que visitem tomem?
+Tom: Inspirador, acessível, baseado em dados
+Formato: HTML markdown
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+<strong>4.2 Vídeo de Apresentação (5-7 min)</strong>
+<strong>Roteiro Sugerido:</strong>
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+0:00-0:30 | GANCHO
+<ul class="space-y-2 list-disc pl-6">
+<li>Estatística impactante ou história pessoal</li>
+<li>"Neste projeto, eu..."</li>
+</ul>
+0:30-1:30 | PROBLEMA
+<ul class="space-y-2 list-disc pl-6">
+<li>Contexto e desafio</li>
+<li>Por que importa</li>
+</ul>
+1:30-3:00 | SOLUÇÃO
+<ul class="space-y-2 list-disc pl-6">
+<li>O que você fez (overview)</li>
+<li>Como IA foi usada (exemplos visuais)</li>
+</ul>
+3:00-5:00 | RESULTADOS
+<ul class="space-y-2 list-disc pl-6">
+<li>Dados (gráficos animados)</li>
+<li>Depoimentos (clipes curtos)</li>
+</ul>
+5:00-6:30 | APRENDIZADOS
+<ul class="space-y-2 list-disc pl-6">
+<li>O que deu certo</li>
+<li>O que você faria diferente</li>
+<li>Conselho para quem quer replicar</li>
+</ul>
+6:30-7:00 | ENCERRAMENTO
+<ul class="space-y-2 list-disc pl-6">
+<li>Resumo 1 frase</li>
+<li>Contato e recursos</li>
+</ul>
+</code>``
+<strong>Ferramentas:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Gravação: Loom, OBS</li>
+<li>Edição: DaVinci Resolve (grátis), iMovie, CapCut</li>
+<li>IA para roteiro: Claude (refinamento)</li>
+<li>IA para legendas: Otter.ai</li>
+</ul>
+<strong>4.3 Biblioteca de Recursos (Download Pack)</strong>
+<strong>Incluir:</strong>
+1. <strong>Plano de aula/curso completo</strong> (doc editável)
+2. <strong>Top 20 prompts usados</strong> (com contexto)
+3. <strong>Templates</strong> (rubricas, surveys, etc)
+4. <strong>Guia de replicação</strong> (1-pager: como outro professor faria)
+5. <strong>Dados anonimizados</strong> (para transparência)
+---</p>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">🎤</span>
+                    <span>Apresentação e Defesa (Semana 13)</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-4">### Formato: Apresentação de 15 min + Q&A de 15 min
+<strong>Banca Avaliadora:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>1 facilitador do SuperProfessores</li>
+<li>1 par (outro aluno do programa)</li>
+<li>1 especialista externo (se possível)</li>
+</ul>
+<strong>Estrutura da Apresentação:</strong>
+<strong>Slides 1-2: Contexto</strong> (2 min)
+<ul class="space-y-2 list-disc pl-6">
+<li>Quem você é, onde trabalha</li>
+<li>Problema identificado</li>
+<li>Por que decidiu tacklear isso</li>
+</ul>
+<strong>Slides 3-5: Projeto</strong> (4 min)
+<ul class="space-y-2 list-disc pl-6">
+<li>Objetivos</li>
+<li>Metodologia (visual: diagrama de fluxo)</li>
+<li>Ferramentas IA utilizadas (logos + exemplo de uso)</li>
+</ul>
+<strong>Slides 6-9: Resultados</strong> (6 min)
+<ul class="space-y-2 list-disc pl-6">
+<li>Dados quantitativos (gráficos grandes)</li>
+<li>Casos qualitativos (1-2 histórias)</li>
+<li>Depoimentos (quotes com fotos)</li>
+</ul>
+<strong>Slide 10: Aprendizados</strong> (2 min)
+<ul class="space-y-2 list-disc pl-6">
+<li>Top 3 insights</li>
+<li>O que você faria diferente</li>
+</ul>
+<strong>Slide 11: Conclusão</strong> (1 min)
+<ul class="space-y-2 list-disc pl-6">
+<li>Resumo em 1 frase</li>
+<li>Próximos passos</li>
+<li>Chamada para contato</li>
+</ul>
+<strong>Perguntas Típicas da Banca:</strong>
+1. "Por que escolheu esta ferramenta IA e não outra?"
+2. "Como garantiu ética e privacidade?"
+3. "Resultados são sustentáveis a longo prazo?"
+4. "Maior desafio e como superou?"
+5. "Conselho #1 para alguém replicando?"
+<strong>Prompt para Preparação:</strong>
+``<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+Simule banca avaliadora de projeto educacional.
+Projeto: [Resumo]
+Resultados: [Principais]
+Gere:
+1. 10 perguntas desafiadoras que banca faria
+2. Para cada pergunta, sugira estrutura de resposta
+3. Identifique pontos fracos do projeto que podem ser questionados
+4. Sugira como defender cada ponto fraco
+Tom: Rigoroso mas construtivo
+Formato: Q&A estruturado
+</code>``
+---</p>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">📊</span>
+                    <span>Critérios de Avaliação</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-4">### Rubrica de Avaliação (Total: 100 pontos)
+<strong>1. Proposta e Planejamento (15 pontos)</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Clareza dos objetivos (5)</li>
+<li>Fundamentação teórica (5)</li>
+<li>Viabilidade do plano (5)</li>
+</ul>
+<strong>2. Implementação (25 pontos)</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Execução conforme plano (10)</li>
+<li>Uso apropriado de IA (10)</li>
+<li>Adaptações e resolução de problemas (5)</li>
+</ul>
+<strong>3. Documentação (20 pontos)</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Qualidade do relatório (10)</li>
+<li>Rigor metodológico (5)</li>
+<li>Clareza e organização (5)</li>
+</ul>
+<strong>4. Resultados e Impacto (25 pontos)</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Atingimento de objetivos (10)</li>
+<li>Evidências de impacto (10)</li>
+<li>Análise crítica (5)</li>
+</ul>
+<strong>5. Apresentação e Defesa (15 pontos)</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Qualidade da apresentação (7)</li>
+<li>Capacidade de argumentação (5)</li>
+<li>Profissionalismo (3)</li>
+</ul>
+<strong>Critério de Aprovação:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>≥ 85 pontos: Certificação com Distinção</li>
+<li>70-84 pontos: Certificação Regular</li>
+<li>< 70 pontos: Revisão e resubmissão necessária</li>
+</ul>
+---</p>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">🏆</span>
+                    <span>Certificação "Professor 2.0 - IA Educator"</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-4">### O que é Certificado:
+<strong>Badge Digital Inclui:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Nome completo</li>
+<li>Data de conclusão</li>
+<li>Carga horária total: 180h (Trilha A completa)</li>
+<li>Competências certificadas (lista de 12)</li>
+<li>Número de certificado único (verificável)</li>
+<li>QR code para validação online</li>
+</ul>
+<strong>Competências Certificadas:</strong>
+1. ✅ Fundamentos de IA na Educação
+2. ✅ Prompt Engineering Avançado
+3. ✅ Design Instrucional Aumentado por IA
+4. ✅ Avaliação Formativa Assistida
+5. ✅ Personalização em Escala
+6. ✅ Gamificação com IA
+7. ✅ Facilitação de Comunidades
+8. ✅ Redesign Curricular
+9. ✅ Liderança em Transformação Digital
+10. ✅ Gestão de Mudança Educacional
+11. ✅ Ética em IA Educacional
+12. ✅ Implementação e Avaliação de Projetos
+<strong>Onde Usar o Certificado:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>LinkedIn (Add to profile → Licenses & Certifications)</li>
+<li>CV/Currículo profissional</li>
+<li>Email signature (badge pequeno)</li>
+<li>Site pessoal/portfólio</li>
+<li>Candidaturas a vagas (diferencial competitivo)</li>
+</ul>
+---</p>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">💼</span>
+                    <span>Oportunidades Pós-Certificação</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-4">### Trajetórias Comuns:
+<strong>1. Especialista Interno</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Tornar-se referência em IA na sua instituição</li>
+<li>Liderar capacitações internas</li>
+<li>Consultor de projetos de colegas</li>
+</ul>
+<strong>2. Consultor Educacional</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Assessorar outras escolas/universidades</li>
+<li>Workshops e palestras</li>
+<li>Taxa horária: R$150-500/h (varia por experiência)</li>
+</ul>
+<strong>3. Criador de Conteúdo</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Blog/YouTube sobre IA na educação</li>
+<li>Cursos online próprios</li>
+<li>Parcerias com edtechs</li>
+</ul>
+<strong>4. Pesquisador</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Mestrado/Doutorado em Tecnologia Educacional</li>
+<li>Publicações em journals</li>
+<li>Participação em conferências (AIED, LAK, CSCL)</li>
+</ul>
+<strong>5. Edtech Empreendedor</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Criar produto/serviço baseado em aprendizados</li>
+<li>Aproveitar network do programa</li>
+<li>Pitch para investidores/aceleradoras</li>
+</ul>
+---</p>
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/10 dark:to-purple-900/10 rounded-xl p-8 text-center border-2 border-dashed border-module-color">
+                <p class="text-lg font-semibold text-neutral-700 dark:text-neutral-300 mb-2">
+                    📚 Conteúdo Completo
+                </p>
+                <p class="text-neutral-600 dark:text-neutral-400 mb-4">
+                    Faça download do material completo em Markdown para acessar todos os tópicos, exemplos, prompts e atividades detalhadas.
+                </p>
+                <a href="../pdfs/modulo-3a-3.md" download class="inline-block px-6 py-3 bg-module-color text-white rounded-lg font-semibold hover:opacity-90 transition-colors">
+                    📄 Baixar Material Completo (MD)
+                </a>
+            </div>
+        </section>
+
+        <!-- Recursos -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6">📦 Recursos do Módulo</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <span>📹</span>
+                        <span>Videoaulas</span>
+                    </h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                        Aulas detalhadas sobre cada tópico do módulo
+                    </p>
+                </div>
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <span>💬</span>
+                        <span>Práticas</span>
+                    </h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                        Atividades hands-on com projetos reais
+                    </p>
+                </div>
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <span>✅</span>
+                        <span>Avaliação</span>
+                    </h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                        Quizzes e projetos para certificação
+                    </p>
+                </div>
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <span>📚</span>
+                        <span>Referências</span>
+                    </h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                        Materiais complementares selecionados
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navegação -->
+        <section class="flex justify-between items-center pt-8 border-t border-neutral-200 dark:border-neutral-700">
+            <a href="../niveis/nivel-3a.html" class="px-6 py-3 bg-neutral-200 dark:bg-neutral-700 rounded-lg font-semibold hover:bg-neutral-300 dark:hover:bg-neutral-600 transition-colors">
+                ← Voltar ao Nível 3A
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-neutral-900 dark:bg-black text-neutral-300 py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2025 SuperProfessores. Licença MIT.</p>
         </div>
     </footer>
 
+    <script src="../js/app.js"></script>
 </body>
 </html>

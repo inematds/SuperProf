@@ -1,81 +1,407 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo 2B.4: Projeto Técnico | SuperProfessores</title>
+    <title>Módulo 2B.4: Projeto Técnico - Educador de IA | SuperProfessores</title>
+    <meta name="description" content="Projeto final integrador da Trilha B (Técnico) onde você cria uma aplicação funcional de IA para educação. Demonstre domínio de LLMs, RAG, agentes e d">
+
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script>tailwind.config={darkMode:'class',theme:{extend:{colors:{'module':'#10B981'}}}}</script>
+
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#3B82F6',
+                        'trilha-a': '#9b59b6',
+                        'trilha-b': '#10B981',
+                        'module-color': '#10B981',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            transition: background-color 200ms ease-in-out, border-color 200ms ease-in-out, color 200ms ease-in-out;
+        }
+        .preload * {
+            transition: none !important;
+        }
+    </style>
 </head>
-<body class="bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-    
-    <nav class="bg-white dark:bg-gray-800 shadow-sm">
-        <div class="container mx-auto px-6 py-4">
-            <div class="flex items-center justify-between">
-                <a href="../index.html" class="text-2xl font-bold" style="color: #10B981">SuperProfessores</a>
-                <a href="../niveis/nivel-2b.html" class="text-gray-600 dark:text-gray-300 hover:text-module">← Voltar</a>
+<body class="preload bg-neutral-50 dark:bg-neutral-900 text-neutral-900 dark:text-neutral-100">
+
+    <!-- Navigation -->
+    <nav class="sticky top-0 z-50 bg-white/90 dark:bg-neutral-800/90 backdrop-blur-sm border-b border-neutral-200 dark:border-neutral-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <a href="../index.html" class="text-2xl font-bold bg-gradient-to-r from-primary to-trilha-a bg-clip-text text-transparent">
+                        🎓 SuperProfessores
+                    </a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="../index.html" class="text-neutral-700 dark:text-neutral-300 hover:text-primary font-medium">Início</a>
+                    <a href="../niveis/nivel-2b.html" class="text-neutral-700 dark:text-neutral-300 hover:text-primary font-medium">Nível 2B</a>
+                    <a href="https://github.com/inematds/SuperProf" target="_blank" class="text-neutral-700 dark:text-neutral-300 hover:text-primary font-medium">GitHub</a>
+                    <button id="theme-toggle" class="p-2 rounded-lg bg-neutral-100 dark:bg-neutral-700 hover:bg-neutral-200 dark:hover:bg-neutral-600">
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                        </svg>
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" fill-rule="evenodd" clip-rule="evenodd"></path>
+                        </svg>
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
 
-    <section class="py-16 text-white" style="background: linear-gradient(to right, #10B981, #6366f1);">
-        <div class="container mx-auto px-6">
-            <h1 class="text-4xl font-bold mb-4">Módulo 2B.4: Projeto Técnico</h1>
-            <p class="text-xl opacity-90">Projeto integrador: RAG avançado, agentes autônomos ou fine-tuning aplicado à educação</p>
+    <!-- Breadcrumb -->
+    <div class="bg-white dark:bg-neutral-800 border-b border-neutral-200 dark:border-neutral-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+            <nav class="flex text-sm" aria-label="Breadcrumb">
+                <a href="../index.html" class="text-primary hover:text-blue-700">Início</a>
+                <span class="mx-2 text-neutral-400">/</span>
+                <a href="../niveis/nivel-2b.html" class="text-primary hover:text-blue-700">Trilha B</a><span class="mx-2 text-neutral-400">/</span><a href="../niveis/nivel-2b.html" class="text-primary hover:text-blue-700">Nível 2B</a><span class="mx-2 text-neutral-400">/</span><span class="text-neutral-600 dark:text-neutral-400">Módulo</span>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Hero -->
+    <section class="bg-gradient-to-r from-module-color to-purple-700 py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
+            <span class="inline-block px-4 py-2 bg-white/20 rounded-full text-sm font-semibold mb-4">Técnico</span>
+            <h1 class="text-4xl lg:text-5xl font-bold mb-4">Módulo 2B.4: Projeto Técnico - Educador de IA</h1>
+            <p class="text-xl text-purple-100 max-w-3xl">
+                Projeto final integrador da Trilha B (Técnico) onde você cria uma aplicação funcional de IA para educação. Demonstre domínio de LLMs, RAG, agentes e deploy em produção, gerando portfólio técnico e certificação.
+            </p>
         </div>
     </section>
 
-    <section class="container mx-auto px-6 py-12">
-        <div class="max-w-4xl mx-auto">
-            <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-8 mb-8">
-                <h2 class="text-2xl font-bold mb-4">📖 Visão Geral</h2>
-                <p class="text-gray-600 dark:text-gray-400 mb-6">Projeto integrador: RAG avançado, agentes autônomos ou fine-tuning aplicado à educação</p>
-                
-                <div class="bg-blue-50 dark:bg-blue-900/20 border-l-4 border-blue-500 p-4 mb-6">
-                    <p class="text-sm">
-                        📥 Para acessar o conteúdo completo com todos os detalhes, exemplos, prompts e recursos, 
-                        <a href="../pdfs/modulo-2b-4.md" class="font-bold underline" style="color: #10B981" download>baixe o arquivo MD</a>.
-                    </p>
-                </div>
+    <!-- Main Content -->
+    <main class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
-                <h2 class="text-2xl font-bold mb-4">📚 Recursos</h2>
-                <div class="space-y-3">
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">📹</span>
-                        <span>Videoaulas interativas</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">💬</span>
-                        <span>Atividades práticas hands-on</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">✅</span>
-                        <span>Avaliações e projetos</span>
-                    </div>
-                    <div class="flex items-center gap-3">
-                        <span class="text-2xl">📖</span>
-                        <span>Referências e leituras complementares</span>
-                    </div>
-                </div>
+        <!-- Visão Geral -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6">📖 Visão Geral</h2>
+            <div class="prose prose-lg dark:prose-invert max-w-none">
+                <p class="text-lg text-neutral-700 dark:text-neutral-300 mb-4">
+                    Projeto final integrador da Trilha B (Técnico) onde você cria uma aplicação funcional de IA para educação. Demonstre domínio de LLMs, RAG, agentes e deploy em produção, gerando portfólio técnico e certificação.
+                </p>
+                <p class='text-lg text-neutral-700 dark:text-neutral-300'><strong>Ao final deste módulo, você será capaz de:</strong></p>
+                <ul class='list-disc pl-6 space-y-2 text-neutral-700 dark:text-neutral-300'><li>Sintetizar conhecimentos de módulos 1, 2B.1, 2B.2 e 2B.3</li><li>Implementar aplicação completa (backend + frontend + deploy)</li><li>Documentar código e arquitetura tecnicamente</li><li>Testar com usuários reais e medir impacto</li><li>Obter certificação "Educador de IA Nível Técnico"</li></ul>
+            </div>
+        </section>
 
-                <div class="mt-8 flex gap-4">
-                    <a href="../pdfs/modulo-2b-4.md" class="px-6 py-3 text-white rounded-lg hover:opacity-90 transition" style="background-color: #10B981" download>
-                        📥 Download Completo (MD/PDF)
-                    </a>
-                    <a href="../niveis/nivel-2b.html" class="px-6 py-3 border-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-700 transition" style="border-color: #10B981; color: #10B981">
-                        ← Voltar para Nível 2B
-                    </a>
+        <!-- Conteúdo Detalhado -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-8">📚 Conteúdo Detalhado</h2>
+            
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">🎯</span>
+                    <span>Opções de Projeto</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-4">### Opção A: Sistema RAG Avançado
+<strong>Descrição:</strong> Base de conhecimento institucional com busca semântica, chat e analytics
+<strong>Requisitos Técnicos:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>✅ RAG com ≥100 documentos (PDFs, slides, vídeos transcritos)</li>
+<li>✅ Hybrid search (semantic + keyword)</li>
+<li>✅ Reranking de resultados</li>
+<li>✅ Citação de fontes com página/timestamp</li>
+<li>✅ Interface chat (Streamlit/Gradio)</li>
+<li>✅ Analytics: queries mais comuns, satisfação</li>
+</ul>
+<strong>Stack Sugerido:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Vector DB: ChromaDB ou Pinecone</li>
+<li>Embeddings: OpenAI ada-002 ou HuggingFace</li>
+<li>LLM: GPT-4 ou Claude 3</li>
+<li>Frontend: Streamlit</li>
+<li>Deploy: Streamlit Cloud ou Railway</li>
+</ul>
+<strong>Avaliação:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Qualidade do retrieval (Precision@5 >80%)</li>
+<li>Velocidade (resposta <3s)</li>
+<li>UX (survey de usuários >4/5)</li>
+</ul>
+---
+### Opção B: Agente Educacional Autônomo
+<strong>Descrição:</strong> Tutor/assistente que executa tarefas complexas com mínima supervisão
+<strong>Requisitos Técnicos:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>✅ Agente ReAct ou Plan-and-Execute</li>
+<li>✅ ≥5 ferramentas customizadas</li>
+<li>✅ Memória persistente (entre sessões)</li>
+<li>✅ Logging de raciocínio (observabilidade)</li>
+<li>✅ Tratamento de erros (loops, timeouts)</li>
+<li>✅ Avaliação de performance (A/B test)</li>
+</ul>
+<strong>Exemplos:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Tutor socrático de matemática</li>
+<li>Gerador de planos de aula completos</li>
+<li>Assistente de pesquisa acadêmica</li>
+<li>Corretor automatizado de redações</li>
+</ul>
+<strong>Stack Sugerido:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Framework: LangChain ou CrewAI</li>
+<li>LLM: GPT-4 (raciocínio) ou Claude 3</li>
+<li>Tools: APIs externas + funções Python</li>
+<li>Frontend: Gradio ou custom React</li>
+<li>Deploy: Railway ou AWS Lambda</li>
+</ul>
+<strong>Avaliação:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Taxa de sucesso em tarefas (>85%)</li>
+<li>Eficiência (passos até completar)</li>
+<li>Custo por tarefa (<$0.50)</li>
+</ul>
+---
+### Opção C: Fine-Tuning para Caso de Uso Específico
+<strong>Descrição:</strong> Modelo especializado em tarefa educacional nichada
+<strong>Requisitos Técnicos:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>✅ Dataset de treino (≥100 exemplos de qualidade)</li>
+<li>✅ Fine-tuning de modelo open-source (LLaMA, Mistral) ou GPT-3.5</li>
+<li>✅ Avaliação quantitativa (benchmark)</li>
+<li>✅ Comparação com modelo base</li>
+<li>✅ Deployment do modelo (API)</li>
+<li>✅ Documentação de reprodutibilidade</li>
+</ul>
+<strong>Exemplos:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Corretor de redações no estilo institucional</li>
+<li>Gerador de questões ENEM-like</li>
+<li>Tradutor de jargão científico para linguagem acessível</li>
+<li>Classificador de dúvidas (urgente/não-urgente, tópico)</li>
+</ul>
+<strong>Stack Sugerido:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Modelo: LLaMA 3 8B (via HuggingFace)</li>
+<li>Fine-tuning: LoRA ou QLoRA (eficiente)</li>
+<li>Treinamento: Google Colab (GPU grátis) ou Runpod</li>
+<li>Deploy: Hugging Face Spaces ou Modal</li>
+<li>Monitoramento: Weights & Biases</li>
+</ul>
+<strong>Avaliação:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Performance vs baseline (F1 score, BLEU, ROUGE)</li>
+<li>Análise de erros (qualitativa)</li>
+<li>Tempo de inferência (<2s)</li>
+</ul>
+---
+### Opção D: Multi-Agent System (Avançado)
+<strong>Descrição:</strong> Sistema com ≥3 agentes especializados trabalhando juntos
+<strong>Requisitos Técnicos:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>✅ 3-5 agentes com papéis distintos</li>
+<li>✅ Orquestração e comunicação entre agentes</li>
+<li>✅ Estado compartilhado (shared memory)</li>
+<li>✅ Handling de conflitos e consenso</li>
+<li>✅ Observabilidade (dashboards de atividade)</li>
+<li>✅ Testes de integração</li>
+</ul>
+<strong>Exemplo:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li><strong>Sistema de Criação de Curso:</strong></li>
+</ul>
+  - Agente Pesquisador (busca conteúdo)
+  - Agente Designer (estrutura)
+  - Agente Criador (gera materiais)
+  - Agente Revisor (valida qualidade)
+<strong>Stack Sugerido:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Framework: CrewAI ou AutoGen</li>
+<li>LLM: Mix (GPT-4 para coordenação, GPT-3.5 para subtarefas)</li>
+<li>Orquestração: Celery ou Temporal</li>
+<li>Frontend: Custom React + WebSockets</li>
+<li>Deploy: Kubernetes ou Railway</li>
+</ul>
+<strong>Avaliação:</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Qualidade do output final (rubrica)</li>
+<li>Eficiência vs agente único</li>
+<li>Escalabilidade (10x tarefas em paralelo)</li>
+</ul>
+---</p>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <footer class="bg-gray-800 text-white py-8">
-        <div class="container mx-auto px-6 text-center">
-            <p>© 2025 SuperProfessores | Licença MIT</p>
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">📌</span>
+                    <span>📋 Estrutura do Projeto</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-4">### Fase 1: Proposta (Semana 1)
+<strong>Documento de Proposta (3-5 páginas):</strong>
+<strong>1. Problema e Motivação</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Qual dor educacional você está resolvendo?</li>
+<li>Por que uma solução técnica de IA é apropriada?</li>
+<li>Quantifique: quantas pessoas afetadas, quanto tempo economizado, etc</li>
+</ul>
+<strong>2. Solução Técnica</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Arquitetura de alto nível (diagrama)</li>
+<li>Tecnologias escolhidas (justifique cada uma)</li>
+<li>Trade-offs considerados (por que X e não Y?)</li>
+</ul>
+<strong>3. Roadmap Técnico</strong>
+``<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+Semana 1: Setup + Data preparation
+Semana 2: Core RAG/Agent implementation
+Semana 3: Frontend + Integration
+Semana 4: Testing + Optimization
+Semana 5: Deployment
+Semana 6: User testing + Iteration
+</code>`<code class="bg-neutral-100 dark:bg-neutral-700 px-2 py-1 rounded">
+<strong>4. Critérios de Sucesso</strong>
+<ul class="space-y-2 list-disc pl-6">
+<li>Métricas técnicas (latência, accuracy, F1)</li>
+<li>Métricas de uso (usuários, queries, satisfação)</li>
+<li>Metas numéricas para cada métrica</li>
+</ul>
+<strong>Template:</strong>
+</code>``markdown
+# Proposta: [Nome do Projeto]</p>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">📌</span>
+                    <span>1. Problema</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-4">[Descrever em 200 palavras]</p>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">📌</span>
+                    <span>2. Solução</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-4">[Descrever arquitetura em 300 palavras + diagrama]</p>
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">📌</span>
+                    <span>3. Tecnologias</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <ul class="space-y-2 list-disc pl-6">
+<li>Vector DB: [Nome] - Justificativa: [...]</li>
+<li>LLM: [Nome] - Justificativa: [...]</li>
+<li>Frontend: [Nome] - Justificativa: [...]</li></ul>
+
+                </div>
+            </div>
+
+            <div class="bg-white dark:bg-neutral-800 rounded-xl p-8 mb-6 shadow-lg border-l-4 border-module-color">
+                <h3 class="text-2xl font-bold mb-4 flex items-center gap-3">
+                    <span class="text-3xl">📌</span>
+                    <span>4. Cronograma</span>
+                </h3>
+                <div class="prose dark:prose-invert max-w-none">
+                    <p class="mb-4">[Tabela ou Gantt chart]</p>
+                </div>
+            </div>
+            
+            <div class="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/10 dark:to-purple-900/10 rounded-xl p-8 text-center border-2 border-dashed border-module-color">
+                <p class="text-lg font-semibold text-neutral-700 dark:text-neutral-300 mb-2">
+                    📚 Conteúdo Completo
+                </p>
+                <p class="text-neutral-600 dark:text-neutral-400 mb-4">
+                    Faça download do material completo em Markdown para acessar todos os tópicos, exemplos, prompts e atividades detalhadas.
+                </p>
+                <a href="../pdfs/modulo-2b-4.md" download class="inline-block px-6 py-3 bg-module-color text-white rounded-lg font-semibold hover:opacity-90 transition-colors">
+                    📄 Baixar Material Completo (MD)
+                </a>
+            </div>
+        </section>
+
+        <!-- Recursos -->
+        <section class="mb-12">
+            <h2 class="text-3xl font-bold mb-6">📦 Recursos do Módulo</h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <span>📹</span>
+                        <span>Videoaulas</span>
+                    </h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                        Aulas detalhadas sobre cada tópico do módulo
+                    </p>
+                </div>
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <span>💬</span>
+                        <span>Práticas</span>
+                    </h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                        Atividades hands-on com projetos reais
+                    </p>
+                </div>
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <span>✅</span>
+                        <span>Avaliação</span>
+                    </h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                        Quizzes e projetos para certificação
+                    </p>
+                </div>
+                <div class="bg-white dark:bg-neutral-800 p-6 rounded-xl shadow-lg">
+                    <h3 class="font-bold mb-3 flex items-center gap-2">
+                        <span>📚</span>
+                        <span>Referências</span>
+                    </h3>
+                    <p class="text-sm text-neutral-600 dark:text-neutral-400">
+                        Materiais complementares selecionados
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Navegação -->
+        <section class="flex justify-between items-center pt-8 border-t border-neutral-200 dark:border-neutral-700">
+            <a href="../niveis/nivel-2b.html" class="px-6 py-3 bg-neutral-200 dark:bg-neutral-700 rounded-lg font-semibold hover:bg-neutral-300 dark:hover:bg-neutral-600 transition-colors">
+                ← Voltar ao Nível 2B
+            </a>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-neutral-900 dark:bg-black text-neutral-300 py-12 mt-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2025 SuperProfessores. Licença MIT.</p>
         </div>
     </footer>
 
+    <script src="../js/app.js"></script>
 </body>
 </html>
